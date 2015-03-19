@@ -1,20 +1,18 @@
 //
-//  DetailViewController.m
+//  SignatureViewController.m
 //  Signed
 //
-//  Created by Jessie Serrino on 3/18/15.
+//  Created by Jessie Serrino on 3/19/15.
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "SignatureViewController.h"
 
-static NSString * const SegueToSignatureView = @"SegueToSignatureView";
-
-@interface DetailViewController ()
+@interface SignatureViewController ()
 
 @end
 
-@implementation DetailViewController
+@implementation SignatureViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,14 +22,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-- (IBAction)backButtonPressed:(UIButton *)sender {
-}
-- (IBAction)sendButtonPressed:(UIButton *)sender {
-}
-- (IBAction)signButtonPressed:(UIButton *)sender
-{
-    [self performSegueWithIdentifier:SegueToSignatureView sender:self];
 }
 
 /*
