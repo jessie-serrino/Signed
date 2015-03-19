@@ -101,6 +101,16 @@
 			name = Signature;
 			sourceTree = "<group>";
 		};
+		915EF5641ABAF9E400EFDA67 /* Document Cell */ = {
+			isa = PBXGroup;
+			children = (
+				915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */,
+				915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */,
+				915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */,
+			);
+			name = "Document Cell";
+			sourceTree = "<group>";
+		};
 		916D57E81AB9E03400069815 = {
 			isa = PBXGroup;
 			children = (
@@ -168,9 +178,6 @@
 				916D581F1AB9E10300069815 /* Detail */,
 				916D581E1AB9E0CC00069815 /* History */,
 				915EF55E1ABAE57F00EFDA67 /* Signature */,
-				915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */,
-				915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */,
-				915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 		916D581E1AB9E0CC00069815 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				915EF5641ABAF9E400EFDA67 /* Document Cell */,
 				916D57FE1AB9E03400069815 /* HistoryViewController.h */,
 				916D57FF1AB9E03400069815 /* HistoryViewController.m */,
 			);

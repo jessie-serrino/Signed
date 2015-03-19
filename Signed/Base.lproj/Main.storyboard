@@ -19,17 +19,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO3-Fr-58y">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO3-Fr-58y">
                                 <rect key="frame" x="26" y="64" width="362" height="672"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ahs-F3-1a9">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ahs-F3-1a9">
                                     <size key="itemSize" width="85" height="110"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="30"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fi0-a2-854">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fi0-a2-854" customClass="DocumentCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -40,25 +40,18 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WrA-Xi-jrO">
+                                    <rect key="frame" x="0.0" y="64" width="362" height="30"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PzY-0D-c1C">
-                                <rect key="frame" x="172" y="638" width="71" height="30"/>
-                                <state key="normal" title="Next page">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextPage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="g0k-Vo-wS2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PzY-0D-c1C" firstAttribute="centerX" secondItem="SO3-Fr-58y" secondAttribute="centerX" constant="0.5" id="M9u-W6-OiL"/>
+                            <constraint firstItem="SO3-Fr-58y" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="8lN-hy-H4T"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SO3-Fr-58y" secondAttribute="bottom" id="PQT-bD-vBs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SO3-Fr-58y" secondAttribute="trailing" constant="10" id="SAj-tM-67a"/>
                             <constraint firstItem="SO3-Fr-58y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="UPm-hd-71k"/>
-                            <constraint firstItem="PzY-0D-c1C" firstAttribute="top" secondItem="SO3-Fr-58y" secondAttribute="bottom" constant="-98" id="Xrb-3i-0A7"/>
-                            <constraint firstItem="SO3-Fr-58y" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="iQu-lK-xSp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="twq-ic-NcD"/>
@@ -70,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037" y="415"/>
+            <point key="canvasLocation" x="955" y="557"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IoT-qo-jvR">

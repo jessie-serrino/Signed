@@ -7,9 +7,9 @@
 //
 
 #import "HistoryViewController.h"
-#import "DetailViewController.h"
+#import "DocumentCollectionViewCell.h"
 
-@interface HistoryViewController ()
+@interface HistoryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *historyCollectionView;
 
 @end
@@ -20,24 +20,41 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    [self initializeCollectionView];
+    
+}
+- (void) initializeCollectionView
+{
+    [self.historyCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DocumentCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class])];
+
+    self.historyCollectionView.delegate = self;
+    self.historyCollectionView.dataSource = self;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 14;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)switchControllers:(id)sender {
-    UIStoryboard* detailStoryboard = [UIStoryboard storyboardWithName:@"Detail" bundle:nil];
-    UIViewController* detailViewController = [detailStoryboard instantiateViewControllerWithIdentifier:NSStringFromClass([DetailViewController class])];
-    [self presentViewController: detailViewController animated:YES completion: NULL];
-}
-- (IBAction)settingsButtonTapped:(UIButton *)sender
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class]) forIndexPath:indexPath];
+    return cell;
 }
+
+
+
+
+
 - (IBAction)nextPage:(id)sender {
     
     [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 @end

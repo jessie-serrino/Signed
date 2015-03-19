@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryViewController : UIViewController
+@interface HistoryViewController : UICollectionViewController
 
 
 @end
