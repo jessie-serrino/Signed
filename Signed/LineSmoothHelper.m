@@ -31,7 +31,6 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 - (instancetype)init
 {
     self = [super init];
-    int val = 0;
 
     return self;
 }

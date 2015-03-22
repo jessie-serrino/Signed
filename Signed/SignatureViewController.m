@@ -8,6 +8,8 @@
 
 #import "SignatureViewController.h"
 
+static NSString * const SegueToAddSignature = @"SegueToAddSignature";
+
 @interface SignatureViewController ()
 
 @end
@@ -22,6 +24,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationLandscapeLeft;
+}
+- (IBAction)acceptSignature:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:SegueToAddSignature sender:self];
+}
+- (IBAction)cancelSignature:(UIBarButtonItem *)sender {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*

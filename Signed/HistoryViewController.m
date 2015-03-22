@@ -40,9 +40,28 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class]) forIndexPath:indexPath];
+    if(indexPath.item == 0)
+    {
+        cell.cellImageView.image = [UIImage imageNamed: @"AddDocument"];
+        cell.cellLabel.text = @"dsfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdfasdfasdfasdf";
+    }
+    else
+    {
+        cell.cellImageView.image = nil;
+        cell.cellLabel.text = [NSString stringWithFormat:@"Document %li", (long)indexPath.item ];
+    }
+
     return cell;
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.item == 0)
+    {
+        [self performSegueWithIdentifier:SegueToDetailView sender:self];
+    }
+}
 
 
 

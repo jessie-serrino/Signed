@@ -1,22 +1,19 @@
 //
 //  Signature.h
-//  SignatureLibrary
+//  Signed
 //
-//  Created by Jessie Serrino on 3/17/15.
+//  Created by Jessie Serrino on 3/22/15.
 //  Copyright (c) 2015 Jessie Serrino. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Line.h"
 
+@interface Signature : NSObject
 
-@interface Signature : CALayer
-
-- (instancetype) initWithFrame: (CGRect) frame;
-- (UIImage *) image;
-- (void) startLineWithPoint: (CGPoint) point;
-- (void) continueLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;
-- (void) endLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;
+@property (nonatomic)         NSUInteger page;
+@property (nonatomic)         CGFloat    scale;
+@property (nonatomic, strong) UIImage   *image;
+@property (nonatomic)         CGPoint   position;
 
 @end

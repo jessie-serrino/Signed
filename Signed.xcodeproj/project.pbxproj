@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5ADD1ABED873000B044D /* AddSignatureViewController.m */; };
 		915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */; };
 		915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */; };
 		915EF5631ABAE87500EFDA67 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */; };
@@ -22,7 +23,10 @@
 		916D582A1AB9E6EB00069815 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58271AB9E6EB00069815 /* Line.m */; };
 		916D582B1AB9E6EB00069815 /* LineSmoothHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58291AB9E6EB00069815 /* LineSmoothHelper.m */; };
 		916D582E1AB9E6F600069815 /* UIBezierPath+Subline.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */; };
-		916D58311AB9E70200069815 /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58301AB9E70200069815 /* Signature.m */; };
+		916D58311AB9E70200069815 /* SignatureMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58301AB9E70200069815 /* SignatureMaker.m */; };
+		91E505A81ABEDD6F0063DA7B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505A71ABEDD6F0063DA7B /* Document.m */; };
+		91E505AB1ABF3B370063DA7B /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AA1ABF3B370063DA7B /* Signature.m */; };
+		91E505AF1ABF41E40063DA7B /* SignatureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AE1ABF41E40063DA7B /* SignatureManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		912B5ADC1ABED873000B044D /* AddSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSignatureViewController.h; sourceTree = "<group>"; };
+		912B5ADD1ABED873000B044D /* AddSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSignatureViewController.m; sourceTree = "<group>"; };
 		915EF55B1ABADD1800EFDA67 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
 		915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
 		915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -63,8 +69,14 @@
 		916D58291AB9E6EB00069815 /* LineSmoothHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineSmoothHelper.m; sourceTree = "<group>"; };
 		916D582C1AB9E6F600069815 /* UIBezierPath+Subline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+Subline.h"; sourceTree = "<group>"; };
 		916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Subline.m"; sourceTree = "<group>"; };
-		916D582F1AB9E70200069815 /* Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signature.h; sourceTree = "<group>"; };
-		916D58301AB9E70200069815 /* Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Signature.m; sourceTree = "<group>"; };
+		916D582F1AB9E70200069815 /* SignatureMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureMaker.h; sourceTree = "<group>"; };
+		916D58301AB9E70200069815 /* SignatureMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureMaker.m; sourceTree = "<group>"; };
+		91E505A61ABEDD6F0063DA7B /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
+		91E505A71ABEDD6F0063DA7B /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
+		91E505A91ABF3B370063DA7B /* Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signature.h; sourceTree = "<group>"; };
+		91E505AA1ABF3B370063DA7B /* Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Signature.m; sourceTree = "<group>"; };
+		91E505AD1ABF41E40063DA7B /* SignatureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureManager.h; sourceTree = "<group>"; };
+		91E505AE1ABF41E40063DA7B /* SignatureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +97,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		915EF55A1ABADB0A00EFDA67 /* Signature */ = {
+		912B5ADF1ABED879000B044D /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				912B5ADC1ABED873000B044D /* AddSignatureViewController.h */,
+				912B5ADD1ABED873000B044D /* AddSignatureViewController.m */,
 			);
-			name = Signature;
+			name = Add;
+			sourceTree = "<group>";
+		};
+		912B5AE01ABED892000B044D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				91E505A61ABEDD6F0063DA7B /* Document.h */,
+				91E505A71ABEDD6F0063DA7B /* Document.m */,
+				91E505A91ABF3B370063DA7B /* Signature.h */,
+				91E505AA1ABF3B370063DA7B /* Signature.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		915EF55E1ABAE57F00EFDA67 /* Signature */ = {
@@ -132,6 +157,8 @@
 		916D57F31AB9E03400069815 /* Signed */ = {
 			isa = PBXGroup;
 			children = (
+				91E505AC1ABF41CD0063DA7B /* Utilities */,
+				912B5AE01ABED892000B044D /* Models */,
 				916D58251AB9E6B000069815 /* Signature */,
 				916D581D1AB9E07000069815 /* View Controllers */,
 				916D57F81AB9E03400069815 /* AppDelegate.h */,
@@ -174,10 +201,10 @@
 			isa = PBXGroup;
 			children = (
 				916D58011AB9E03400069815 /* Main.storyboard */,
-				915EF55A1ABADB0A00EFDA67 /* Signature */,
 				916D581F1AB9E10300069815 /* Detail */,
 				916D581E1AB9E0CC00069815 /* History */,
 				915EF55E1ABAE57F00EFDA67 /* Signature */,
+				912B5ADF1ABED879000B044D /* Add */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -204,8 +231,8 @@
 		916D58251AB9E6B000069815 /* Signature */ = {
 			isa = PBXGroup;
 			children = (
-				916D582F1AB9E70200069815 /* Signature.h */,
-				916D58301AB9E70200069815 /* Signature.m */,
+				916D582F1AB9E70200069815 /* SignatureMaker.h */,
+				916D58301AB9E70200069815 /* SignatureMaker.m */,
 				916D582C1AB9E6F600069815 /* UIBezierPath+Subline.h */,
 				916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */,
 				916D58261AB9E6EB00069815 /* Line.h */,
@@ -214,6 +241,15 @@
 				916D58291AB9E6EB00069815 /* LineSmoothHelper.m */,
 			);
 			name = Signature;
+			sourceTree = "<group>";
+		};
+		91E505AC1ABF41CD0063DA7B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				91E505AD1ABF41E40063DA7B /* SignatureManager.h */,
+				91E505AE1ABF41E40063DA7B /* SignatureManager.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,16 +354,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				916D582B1AB9E6EB00069815 /* LineSmoothHelper.m in Sources */,
+				912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */,
 				916D58241AB9E16000069815 /* DetailViewController.m in Sources */,
 				916D582E1AB9E6F600069815 /* UIBezierPath+Subline.m in Sources */,
-				916D58311AB9E70200069815 /* Signature.m in Sources */,
+				91E505AB1ABF3B370063DA7B /* Signature.m in Sources */,
+				916D58311AB9E70200069815 /* SignatureMaker.m in Sources */,
 				916D582A1AB9E6EB00069815 /* Line.m in Sources */,
 				916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */,
 				916D57F71AB9E03400069815 /* main.m in Sources */,
 				916D58001AB9E03400069815 /* HistoryViewController.m in Sources */,
 				915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */,
 				916D57FD1AB9E03400069815 /* Signed.xcdatamodeld in Sources */,
+				91E505AF1ABF41E40063DA7B /* SignatureManager.m in Sources */,
 				915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */,
+				91E505A81ABEDD6F0063DA7B /* Document.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

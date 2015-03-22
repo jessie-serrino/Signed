@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface DocumentCollectionViewCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
+@property (strong, nonatomic) IBOutlet UILabel *cellLabel;
+
 
 @end
