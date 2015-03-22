@@ -27,6 +27,9 @@
 		91E505A81ABEDD6F0063DA7B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505A71ABEDD6F0063DA7B /* Document.m */; };
 		91E505AB1ABF3B370063DA7B /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AA1ABF3B370063DA7B /* Signature.m */; };
 		91E505AF1ABF41E40063DA7B /* SignatureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AE1ABF41E40063DA7B /* SignatureManager.m */; };
+		91E505BA1ABF63A70063DA7B /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505B91ABF63A70063DA7B /* ShareViewController.m */; };
+		91E505BC1ABF63A70063DA7B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E505BB1ABF63A70063DA7B /* MainInterface.storyboard */; };
+		91E505BF1ABF63A70063DA7B /* SignedShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91E505B41ABF63A70063DA7B /* SignedShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,28 @@
 			remoteGlobalIDString = 916D57F01AB9E03400069815;
 			remoteInfo = Signed;
 		};
+		91E505BD1ABF63A70063DA7B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 916D57E91AB9E03400069815 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91E505B31ABF63A70063DA7B;
+			remoteInfo = SignedShareExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		91E505C31ABF63A70063DA7B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				91E505BF1ABF63A70063DA7B /* SignedShareExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		912B5ADC1ABED873000B044D /* AddSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSignatureViewController.h; sourceTree = "<group>"; };
@@ -77,6 +101,12 @@
 		91E505AA1ABF3B370063DA7B /* Signature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Signature.m; sourceTree = "<group>"; };
 		91E505AD1ABF41E40063DA7B /* SignatureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureManager.h; sourceTree = "<group>"; };
 		91E505AE1ABF41E40063DA7B /* SignatureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureManager.m; sourceTree = "<group>"; };
+		91E505B41ABF63A70063DA7B /* SignedShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SignedShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E505B71ABF63A70063DA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91E505B81ABF63A70063DA7B /* ShareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		91E505B91ABF63A70063DA7B /* ShareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		91E505BB1ABF63A70063DA7B /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		91E505C41ABF64A50063DA7B /* SignedShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SignedShareExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +118,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		916D580A1AB9E03400069815 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91E505B11ABF63A70063DA7B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -141,6 +178,7 @@
 			children = (
 				916D57F31AB9E03400069815 /* Signed */,
 				916D58101AB9E03400069815 /* SignedTests */,
+				91E505B51ABF63A70063DA7B /* SignedShareExtension */,
 				916D57F21AB9E03400069815 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -150,6 +188,7 @@
 			children = (
 				916D57F11AB9E03400069815 /* Signed.app */,
 				916D580D1AB9E03400069815 /* SignedTests.xctest */,
+				91E505B41ABF63A70063DA7B /* SignedShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +291,26 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
+		91E505B51ABF63A70063DA7B /* SignedShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				91E505C41ABF64A50063DA7B /* SignedShareExtension.entitlements */,
+				91E505B81ABF63A70063DA7B /* ShareViewController.h */,
+				91E505B91ABF63A70063DA7B /* ShareViewController.m */,
+				91E505BB1ABF63A70063DA7B /* MainInterface.storyboard */,
+				91E505B61ABF63A70063DA7B /* Supporting Files */,
+			);
+			path = SignedShareExtension;
+			sourceTree = "<group>";
+		};
+		91E505B61ABF63A70063DA7B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91E505B71ABF63A70063DA7B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,10 +321,12 @@
 				916D57ED1AB9E03400069815 /* Sources */,
 				916D57EE1AB9E03400069815 /* Frameworks */,
 				916D57EF1AB9E03400069815 /* Resources */,
+				91E505C31ABF63A70063DA7B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				91E505BE1ABF63A70063DA7B /* PBXTargetDependency */,
 			);
 			name = Signed;
 			productName = Signed;
@@ -290,6 +351,23 @@
 			productReference = 916D580D1AB9E03400069815 /* SignedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		91E505B31ABF63A70063DA7B /* SignedShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91E505C01ABF63A70063DA7B /* Build configuration list for PBXNativeTarget "SignedShareExtension" */;
+			buildPhases = (
+				91E505B01ABF63A70063DA7B /* Sources */,
+				91E505B11ABF63A70063DA7B /* Frameworks */,
+				91E505B21ABF63A70063DA7B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignedShareExtension;
+			productName = SignedShareExtension;
+			productReference = 91E505B41ABF63A70063DA7B /* SignedShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -301,10 +379,25 @@
 				TargetAttributes = {
 					916D57F01AB9E03400069815 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2LA5QNWNJ3;
+						SystemCapabilities = {
+							com.apple.DataProtection = {
+								enabled = 1;
+							};
+						};
 					};
 					916D580C1AB9E03400069815 = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 916D57F01AB9E03400069815;
+					};
+					91E505B31ABF63A70063DA7B = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2LA5QNWNJ3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -323,6 +416,7 @@
 			targets = (
 				916D57F01AB9E03400069815 /* Signed */,
 				916D580C1AB9E03400069815 /* SignedTests */,
+				91E505B31ABF63A70063DA7B /* SignedShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -343,6 +437,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91E505B21ABF63A70063DA7B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91E505BC1ABF63A70063DA7B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +481,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91E505B01ABF63A70063DA7B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91E505BA1ABF63A70063DA7B /* ShareViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -386,6 +496,11 @@
 			isa = PBXTargetDependency;
 			target = 916D57F01AB9E03400069815 /* Signed */;
 			targetProxy = 916D580E1AB9E03400069815 /* PBXContainerItemProxy */;
+		};
+		91E505BE1ABF63A70063DA7B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91E505B31ABF63A70063DA7B /* SignedShareExtension */;
+			targetProxy = 91E505BD1ABF63A70063DA7B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,10 +604,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Signed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -500,10 +618,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Signed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -541,6 +662,38 @@
 			};
 			name = Release;
 		};
+		91E505C11ABF63A70063DA7B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedShareExtension/SignedShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignedShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		91E505C21ABF63A70063DA7B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedShareExtension/SignedShareExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SignedShareExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -570,6 +723,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		91E505C01ABF63A70063DA7B /* Build configuration list for PBXNativeTarget "SignedShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91E505C11ABF63A70063DA7B /* Debug */,
+				91E505C21ABF63A70063DA7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 

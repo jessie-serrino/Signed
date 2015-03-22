@@ -65,11 +65,11 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 
 
-
-- (IBAction)nextPage:(id)sender {
-    
-    [self performSegueWithIdentifier:SegueToDetailView sender:self];
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -27,16 +27,19 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 }
 
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationLandscapeLeft;
-}
+
 - (IBAction)acceptSignature:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:SegueToAddSignature sender:self];
 }
 - (IBAction)cancelSignature:(UIBarButtonItem *)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 /*

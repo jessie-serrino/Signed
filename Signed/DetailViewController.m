@@ -34,6 +34,11 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self performSegueWithIdentifier:SegueToSignatureView sender:self];
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 /*
 #pragma mark - Navigation
 
