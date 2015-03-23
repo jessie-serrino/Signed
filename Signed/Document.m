@@ -30,7 +30,8 @@
 + (instancetype) documentFromURL: (NSURL *) documentURL
 {
     Document *document = [[Document alloc] init];
- 
+    document.fileLocation = documentURL;
+    
     return document;
 }
 
@@ -39,7 +40,7 @@
     return nil;
 }
 
-- (UIImage *) generateDocumentPDF
+- (NSData *) generateDocumentPDF
 {
     return nil;
 }

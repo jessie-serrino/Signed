@@ -7,13 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+#import "Document.h"
+
+
 
 @interface DocumentManager : NSObject
 
-@property (nonatomic, weak) NSArray *documents;
+@property (nonatomic, strong) NSMutableArray *documents;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) Document *currentDocument;
 
 + (instancetype)sharedManager;
-- (void) load;
-- (void) save;
+- (void) createDocumentWithURL: (NSURL *) url;
+
 
 @end

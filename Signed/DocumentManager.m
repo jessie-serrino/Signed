@@ -28,9 +28,31 @@
     return self;
 }
 
+
+- (NSArray *) documents
+{
+    if(!_documents)
+    {
+        // Retrieve docs
+        _documents = [[NSMutableArray alloc] init];
+    }
+    return _documents;
+}
+
+
+- (void) createDocumentWithURL: (NSURL *) url
+{
+    Document *document = [Document documentFromURL:url];
+    [self.documents addObject:document];
+    self.currentDocument = document;
+}
+
 - (void) load
 {
-    
+    if(self.managedObjectContext)
+    {
+        
+    }
 }
 
 - (void) save

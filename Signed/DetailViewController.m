@@ -39,10 +39,16 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     return UIInterfaceOrientationMaskPortrait;
 }
 
+- (IBAction) signatureCancelled: (UIStoryboardSegue *) segue
+{
+    
+    
+    NSLog(@"Cancelling...");
+}
 
-
--(IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
-
+-(IBAction)signatureSaved:(UIStoryboardSegue *)segue {
+    
+    NSLog(@"Saving...");
 }
 
 /*

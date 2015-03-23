@@ -63,8 +63,6 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     }
 }
 
-
-
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;

@@ -30,9 +30,7 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (IBAction)cancelAddSignature:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 
 

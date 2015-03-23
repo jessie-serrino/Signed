@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "DocumentManager.h"
+
 static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 
@@ -19,6 +21,9 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [DocumentManager sharedManager].managedObjectContext = self.managedObjectContext;
+    
     return YES;
 }
 
@@ -48,12 +53,15 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSData *dataImage = [NSData dataWithContentsOfURL:url];
-    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    if([self.window.rootViewController isKindOfClass:[UINavigationController class]])
+    {
+        UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+        [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
+        return YES;
+    }
+    else
+        return NO;
     
-    [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
-    
-    return (dataImage)? YES: NO;
 }
 
 #pragma mark - Core Data stack

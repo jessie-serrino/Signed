@@ -493,13 +493,13 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mzA-K8-nVJ">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="prepareForUnwind:" id="xUk-wf-faI"/>
+                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="signatureCancelled:" id="CDd-Xf-xsU"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="56u-ch-tma">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
-                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="prepareForUnwind:" id="Rjq-ue-K0L"/>
+                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="signatureSaved:" id="XnQ-sp-zsP"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

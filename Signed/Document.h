@@ -14,15 +14,15 @@
 @interface Document : NSObject
 
 @property (nonatomic, strong) NSArray *signatures;
-@property (nonatomic, strong) NSURL   *document;
+@property (nonatomic, strong) NSURL   *fileLocation;
 @property (nonatomic, strong) NSDate  *dateCreated;
 @property (nonatomic, strong) NSDate  *dateModified;
 @property (nonatomic, strong) NSString *fileName;
-@property (nonatomic, strong) UIImage *thumbnail;
+@property (nonatomic, strong) UIImage *documentThumbnail;
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;
 - (UIImage *) generateDocumentThumbnail;
-- (UIImage *) generateDocumentPDF;
+- (NSData *) generateDocumentPDF;
 - (UIImage *) thumbnailForPage: (NSInteger) pageNumber;
 
 
