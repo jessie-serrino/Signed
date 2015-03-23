@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5ADD1ABED873000B044D /* AddSignatureViewController.m */; };
+		91439CF31AC035D90009BD6A /* DocumentPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91439CF21AC035D90009BD6A /* DocumentPickerViewController.m */; };
+		91439CF51AC035D90009BD6A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91439CF41AC035D90009BD6A /* MainInterface.storyboard */; };
+		91439D011AC035D90009BD6A /* FileProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 91439D001AC035D90009BD6A /* FileProvider.m */; };
+		91439D041AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91439CFA1AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		91439D071AC035D90009BD6A /* SignedDocumentProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91439CEC1AC035D80009BD6A /* SignedDocumentProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */; };
 		915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */; };
 		915EF5631ABAE87500EFDA67 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */; };
@@ -24,6 +29,9 @@
 		916D582B1AB9E6EB00069815 /* LineSmoothHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58291AB9E6EB00069815 /* LineSmoothHelper.m */; };
 		916D582E1AB9E6F600069815 /* UIBezierPath+Subline.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */; };
 		916D58311AB9E70200069815 /* SignatureMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58301AB9E70200069815 /* SignatureMaker.m */; };
+		91BEAB521AC03424007ABF5A /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91BEAB511AC03424007ABF5A /* ActionViewController.m */; };
+		91BEAB541AC03424007ABF5A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91BEAB531AC03424007ABF5A /* MainInterface.storyboard */; };
+		91BEAB571AC03424007ABF5A /* SignedAppExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 91BEAB4C1AC03424007ABF5A /* SignedAppExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		91E505A81ABEDD6F0063DA7B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505A71ABEDD6F0063DA7B /* Document.m */; };
 		91E505AB1ABF3B370063DA7B /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AA1ABF3B370063DA7B /* Signature.m */; };
 		91E505AF1ABF41E40063DA7B /* SignatureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AE1ABF41E40063DA7B /* SignatureManager.m */; };
@@ -33,12 +41,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		91439D021AC035D90009BD6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 916D57E91AB9E03400069815 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91439CF91AC035D90009BD6A;
+			remoteInfo = SignedDocumentProviderFileProvider;
+		};
+		91439D051AC035D90009BD6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 916D57E91AB9E03400069815 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91439CEB1AC035D80009BD6A;
+			remoteInfo = SignedDocumentProvider;
+		};
 		916D580E1AB9E03400069815 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 916D57E91AB9E03400069815 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 916D57F01AB9E03400069815;
 			remoteInfo = Signed;
+		};
+		91BEAB551AC03424007ABF5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 916D57E91AB9E03400069815 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 91BEAB4B1AC03424007ABF5A;
+			remoteInfo = SignedAppExtension;
 		};
 		91E505BD1ABF63A70063DA7B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -56,6 +85,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				91439D071AC035D90009BD6A /* SignedDocumentProvider.appex in Embed App Extensions */,
+				91439D041AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex in Embed App Extensions */,
+				91BEAB571AC03424007ABF5A /* SignedAppExtension.appex in Embed App Extensions */,
 				91E505BF1ABF63A70063DA7B /* SignedShareExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -66,6 +98,18 @@
 /* Begin PBXFileReference section */
 		912B5ADC1ABED873000B044D /* AddSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSignatureViewController.h; sourceTree = "<group>"; };
 		912B5ADD1ABED873000B044D /* AddSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSignatureViewController.m; sourceTree = "<group>"; };
+		91439CE71AC035120009BD6A /* SignedAppExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SignedAppExtension.entitlements; sourceTree = "<group>"; };
+		91439CEC1AC035D80009BD6A /* SignedDocumentProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SignedDocumentProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		91439CEF1AC035D80009BD6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91439CF01AC035D80009BD6A /* SignedDocumentProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SignedDocumentProvider.entitlements; sourceTree = "<group>"; };
+		91439CF11AC035D80009BD6A /* DocumentPickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DocumentPickerViewController.h; sourceTree = "<group>"; };
+		91439CF21AC035D90009BD6A /* DocumentPickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DocumentPickerViewController.m; sourceTree = "<group>"; };
+		91439CF41AC035D90009BD6A /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		91439CFA1AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SignedDocumentProviderFileProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		91439CFD1AC035D90009BD6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91439CFE1AC035D90009BD6A /* SignedDocumentProviderFileProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SignedDocumentProviderFileProvider.entitlements; sourceTree = "<group>"; };
+		91439CFF1AC035D90009BD6A /* FileProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileProvider.h; sourceTree = "<group>"; };
+		91439D001AC035D90009BD6A /* FileProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileProvider.m; sourceTree = "<group>"; };
 		915EF55B1ABADD1800EFDA67 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
 		915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
 		915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -95,6 +139,11 @@
 		916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Subline.m"; sourceTree = "<group>"; };
 		916D582F1AB9E70200069815 /* SignatureMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureMaker.h; sourceTree = "<group>"; };
 		916D58301AB9E70200069815 /* SignatureMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureMaker.m; sourceTree = "<group>"; };
+		91BEAB4C1AC03424007ABF5A /* SignedAppExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SignedAppExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		91BEAB4F1AC03424007ABF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91BEAB501AC03424007ABF5A /* ActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
+		91BEAB511AC03424007ABF5A /* ActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
+		91BEAB531AC03424007ABF5A /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		91E505A61ABEDD6F0063DA7B /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		91E505A71ABEDD6F0063DA7B /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		91E505A91ABF3B370063DA7B /* Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signature.h; sourceTree = "<group>"; };
@@ -110,6 +159,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		91439CE91AC035D80009BD6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91439CF71AC035D90009BD6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		916D57EE1AB9E03400069815 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,6 +181,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		916D580A1AB9E03400069815 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91BEAB491AC03424007ABF5A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -154,6 +224,45 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		91439CED1AC035D80009BD6A /* SignedDocumentProvider */ = {
+			isa = PBXGroup;
+			children = (
+				91439CF11AC035D80009BD6A /* DocumentPickerViewController.h */,
+				91439CF21AC035D90009BD6A /* DocumentPickerViewController.m */,
+				91439CF41AC035D90009BD6A /* MainInterface.storyboard */,
+				91439CEE1AC035D80009BD6A /* Supporting Files */,
+			);
+			path = SignedDocumentProvider;
+			sourceTree = "<group>";
+		};
+		91439CEE1AC035D80009BD6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91439CEF1AC035D80009BD6A /* Info.plist */,
+				91439CF01AC035D80009BD6A /* SignedDocumentProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		91439CFB1AC035D90009BD6A /* SignedDocumentProviderFileProvider */ = {
+			isa = PBXGroup;
+			children = (
+				91439CFF1AC035D90009BD6A /* FileProvider.h */,
+				91439D001AC035D90009BD6A /* FileProvider.m */,
+				91439CFC1AC035D90009BD6A /* Supporting Files */,
+			);
+			path = SignedDocumentProviderFileProvider;
+			sourceTree = "<group>";
+		};
+		91439CFC1AC035D90009BD6A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91439CFD1AC035D90009BD6A /* Info.plist */,
+				91439CFE1AC035D90009BD6A /* SignedDocumentProviderFileProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		915EF55E1ABAE57F00EFDA67 /* Signature */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +288,9 @@
 				916D57F31AB9E03400069815 /* Signed */,
 				916D58101AB9E03400069815 /* SignedTests */,
 				91E505B51ABF63A70063DA7B /* SignedShareExtension */,
+				91BEAB4D1AC03424007ABF5A /* SignedAppExtension */,
+				91439CED1AC035D80009BD6A /* SignedDocumentProvider */,
+				91439CFB1AC035D90009BD6A /* SignedDocumentProviderFileProvider */,
 				916D57F21AB9E03400069815 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -189,6 +301,9 @@
 				916D57F11AB9E03400069815 /* Signed.app */,
 				916D580D1AB9E03400069815 /* SignedTests.xctest */,
 				91E505B41ABF63A70063DA7B /* SignedShareExtension.appex */,
+				91BEAB4C1AC03424007ABF5A /* SignedAppExtension.appex */,
+				91439CEC1AC035D80009BD6A /* SignedDocumentProvider.appex */,
+				91439CFA1AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -282,6 +397,26 @@
 			name = Signature;
 			sourceTree = "<group>";
 		};
+		91BEAB4D1AC03424007ABF5A /* SignedAppExtension */ = {
+			isa = PBXGroup;
+			children = (
+				91439CE71AC035120009BD6A /* SignedAppExtension.entitlements */,
+				91BEAB501AC03424007ABF5A /* ActionViewController.h */,
+				91BEAB511AC03424007ABF5A /* ActionViewController.m */,
+				91BEAB531AC03424007ABF5A /* MainInterface.storyboard */,
+				91BEAB4E1AC03424007ABF5A /* Supporting Files */,
+			);
+			path = SignedAppExtension;
+			sourceTree = "<group>";
+		};
+		91BEAB4E1AC03424007ABF5A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				91BEAB4F1AC03424007ABF5A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		91E505AC1ABF41CD0063DA7B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +449,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		91439CEB1AC035D80009BD6A /* SignedDocumentProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91439D0B1AC035D90009BD6A /* Build configuration list for PBXNativeTarget "SignedDocumentProvider" */;
+			buildPhases = (
+				91439CE81AC035D80009BD6A /* Sources */,
+				91439CE91AC035D80009BD6A /* Frameworks */,
+				91439CEA1AC035D80009BD6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignedDocumentProvider;
+			productName = SignedDocumentProvider;
+			productReference = 91439CEC1AC035D80009BD6A /* SignedDocumentProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		91439CF91AC035D90009BD6A /* SignedDocumentProviderFileProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91439D081AC035D90009BD6A /* Build configuration list for PBXNativeTarget "SignedDocumentProviderFileProvider" */;
+			buildPhases = (
+				91439CF61AC035D90009BD6A /* Sources */,
+				91439CF71AC035D90009BD6A /* Frameworks */,
+				91439CF81AC035D90009BD6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignedDocumentProviderFileProvider;
+			productName = SignedDocumentProviderFileProvider;
+			productReference = 91439CFA1AC035D90009BD6A /* SignedDocumentProviderFileProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		916D57F01AB9E03400069815 /* Signed */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 916D58171AB9E03400069815 /* Build configuration list for PBXNativeTarget "Signed" */;
@@ -327,6 +496,9 @@
 			);
 			dependencies = (
 				91E505BE1ABF63A70063DA7B /* PBXTargetDependency */,
+				91BEAB561AC03424007ABF5A /* PBXTargetDependency */,
+				91439D031AC035D90009BD6A /* PBXTargetDependency */,
+				91439D061AC035D90009BD6A /* PBXTargetDependency */,
 			);
 			name = Signed;
 			productName = Signed;
@@ -350,6 +522,23 @@
 			productName = SignedTests;
 			productReference = 916D580D1AB9E03400069815 /* SignedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		91BEAB4B1AC03424007ABF5A /* SignedAppExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91BEAB5A1AC03424007ABF5A /* Build configuration list for PBXNativeTarget "SignedAppExtension" */;
+			buildPhases = (
+				91BEAB481AC03424007ABF5A /* Sources */,
+				91BEAB491AC03424007ABF5A /* Frameworks */,
+				91BEAB4A1AC03424007ABF5A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SignedAppExtension;
+			productName = SignedAppExtension;
+			productReference = 91BEAB4C1AC03424007ABF5A /* SignedAppExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		91E505B31ABF63A70063DA7B /* SignedShareExtension */ = {
 			isa = PBXNativeTarget;
@@ -377,6 +566,14 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Jessie Serrino";
 				TargetAttributes = {
+					91439CEB1AC035D80009BD6A = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2LA5QNWNJ3;
+					};
+					91439CF91AC035D90009BD6A = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2LA5QNWNJ3;
+					};
 					916D57F01AB9E03400069815 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 2LA5QNWNJ3;
@@ -389,6 +586,15 @@
 					916D580C1AB9E03400069815 = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 916D57F01AB9E03400069815;
+					};
+					91BEAB4B1AC03424007ABF5A = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 2LA5QNWNJ3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					91E505B31ABF63A70063DA7B = {
 						CreatedOnToolsVersion = 6.2;
@@ -417,11 +623,29 @@
 				916D57F01AB9E03400069815 /* Signed */,
 				916D580C1AB9E03400069815 /* SignedTests */,
 				91E505B31ABF63A70063DA7B /* SignedShareExtension */,
+				91BEAB4B1AC03424007ABF5A /* SignedAppExtension */,
+				91439CEB1AC035D80009BD6A /* SignedDocumentProvider */,
+				91439CF91AC035D90009BD6A /* SignedDocumentProviderFileProvider */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		91439CEA1AC035D80009BD6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91439CF51AC035D90009BD6A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91439CF81AC035D90009BD6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		916D57EF1AB9E03400069815 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -440,6 +664,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91BEAB4A1AC03424007ABF5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91BEAB541AC03424007ABF5A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		91E505B21ABF63A70063DA7B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,6 +683,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		91439CE81AC035D80009BD6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91439CF31AC035D90009BD6A /* DocumentPickerViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91439CF61AC035D90009BD6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91439D011AC035D90009BD6A /* FileProvider.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		916D57ED1AB9E03400069815 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -481,6 +729,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91BEAB481AC03424007ABF5A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91BEAB521AC03424007ABF5A /* ActionViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		91E505B01ABF63A70063DA7B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -492,10 +748,25 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		91439D031AC035D90009BD6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91439CF91AC035D90009BD6A /* SignedDocumentProviderFileProvider */;
+			targetProxy = 91439D021AC035D90009BD6A /* PBXContainerItemProxy */;
+		};
+		91439D061AC035D90009BD6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91439CEB1AC035D80009BD6A /* SignedDocumentProvider */;
+			targetProxy = 91439D051AC035D90009BD6A /* PBXContainerItemProxy */;
+		};
 		916D580F1AB9E03400069815 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 916D57F01AB9E03400069815 /* Signed */;
 			targetProxy = 916D580E1AB9E03400069815 /* PBXContainerItemProxy */;
+		};
+		91BEAB561AC03424007ABF5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 91BEAB4B1AC03424007ABF5A /* SignedAppExtension */;
+			targetProxy = 91BEAB551AC03424007ABF5A /* PBXContainerItemProxy */;
 		};
 		91E505BE1ABF63A70063DA7B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -524,6 +795,70 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		91439D091AC035D90009BD6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedDocumentProviderFileProvider/SignedDocumentProviderFileProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignedDocumentProviderFileProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		91439D0A1AC035D90009BD6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedDocumentProviderFileProvider/SignedDocumentProviderFileProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SignedDocumentProviderFileProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		91439D0C1AC035D90009BD6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedDocumentProvider/SignedDocumentProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignedDocumentProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		91439D0D1AC035D90009BD6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedDocumentProvider/SignedDocumentProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SignedDocumentProvider/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		916D58151AB9E03400069815 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -662,6 +997,38 @@
 			};
 			name = Release;
 		};
+		91BEAB581AC03424007ABF5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedAppExtension/SignedAppExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SignedAppExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		91BEAB591AC03424007ABF5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SignedAppExtension/SignedAppExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SignedAppExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		91E505C11ABF63A70063DA7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -697,6 +1064,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		91439D081AC035D90009BD6A /* Build configuration list for PBXNativeTarget "SignedDocumentProviderFileProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91439D091AC035D90009BD6A /* Debug */,
+				91439D0A1AC035D90009BD6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		91439D0B1AC035D90009BD6A /* Build configuration list for PBXNativeTarget "SignedDocumentProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91439D0C1AC035D90009BD6A /* Debug */,
+				91439D0D1AC035D90009BD6A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		916D57EC1AB9E03400069815 /* Build configuration list for PBXProject "Signed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -724,6 +1107,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		91BEAB5A1AC03424007ABF5A /* Build configuration list for PBXNativeTarget "SignedAppExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91BEAB581AC03424007ABF5A /* Debug */,
+				91BEAB591AC03424007ABF5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		91E505C01ABF63A70063DA7B /* Build configuration list for PBXNativeTarget "SignedShareExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -731,6 +1123,7 @@
 				91E505C21ABF63A70063DA7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
