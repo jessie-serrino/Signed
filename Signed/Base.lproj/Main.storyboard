@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UMX-Jb-qxr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UMX-Jb-qxr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -419,12 +419,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <segue destination="gXm-gT-lDu" kind="show" identifier="SegueToAddSignature" id="diR-dA-Wnu"/>
+                        <segue destination="gXm-gT-lDu" kind="showDetail" identifier="SegueToAddSignature" id="glq-A7-9gN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsU-PW-PYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="1186"/>
+            <point key="canvasLocation" x="2380" y="362"/>
         </scene>
         <!--Add Signature View Controller-->
         <scene sceneID="qSN-ra-ZSS">
@@ -492,9 +492,15 @@
                                     <navigationItem title="Add Signature" id="dWc-hh-gLh">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mzA-K8-nVJ">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="prepareForUnwind:" id="xUk-wf-faI"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="56u-ch-tma">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <segue destination="gkO-Qw-7dj" kind="unwind" unwindAction="prepareForUnwind:" id="Rjq-ue-K0L"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -534,8 +540,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkD-5u-HDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gkO-Qw-7dj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2419" y="407"/>
+            <point key="canvasLocation" x="3007" y="466"/>
         </scene>
     </scenes>
     <resources>

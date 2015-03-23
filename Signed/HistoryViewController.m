@@ -33,7 +33,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 14;
+    return 1;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -43,7 +43,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     if(indexPath.item == 0)
     {
         cell.cellImageView.image = [UIImage imageNamed: @"AddDocument"];
-        cell.cellLabel.text = @"dsfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdfasdfasdfasdfdsfasdfasdfasdfasdfasdfasdf";
+        cell.cellLabel.text = @"Add Document";
     }
     else
     {

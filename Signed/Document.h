@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIImage+PDF/UIImage+PDF.h>
+
 @import UIKit;
 
 @interface Document : NSObject
@@ -18,6 +20,7 @@
 @property (nonatomic, strong) NSString *fileName;
 @property (nonatomic, strong) UIImage *thumbnail;
 
++ (instancetype) documentFromURL: (NSURL *) documentURL;
 - (UIImage *) generateDocumentThumbnail;
 - (UIImage *) generateDocumentPDF;
 - (UIImage *) thumbnailForPage: (NSInteger) pageNumber;

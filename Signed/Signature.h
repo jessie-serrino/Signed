@@ -13,7 +13,7 @@
 
 @property (nonatomic)         NSUInteger page;
 @property (nonatomic)         CGFloat    scale;
-@property (nonatomic, strong) UIImage   *image;
+@property (nonatomic, strong) UIImage   *image; // Maximum size image
 @property (nonatomic)         CGPoint   position;
 
 @end

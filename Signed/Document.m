@@ -14,4 +14,39 @@
 
 @implementation Document
 
+
+
+- (instancetype) init
+{
+    self = [super init];
+    if(self)
+    {
+        _dateCreated = [NSDate date];
+        _dateModified = _dateCreated;
+    }
+    return self;
+}
+
++ (instancetype) documentFromURL: (NSURL *) documentURL
+{
+    Document *document = [[Document alloc] init];
+ 
+    return document;
+}
+
+- (UIImage *) generateDocumentThumbnail
+{
+    return nil;
+}
+
+- (UIImage *) generateDocumentPDF
+{
+    return nil;
+}
+
+- (UIImage *) thumbnailForPage: (NSInteger) pageNumber
+{
+    return nil;
+}
+
 @end

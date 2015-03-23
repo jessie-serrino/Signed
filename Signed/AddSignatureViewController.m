@@ -24,10 +24,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }
+
+- (IBAction)cancelAddSignature:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 @end

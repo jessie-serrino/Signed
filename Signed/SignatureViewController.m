@@ -7,6 +7,7 @@
 //
 
 #import "SignatureViewController.h"
+#import "AddSignatureViewController.h"
 
 static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 
@@ -29,11 +30,13 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 
 
 - (IBAction)acceptSignature:(UIBarButtonItem *)sender {
+    
     [self performSegueWithIdentifier:SegueToAddSignature sender:self];
 }
 - (IBAction)cancelSignature:(UIBarButtonItem *)sender {
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -42,14 +45,12 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
     return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
-/*
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end

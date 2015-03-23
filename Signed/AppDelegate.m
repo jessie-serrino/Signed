@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+static NSString * const SegueToDetailView = @"SegueToDetailView";
+
 
 @interface AppDelegate ()
 
@@ -42,6 +44,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+}
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    NSData *dataImage = [NSData dataWithContentsOfURL:url];
+    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    
+    [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
+    
+    return (dataImage)? YES: NO;
 }
 
 #pragma mark - Core Data stack

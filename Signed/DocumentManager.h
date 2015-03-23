@@ -8,7 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SignatureManager : NSObject
+@interface DocumentManager : NSObject
 
+@property (nonatomic, weak) NSArray *documents;
+
++ (instancetype)sharedManager;
+- (void) load;
+- (void) save;
 
 @end
