@@ -67,8 +67,13 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 - (void)configureButtons
 {
     [self setButtonsEnabled];
-    UIImage *leftImage =     [self.document thumbnailImageWithPageNumber:(self.currentPageNumber - 1)];
-    UIImage *rightImage = [self.document thumbnailImageWithPageNumber:(self.currentPageNumber + 1)];
+    UIImage *leftImage = nil;
+    UIImage *rightImage = nil;
+    if(self.currentPageNumber-1 > 1)
+        leftImage =     [self.document thumbnailImageWithPageNumber:(self.currentPageNumber - 1)];
+    if(self.currentPageNumber + 1 <= self.document.numberOfPages)
+        rightImage = [self.document thumbnailImageWithPageNumber:(self.currentPageNumber + 1)];
+    
     [self.leftArrowButton setBackgroundImage:leftImage forState:UIControlStateNormal];
     [self.rightArrowButton setBackgroundImage:rightImage forState:UIControlStateNormal];
 }
