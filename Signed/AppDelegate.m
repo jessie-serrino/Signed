@@ -57,6 +57,9 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     {
         UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
         [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
+        
+        [[DocumentManager sharedManager] createDocumentWithURL:url];
+        
         return YES;
     }
     else

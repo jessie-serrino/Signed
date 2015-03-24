@@ -7,10 +7,18 @@
 //
 
 #import "DetailViewController.h"
+#import "DocumentManager.h"
+#import "Document.h"
 
 static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
 @interface DetailViewController ()
+
+@property (nonatomic, strong) Document *document;
+@property (strong, nonatomic) IBOutlet UIImageView *documentImage;
+@property (strong, nonatomic) IBOutlet UIButton *leftArrowButton;
+@property (strong, nonatomic) IBOutlet UIButton *rightArrowButton;
+@property (nonatomic)   NSInteger currentPageNumber;
 
 @end
 
@@ -19,12 +27,43 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.currentPageNumber = 1;
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    _document = [DocumentManager sharedManager].currentDocument;
+    self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
+    [self.leftArrowButton setEnabled:(self.currentPageNumber > 1)];
+    [self.rightArrowButton setEnabled:(self.currentPageNumber + 1 < self.document.numberOfPages)];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)leftPageButtonPressed:(UIButton *)sender {
+    if(self.currentPageNumber > 1)
+    {
+        self.currentPageNumber--;
+        self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
+    }
+    [self.leftArrowButton setEnabled:(self.currentPageNumber > 1)];
+}
+
+- (IBAction)rightPageButtonPressed:(UIButton *)sender {
+    if(self.currentPageNumber < self.document.numberOfPages)
+    {
+        self.currentPageNumber++;
+        self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
+    }
+    [self.leftArrowButton setEnabled:(self.currentPageNumber < self.document.numberOfPages)];
+
+    
+}
+
+
 - (IBAction)backButtonPressed:(UIButton *)sender {
 }
 - (IBAction)sendButtonPressed:(UIButton *)sender {

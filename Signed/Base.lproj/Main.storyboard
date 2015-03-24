@@ -208,6 +208,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="rightPageButtonPressed:" destination="GU5-kl-l8L" eventType="touchUpInside" id="7xd-J3-zSj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1J2-Ap-vMi">
                                         <rect key="frame" x="0.0" y="24" width="30" height="72"/>
@@ -216,6 +219,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="leftPageButtonPressed:" destination="GU5-kl-l8L" eventType="touchUpInside" id="qxE-9H-PFb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -284,6 +290,9 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="documentImage" destination="HDj-Df-iF0" id="uiX-BN-PZu"/>
+                        <outlet property="leftArrowButton" destination="1J2-Ap-vMi" id="iFR-UN-bpj"/>
+                        <outlet property="rightArrowButton" destination="7r2-QK-vQw" id="lME-mT-eud"/>
                         <segue destination="mlk-CH-90W" kind="showDetail" identifier="SegueToSignatureView" id="9LG-qk-geX"/>
                     </connections>
                 </viewController>

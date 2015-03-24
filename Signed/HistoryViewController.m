@@ -8,9 +8,11 @@
 
 #import "HistoryViewController.h"
 #import "DocumentCollectionViewCell.h"
+#import "DocumentManager.h"
 
 @interface HistoryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *historyCollectionView;
+@property (strong, nonatomic) NSArray *documents;
 
 @end
 
@@ -24,6 +26,12 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [self initializeCollectionView];
     
 }
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    _documents = [DocumentManager sharedManager].documents;
+}
+
 - (void) initializeCollectionView
 {
     [self.historyCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DocumentCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class])];
@@ -33,23 +41,23 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 1;
+    return self.documents.count;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class]) forIndexPath:indexPath];
-    if(indexPath.item == 0)
-    {
-        cell.cellImageView.image = [UIImage imageNamed: @"AddDocument"];
-        cell.cellLabel.text = @"Add Document";
-    }
-    else
-    {
-        cell.cellImageView.image = nil;
+//    if(indexPath.item == 0)
+//    {
+//        cell.cellImageView.image = [UIImage imageNamed: @"AddDocument"];
+//        cell.cellLabel.text = @"Add Document";
+//    }
+//    else
+//    {
+        cell.cellImageView.image = self.documents[indexPath.item];
         cell.cellLabel.text = [NSString stringWithFormat:@"Document %li", (long)indexPath.item ];
-    }
+//    }
 
     return cell;
 }

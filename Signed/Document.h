@@ -13,17 +13,21 @@
 
 @interface Document : NSObject
 
-@property (nonatomic, strong) NSArray *signatures;
-@property (nonatomic, strong) NSURL   *fileLocation;
+@property (nonatomic, strong) NSMutableArray *signatures;
 @property (nonatomic, strong) NSDate  *dateCreated;
 @property (nonatomic, strong) NSDate  *dateModified;
 @property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong) NSURL   *fileLocation;
+@property (nonatomic, strong) NSData  *fileData; // To remove
+@property (nonatomic)         NSInteger numberOfPages;
+
 @property (nonatomic, strong) UIImage *documentThumbnail;
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;
 - (UIImage *) generateDocumentThumbnail;
 - (NSData *) generateDocumentPDF;
-- (UIImage *) thumbnailForPage: (NSInteger) pageNumber;
+- (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;
+- (UIImage *) thumbnailImageWithPageNumber: (NSInteger) pageNumber;
 
 
 @end
