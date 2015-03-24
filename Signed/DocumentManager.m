@@ -38,7 +38,6 @@
 {
     if(!_documents)
     {
-        // Retrieve docs
         _documents = [[NSMutableArray alloc] init];
     }
     return _documents;
@@ -50,6 +49,7 @@
     Document *document = [Document documentFromURL:url];
     [self.documents addObject:document];
     self.currentDocument = document;
+    [self save];
 }
 
 - (void) load

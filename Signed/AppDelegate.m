@@ -63,7 +63,6 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
         DocumentManager *documentManager = [DocumentManager sharedManager];
         
         [documentManager createDocumentWithURL:url];
-        [documentManager save];
         
         return YES;
     }

@@ -24,17 +24,18 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [super viewDidLoad];
     
     [self initializeCollectionView];
+    [[DocumentManager sharedManager] fetchDocumentsWithCompletion:^(NSArray * array)
+     {
+         _documents = array;
+         [self.historyCollectionView reloadData];
+         [self.historyCollectionView layoutIfNeeded];
+         NSLog(@"Document count");
+     }];
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [[DocumentManager sharedManager] fetchDocumentsWithCompletion:^(NSArray * array)
-    {
-        _documents = array;
-        [self.historyCollectionView reloadData];
-        [self.historyCollectionView layoutIfNeeded];
-        NSLog(@"Document count");
-    }];
+
 }
 
 - (void) initializeCollectionView
@@ -53,17 +54,10 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class]) forIndexPath:indexPath];
-//    if(indexPath.item == 0)
-//    {
-//        cell.cellImageView.image = [UIImage imageNamed: @"AddDocument"];
-//        cell.cellLabel.text = @"Add Document";
-//    }
-//    else
-//    {
+
         Document *doc = self.documents[indexPath.item];
         cell.cellImageView.image = doc.documentThumbnail;
-        cell.cellLabel.text = [NSString stringWithFormat:@"Document %li", (long)indexPath.item ];
-//    }
+        cell.cellLabel.text = doc.fileName;
 
     return cell;
 }
@@ -71,10 +65,8 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.item == 0)
-    {
-        [self performSegueWithIdentifier:SegueToDetailView sender:self];
-    }
+    [DocumentManager sharedManager].currentDocument = self.documents[indexPath.item];
+    [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
