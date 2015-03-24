@@ -61,6 +61,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
         [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
         DocumentManager *documentManager = [DocumentManager sharedManager];
         [documentManager createDocumentWithURL:url];
+
         
         return YES;
     }

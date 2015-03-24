@@ -35,7 +35,8 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (void) viewWillAppear:(BOOL)animated
 {
-
+    [self.historyCollectionView reloadData];
+    [self.historyCollectionView layoutIfNeeded];
 }
 
 - (void) initializeCollectionView

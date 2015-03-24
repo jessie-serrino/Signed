@@ -49,14 +49,15 @@
 - (void) createDocumentWithURL: (NSURL *) url
 {
     Document *document = [Document documentFromURL:url];
-    [self saveDocumentToCoreData:document];
+    [self addDocumentToCoreData:document];
     [self.documents addObject:document];
     self.currentDocument = document;
+    [self loadDocument:document];
     
     [self save];
 }
 
-- (void) saveDocumentToCoreData: (Document *) document
+- (void) addDocumentToCoreData: (Document *) document
 {
     FileEntity *entity = [NSEntityDescription
                           insertNewObjectForEntityForName:NSStringFromClass([FileEntity class])

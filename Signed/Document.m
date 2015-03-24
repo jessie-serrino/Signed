@@ -56,7 +56,8 @@ static NSString * const kSignaturesArray = @"signatures";
 - (NSString *) fileNameFromURL: (NSURL *) url
 {
     NSArray *stringSegments= [url.absoluteString componentsSeparatedByString:@"/"];
-    return [stringSegments lastObject];
+    
+    return [[stringSegments lastObject] stringByReplacingOccurrencesOfString:@"%20" withString:@" " ];
 }
 
 - (UIImage *) documentThumbnail

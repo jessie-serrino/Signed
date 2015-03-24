@@ -19,6 +19,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 @property (strong, nonatomic) IBOutlet UIButton *leftArrowButton;
 @property (strong, nonatomic) IBOutlet UIButton *rightArrowButton;
 @property (nonatomic)   NSInteger currentPageNumber;
+@property (strong, nonatomic) IBOutlet UILabel *footerLabel;
 
 @end
 
@@ -33,12 +34,12 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 - (void) viewDidAppear:(BOOL)animated
 {
     _document = [DocumentManager sharedManager].currentDocument;
+    self.title = self.document.fileName;
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
 
-    [self configureNewImages];
-    NSLog(@"%@", self.document.fileName);
-
+    [self configureVisuals];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,14 +49,25 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     if(self.currentPageNumber > 1)
         self.currentPageNumber--;
     
+    [self configureFooter];
     [self configureNewImages];
 }
 
 - (IBAction)rightPageButtonPressed:(UIButton *)sender {
     if(self.currentPageNumber < self.document.numberOfPages)
         self.currentPageNumber++;
-
+    [self configureFooter];
     [self configureNewImages];
+}
+
+- (void) configureVisuals
+{
+    [self configureFooter];
+    [self configureNewImages];
+}
+- (void) configureFooter
+{
+    self.footerLabel.text = [NSString stringWithFormat:@"%i of %i", self.currentPageNumber, self.document.numberOfPages ];
 }
 
 - (void) configureNewImages
@@ -70,7 +82,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self setButtonsEnabled];
     UIImage *leftImage = nil;
     UIImage *rightImage = nil;
-    if(self.currentPageNumber- 1 > 1)
+    if(self.currentPageNumber- 1 >= 1)
         leftImage =     [self.document thumbnailImageWithPageNumber:(self.currentPageNumber - 1)];
     if(self.currentPageNumber + 1 <= self.document.numberOfPages)
         rightImage = [self.document thumbnailImageWithPageNumber:(self.currentPageNumber + 1)];
@@ -85,10 +97,8 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self.rightArrowButton setEnabled:(self.currentPageNumber < self.document.numberOfPages)];
 }
 
-- (IBAction)backButtonPressed:(UIButton *)sender {
-}
-- (IBAction)sendButtonPressed:(UIButton *)sender {
-}
+
+
 - (IBAction)signButtonPressed:(UIButton *)sender
 {
     [self performSegueWithIdentifier:SegueToSignatureView sender:self];

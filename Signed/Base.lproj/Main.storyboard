@@ -191,6 +191,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="documentImage" destination="HDj-Df-iF0" id="uiX-BN-PZu"/>
+                        <outlet property="footerLabel" destination="NeH-F2-a5a" id="S1b-9g-WTJ"/>
                         <outlet property="leftArrowButton" destination="1J2-Ap-vMi" id="iFR-UN-bpj"/>
                         <outlet property="rightArrowButton" destination="7r2-QK-vQw" id="lME-mT-eud"/>
                         <segue destination="mlk-CH-90W" kind="showDetail" identifier="SegueToSignatureView" id="9LG-qk-geX"/>
