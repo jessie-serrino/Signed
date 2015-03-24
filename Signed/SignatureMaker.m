@@ -46,7 +46,16 @@
     return outputImage;
 }
 
-
+- (void) undoLine
+{
+    if(self.lines.count)
+    {
+        Line *line = [self.lines lastObject];
+        [line undoLine];
+        
+        [self.lines removeLastObject];
+    }
+}
 
 - (void) startLineWithPoint: (CGPoint) point
 {

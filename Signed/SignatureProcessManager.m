@@ -26,4 +26,17 @@
     return self;
 }
 
+- (void) establishSignature
+{
+    if(self.signatureMaker)
+    {
+        Signature *signature = [[Signature alloc] init];
+        signature.image = [self.signatureMaker image];
+        signature.scale = 0.3;
+        signature.page = self.pageNumber;
+        
+        self.signature = signature;
+    }
+}
+
 @end

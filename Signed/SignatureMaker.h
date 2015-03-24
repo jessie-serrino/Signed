@@ -15,6 +15,7 @@
 
 - (instancetype) initWithFrame: (CGRect) frame;
 - (UIImage *) image;
+- (void) undoLine;
 - (void) startLineWithPoint: (CGPoint) point;
 - (void) continueLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;
 - (void) endLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;

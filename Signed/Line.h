@@ -13,7 +13,10 @@
 
 @interface Line : NSObject
 
+
 - (instancetype) initWithStartingPoint: (CGPoint) point;
 - (CAShapeLayer *) addConnectedPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
 - (CAShapeLayer *) endLineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
+- (void) undoLine;
+
 @end

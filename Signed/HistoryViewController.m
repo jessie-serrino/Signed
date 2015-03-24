@@ -69,7 +69,10 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item]];
     [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
-
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;

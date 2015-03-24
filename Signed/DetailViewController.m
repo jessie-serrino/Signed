@@ -106,6 +106,10 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self performSegueWithIdentifier:SegueToSignatureView sender:self];
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
@@ -131,10 +135,8 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     SignatureViewController *signatureViewController = segue.destinationViewController;
 
     SignatureProcessManager *manager = [SignatureProcessManager sharedManager];
-    
     manager.pageImage = [self.document pageImageWithPageNumber:self.currentPageNumber];
     manager.pageNumber = self.currentPageNumber;
-    
 }
 
 

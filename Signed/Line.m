@@ -13,8 +13,9 @@
 
 
 @interface Line()
-
 @property (nonatomic, strong) NSMutableArray   *sublines;
+@property (nonatomic, strong) NSMutableArray   *sublineLayers;
+
 @property (nonatomic, strong) LineSmoothHelper   *lineSmoothHelper;
 
 @property (nonatomic)         CGPoint           pastPoint;
@@ -41,6 +42,15 @@
     return _sublines;
 }
 
+- (NSMutableArray *) sublineLayers
+{
+    if(!_sublineLayers)
+    {
+        _sublineLayers = [[NSMutableArray alloc] init];
+    }
+    return _sublineLayers;
+}
+
 - (LineSmoothHelper *) lineSmoothHelper
 {
     if(!_lineSmoothHelper)
@@ -58,7 +68,13 @@
         return nil;
 
     Subline *subline = [self makeSublineAtPoint:point withVelocity:velocity];
-    return [self layerWithSubline:subline velocity: velocity];
+    
+    
+    CAShapeLayer *layer = [self layerWithSubline:subline velocity: velocity];
+
+    [self.sublineLayers addObject:layer];
+    
+    return layer;
 }
 
 - (Subline *) makeSublineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity
@@ -79,7 +95,7 @@
     layer.path = subline.CGPath;
     layer.strokeColor = [UIColor blackColor].CGColor;
     layer.fillColor = nil;
-    layer.lineWidth = [self.lineSmoothHelper lineWidthWithVelocity:velocity andStyle:FountainPen];
+    layer.lineWidth = [self.lineSmoothHelper lineWidthWithVelocity:velocity andStyle:FeltTipPen];
     layer.strokeStart = 0.0;
     layer.strokeEnd = 1.0;
     layer.miterLimit = 0.0;
@@ -91,9 +107,20 @@
 {
     Subline *subline = [self makeSublineAtPoint:point withVelocity:velocity];
     CAShapeLayer *layer = [self layerWithSubline:subline velocity:velocity];
+    [self.sublineLayers addObject:layer];
+
     return layer;
 }
 
+
+- (void) undoLine
+{
+    self.sublines = nil;
+    for(CAShapeLayer *layer in self.sublineLayers)
+    {
+        [layer removeFromSuperlayer];
+    }
+}
 
 
 

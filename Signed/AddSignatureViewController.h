@@ -11,6 +11,4 @@
 
 @interface AddSignatureViewController : UIViewController
 
-@property (nonatomic, weak) Signature *signature;
-
 @end

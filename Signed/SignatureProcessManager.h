@@ -17,12 +17,14 @@
 @property (nonatomic, strong)   Document *document;
 @property (nonatomic, strong)   SignatureMaker *signatureMaker;
 @property (nonatomic, strong)   Signature *signature;
+@property (nonatomic, strong)   UIImageView *signatureImageView;
 
 @property (nonatomic, strong)   UIImage *pageImage;
 @property (nonatomic)           NSInteger pageNumber;
 
 
 +(instancetype)sharedManager;
+- (void) establishSignature;
 
 
 @end

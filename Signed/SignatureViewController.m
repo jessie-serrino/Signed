@@ -8,7 +8,7 @@
 
 #import "SignatureViewController.h"
 #import "AddSignatureViewController.h"
-#import "SignatureMaker.h"
+#import "SignatureProcessManager.h"
 
 static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 
@@ -32,6 +32,7 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 - (void) initializeSignatureMaker
 {
     self.signatureMaker = [[SignatureMaker alloc] initWithFrame:self.drawableView.bounds];
+    [SignatureProcessManager sharedManager].signatureMaker = self.signatureMaker;
     [self.drawableView.layer addSublayer:self.signatureMaker];
 }
 
@@ -65,7 +66,20 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)feltTipButtonTouched:(UIButton *)sender {
+}
 
+- (IBAction)fountainTipButtonTouched:(id)sender {
+}
+
+- (IBAction)undoButton:(UIButton *)sender {
+    [self.signatureMaker undoLine];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscapeLeft;

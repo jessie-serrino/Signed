@@ -46,7 +46,7 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 
 - (CGFloat) speedWithVelocity: (CGPoint) velocity
 {
-    return sqrtf(velocity.x * velocity.x + velocity.y + velocity.y);
+    return sqrtf(velocity.x * velocity.x + velocity.y * velocity.y);
 }
 
 - (CGFloat) lineWidthWithVelocity: (CGPoint) velocity andStyle: (PenType) penType
