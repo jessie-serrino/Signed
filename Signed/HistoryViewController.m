@@ -30,6 +30,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 - (void) viewWillAppear:(BOOL)animated
 {
     _documents = [DocumentManager sharedManager].documents;
+    [self.historyCollectionView reloadData];
 }
 
 - (void) initializeCollectionView

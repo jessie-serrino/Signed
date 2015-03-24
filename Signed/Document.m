@@ -55,7 +55,8 @@
 
 - (UIImage *) generateDocumentThumbnail
 {
-    return [UIImage imageWithPDFData:self.fileData atSize:CGSizeMake(80, 100) atPage:1];
+    CGFloat width = 80;
+    return [UIImage imageWithPDFData:self.fileData atWidth:width atPage:1];
 }
 
 - (NSData *) generateDocumentPDF
@@ -65,9 +66,15 @@
 
 - (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;
 {
-    return [UIImage imageWithPDFData:self.fileData atSize:CGSizeMake(85, 110) atPage:pageNumber];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    return [UIImage imageWithPDFData:self.fileData atWidth:width atPage:pageNumber];
 }
 
+- (UIImage *) thumbnailImageWithPageNumber:(NSInteger)pageNumber
+{
+    CGFloat width = 80;
+    return [UIImage imageWithPDFData:self.fileData atWidth:width atPage: pageNumber];
+}
 
 
 @end

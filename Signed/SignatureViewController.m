@@ -35,8 +35,7 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 }
 - (IBAction)cancelSignature:(UIBarButtonItem *)sender {
 
-    
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

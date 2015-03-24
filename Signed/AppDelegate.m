@@ -53,10 +53,14 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
+    [DocumentManager sharedManager].managedObjectContext = self.managedObjectContext;
+
     if([self.window.rootViewController isKindOfClass:[UINavigationController class]])
     {
         UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
         [navigationController.topViewController performSegueWithIdentifier:SegueToDetailView sender:self];
+        
+        
         
         [[DocumentManager sharedManager] createDocumentWithURL:url];
         

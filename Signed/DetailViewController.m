@@ -34,8 +34,8 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 {
     _document = [DocumentManager sharedManager].currentDocument;
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
-    [self.leftArrowButton setEnabled:(self.currentPageNumber > 1)];
-    [self.rightArrowButton setEnabled:(self.currentPageNumber + 1 < self.document.numberOfPages)];
+
+    [self configureNewImages];
 
 }
 
@@ -45,24 +45,39 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 }
 - (IBAction)leftPageButtonPressed:(UIButton *)sender {
     if(self.currentPageNumber > 1)
-    {
         self.currentPageNumber--;
-        self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
-    }
-    [self.leftArrowButton setEnabled:(self.currentPageNumber > 1)];
+    
+    [self configureNewImages];
 }
 
 - (IBAction)rightPageButtonPressed:(UIButton *)sender {
     if(self.currentPageNumber < self.document.numberOfPages)
-    {
         self.currentPageNumber++;
-        self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
-    }
-    [self.leftArrowButton setEnabled:(self.currentPageNumber < self.document.numberOfPages)];
 
-    
+    [self configureNewImages];
 }
 
+- (void) configureNewImages
+{
+    self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
+    [self configureButtons];
+}
+
+
+- (void)configureButtons
+{
+    [self setButtonsEnabled];
+    UIImage *leftImage =     [self.document thumbnailImageWithPageNumber:(self.currentPageNumber - 1)];
+    UIImage *rightImage = [self.document thumbnailImageWithPageNumber:(self.currentPageNumber + 1)];
+    [self.leftArrowButton setBackgroundImage:leftImage forState:UIControlStateNormal];
+    [self.rightArrowButton setBackgroundImage:rightImage forState:UIControlStateNormal];
+}
+
+- (void)setButtonsEnabled
+{
+    [self.leftArrowButton setEnabled:(self.currentPageNumber > 1)];
+    [self.rightArrowButton setEnabled:(self.currentPageNumber < self.document.numberOfPages)];
+}
 
 - (IBAction)backButtonPressed:(UIButton *)sender {
 }
@@ -89,6 +104,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     
     NSLog(@"Saving...");
 }
+
 
 /*
 #pragma mark - Navigation
