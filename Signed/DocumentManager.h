@@ -18,9 +18,10 @@ typedef void (^CompletionBlock)(NSArray *);
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) Document *currentDocument;
 
-- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
 + (instancetype)sharedManager;
 - (void) save;
+- (void) loadDocument: (Document *) document;
+- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
 - (void) createDocumentWithURL: (NSURL *) url;
 
 

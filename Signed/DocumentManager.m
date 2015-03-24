@@ -7,6 +7,8 @@
 //
 
 #import "DocumentManager.h"
+#import "FileEntity.h"
+#import "NSManagedObjectContext+FetchedObjectWithURI.h"
 
 
 @implementation DocumentManager
@@ -30,7 +32,7 @@
 
 - (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock
 {
-    [self load];
+    [self unarchiveDocuments];
     completionBlock(self.documents);
 }
 
@@ -47,12 +49,35 @@
 - (void) createDocumentWithURL: (NSURL *) url
 {
     Document *document = [Document documentFromURL:url];
+    [self saveDocumentToCoreData:document];
     [self.documents addObject:document];
     self.currentDocument = document;
+    
     [self save];
 }
 
-- (void) load
+- (void) saveDocumentToCoreData: (Document *) document
+{
+    FileEntity *entity = [NSEntityDescription
+                          insertNewObjectForEntityForName:NSStringFromClass([FileEntity class])
+                          inManagedObjectContext:self.managedObjectContext];
+    entity.data = document.fileData;
+    
+    [self.managedObjectContext insertObject:entity];
+    document.fileLocation = [entity.objectID URIRepresentation];
+}
+
+- (void) loadDocument: (Document *) document
+{
+    if(document.fileLocation)
+    {
+        FileEntity *file = (FileEntity *) [self.managedObjectContext objectWithURI:document.fileLocation];
+        document.fileData = file.data;
+    }
+    self.currentDocument = document;
+}
+
+- (void) unarchiveDocuments
 {
     NSArray *savedDocuments = [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];
     for(Document * doc in savedDocuments)
@@ -63,7 +88,6 @@
 
 - (NSString *) archivePath
 {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     return [documentsPath stringByAppendingPathComponent:@"documents.dat"];
 }

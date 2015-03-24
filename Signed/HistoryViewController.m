@@ -65,7 +65,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [DocumentManager sharedManager].currentDocument = self.documents[indexPath.item];
+    [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item]];
     [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
 

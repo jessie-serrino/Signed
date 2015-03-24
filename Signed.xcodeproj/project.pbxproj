@@ -13,6 +13,8 @@
 		915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */; };
 		915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */; };
 		915EF5631ABAE87500EFDA67 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */; };
+		915F7C101AC1B39E004C1E47 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 915F7C0F1AC1B39E004C1E47 /* FileEntity.m */; };
+		915F7C131AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m in Sources */ = {isa = PBXBuildFile; fileRef = 915F7C121AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m */; };
 		916D57F71AB9E03400069815 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D57F61AB9E03400069815 /* main.m */; };
 		916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D57F91AB9E03400069815 /* AppDelegate.m */; };
 		916D57FD1AB9E03400069815 /* Signed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 916D57FB1AB9E03400069815 /* Signed.xcdatamodeld */; };
@@ -65,6 +67,10 @@
 		915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCollectionViewCell.h; sourceTree = "<group>"; };
 		915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentCollectionViewCell.m; sourceTree = "<group>"; };
 		915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocumentCollectionViewCell.xib; sourceTree = "<group>"; };
+		915F7C0E1AC1B39E004C1E47 /* FileEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileEntity.h; sourceTree = "<group>"; };
+		915F7C0F1AC1B39E004C1E47 /* FileEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileEntity.m; sourceTree = "<group>"; };
+		915F7C111AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchedObjectWithURI.h"; sourceTree = "<group>"; };
+		915F7C121AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchedObjectWithURI.m"; sourceTree = "<group>"; };
 		916D57F11AB9E03400069815 /* Signed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		916D57F51AB9E03400069815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		916D57F61AB9E03400069815 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 		912B5AE01ABED892000B044D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				915F7C0E1AC1B39E004C1E47 /* FileEntity.h */,
+				915F7C0F1AC1B39E004C1E47 /* FileEntity.m */,
 				91E505A61ABEDD6F0063DA7B /* Document.h */,
 				91E505A71ABEDD6F0063DA7B /* Document.m */,
 				91E505A91ABF3B370063DA7B /* Signature.h */,
@@ -284,6 +292,8 @@
 			children = (
 				91E505AD1ABF41E40063DA7B /* DocumentManager.h */,
 				91E505AE1ABF41E40063DA7B /* DocumentManager.m */,
+				915F7C111AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.h */,
+				915F7C121AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -479,6 +489,8 @@
 				91E505AB1ABF3B370063DA7B /* Signature.m in Sources */,
 				916D58311AB9E70200069815 /* SignatureMaker.m in Sources */,
 				916D582A1AB9E6EB00069815 /* Line.m in Sources */,
+				915F7C101AC1B39E004C1E47 /* FileEntity.m in Sources */,
+				915F7C131AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m in Sources */,
 				916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */,
 				916D57F71AB9E03400069815 /* main.m in Sources */,
 				916D58001AB9E03400069815 /* HistoryViewController.m in Sources */,
