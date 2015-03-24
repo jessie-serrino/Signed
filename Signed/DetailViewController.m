@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "SignatureViewController.h"
+
 #import "DocumentManager.h"
 #import "Document.h"
 
@@ -120,14 +122,20 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    SignatureViewController *signatureViewController = segue.destinationViewController;
+
+    SignatureProcessManager *manager = [SignatureProcessManager sharedManager];
+    
+    manager.pageImage = [self.document pageImageWithPageNumber:self.currentPageNumber];
+    manager.pageNumber = self.currentPageNumber;
+    
 }
-*/
+
 
 @end

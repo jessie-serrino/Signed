@@ -194,7 +194,7 @@
                         <outlet property="footerLabel" destination="NeH-F2-a5a" id="S1b-9g-WTJ"/>
                         <outlet property="leftArrowButton" destination="1J2-Ap-vMi" id="iFR-UN-bpj"/>
                         <outlet property="rightArrowButton" destination="7r2-QK-vQw" id="lME-mT-eud"/>
-                        <segue destination="mlk-CH-90W" kind="showDetail" identifier="SegueToSignatureView" id="9LG-qk-geX"/>
+                        <segue destination="mlk-CH-90W" kind="presentation" identifier="SegueToSignatureView" id="9LG-qk-geX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="23k-TI-qEi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,6 +248,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFO-yy-fYc" userLabel="DrawableView">
+                                <rect key="frame" x="0.0" y="65" width="736" height="349"/>
+                                <color key="backgroundColor" red="1" green="0.071316343929999998" blue="0.21063012140000001" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="k3u-sY-Gny" appends="YES" id="NG4-0V-fo0"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZK-Pn-pX4" userLabel="Button View">
                                 <rect key="frame" x="563" y="354" width="137" height="40"/>
                                 <subviews>
@@ -286,23 +294,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="AQa-Vy-XOn" secondAttribute="centerY" multiplier="0.75" id="7Lh-hC-ChQ"/>
+                            <constraint firstAttribute="centerX" secondItem="jFO-yy-fYc" secondAttribute="centerX" id="8q6-OO-W7a"/>
                             <constraint firstItem="Soe-OC-bIb" firstAttribute="top" secondItem="2p4-NW-RAO" secondAttribute="top" id="K1v-gs-iDP"/>
+                            <constraint firstItem="jFO-yy-fYc" firstAttribute="top" secondItem="Soe-OC-bIb" secondAttribute="bottom" id="TPU-CE-DG6"/>
                             <constraint firstItem="AQa-Vy-XOn" firstAttribute="leading" secondItem="rSq-7w-wFt" secondAttribute="leadingMargin" constant="10" id="Whm-qG-2Ff"/>
                             <constraint firstAttribute="width" secondItem="Soe-OC-bIb" secondAttribute="width" id="Y5U-8Q-qaD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gZK-Pn-pX4" secondAttribute="trailing" constant="20" id="dB2-HZ-Nb6"/>
-                            <constraint firstAttribute="centerX" secondItem="gZK-Pn-pX4" secondAttribute="centerX" id="ds7-9V-4Vx"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="centerX" secondItem="AQa-Vy-XOn" secondAttribute="centerX" id="fY0-xS-mrE"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="width" secondItem="AQa-Vy-XOn" secondAttribute="width" id="gHb-rP-OlI"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="top" secondItem="AQa-Vy-XOn" secondAttribute="bottom" constant="-18" id="gyk-cz-bNf"/>
                             <constraint firstAttribute="centerX" secondItem="AQa-Vy-XOn" secondAttribute="centerX" id="iU3-f2-j24"/>
                             <constraint firstItem="S2w-wK-gY4" firstAttribute="top" secondItem="gZK-Pn-pX4" secondAttribute="bottom" constant="20" id="mgN-yb-BYv"/>
+                            <constraint firstAttribute="width" secondItem="jFO-yy-fYc" secondAttribute="width" id="om6-2l-SU4"/>
                             <constraint firstAttribute="centerX" secondItem="Soe-OC-bIb" secondAttribute="centerX" id="p0a-ax-io0"/>
+                            <constraint firstItem="S2w-wK-gY4" firstAttribute="top" secondItem="jFO-yy-fYc" secondAttribute="bottom" id="v8l-cT-JCg"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ds7-9V-4Vx"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="4xi-16-TKC">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="EVc-UW-B8W">
@@ -329,12 +335,18 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="drawableView" destination="jFO-yy-fYc" id="JRC-mQ-rpw"/>
                         <segue destination="gXm-gT-lDu" kind="showDetail" identifier="SegueToAddSignature" id="glq-A7-9gN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsU-PW-PYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="k3u-sY-Gny">
+                    <connections>
+                        <action selector="drawSignatureMotion:" destination="mlk-CH-90W" id="k23-79-wRM"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2380" y="362"/>
+            <point key="canvasLocation" x="2348" y="344"/>
         </scene>
         <!--Add Signature View Controller-->
         <scene sceneID="qSN-ra-ZSS">
@@ -448,6 +460,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="pageImageView" destination="4uw-md-wmq" id="svx-fU-rw6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkD-5u-HDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="gkO-Qw-7dj" userLabel="Exit" sceneMemberID="exit"/>

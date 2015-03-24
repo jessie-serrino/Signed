@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SignatureProcessManager.h"
 
 @interface SignatureViewController : UIViewController
+
+
 
 @end

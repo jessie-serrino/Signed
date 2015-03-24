@@ -9,6 +9,7 @@
 #import "AddSignatureViewController.h"
 
 @interface AddSignatureViewController ()
+@property (strong, nonatomic) IBOutlet UIImageView *pageImageView;
 
 @end
 

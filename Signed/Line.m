@@ -79,7 +79,7 @@
     layer.path = subline.CGPath;
     layer.strokeColor = [UIColor blackColor].CGColor;
     layer.fillColor = nil;
-    layer.lineWidth = [self.lineSmoothHelper lineWidthWithVelocity:velocity andStyle:FeltTipPen];
+    layer.lineWidth = [self.lineSmoothHelper lineWidthWithVelocity:velocity andStyle:FountainPen];
     layer.strokeStart = 0.0;
     layer.strokeEnd = 1.0;
     layer.miterLimit = 0.0;

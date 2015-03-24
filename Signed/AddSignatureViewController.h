@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Signature.h"
 
 @interface AddSignatureViewController : UIViewController
+
+@property (nonatomic, weak) Signature *signature;
 
 @end
