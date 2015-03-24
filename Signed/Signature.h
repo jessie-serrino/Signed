@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface Signature : NSObject
+@interface Signature : NSObject <NSCoding>
 
 @property (nonatomic)         NSUInteger page;
-@property (nonatomic)         CGFloat    scale;
+@property (nonatomic)         CGFloat   scale;
 @property (nonatomic, strong) UIImage   *image; // Maximum size image
 @property (nonatomic)         CGPoint   position;
 

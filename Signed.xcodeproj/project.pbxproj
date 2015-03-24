@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		737299942822FDBE117A0183 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3D5A0065A30C27730932B7 /* libPods.a */; };
 		912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5ADD1ABED873000B044D /* AddSignatureViewController.m */; };
+		9158ECAC1AC18A230028B20F /* SignatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158ECAB1AC18A230028B20F /* SignatureTests.m */; };
 		915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */; };
 		915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */; };
 		915EF5631ABAE87500EFDA67 /* DocumentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915EF5611ABAE87500EFDA67 /* DocumentCollectionViewCell.xib */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		912B5ADC1ABED873000B044D /* AddSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSignatureViewController.h; sourceTree = "<group>"; };
 		912B5ADD1ABED873000B044D /* AddSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSignatureViewController.m; sourceTree = "<group>"; };
+		9158ECAB1AC18A230028B20F /* SignatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureTests.m; sourceTree = "<group>"; };
 		915EF55B1ABADD1800EFDA67 /* SignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureViewController.h; sourceTree = "<group>"; };
 		915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureViewController.m; sourceTree = "<group>"; };
 		915EF55F1ABAE87500EFDA67 /* DocumentCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentCollectionViewCell.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				916D58131AB9E03400069815 /* SignedTests.m */,
 				916D58111AB9E03400069815 /* Supporting Files */,
 				916EE6C61AC17CA400E8303E /* DocumentTests.m */,
+				9158ECAB1AC18A230028B20F /* SignatureTests.m */,
 			);
 			path = SignedTests;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				916EE6C71AC17CA400E8303E /* DocumentTests.m in Sources */,
+				9158ECAC1AC18A230028B20F /* SignatureTests.m in Sources */,
 				916D58141AB9E03400069815 /* SignedTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

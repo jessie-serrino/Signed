@@ -14,6 +14,8 @@ static NSString * const kFileName = @"fileName";
 static NSString * const kFileLocation = @"fileLocation";
 static NSString * const kNumberOfPages = @"numberOfPages";
 static NSString * const kDocumentThumbnail = @"documentThumbnail";
+static NSString * const kSignaturesArray = @"signatures";
+
 
 
 
@@ -93,7 +95,7 @@ static NSString * const kDocumentThumbnail = @"documentThumbnail";
     return [UIImage imageWithPDFData:self.fileData atWidth:width atPage: pageNumber];
 }
 
-- (id)initWithCoder:(NSCoder *)decoder
+- (instancetype)initWithCoder:(NSCoder *)decoder
 {
     self = [super init];
     if (!self) {
@@ -102,9 +104,17 @@ static NSString * const kDocumentThumbnail = @"documentThumbnail";
     self.fileName = [decoder decodeObjectForKey:kFileName];
     self.fileLocation = [decoder decodeObjectForKey:kFileLocation];
     
-    
     self.dateCreated = [decoder decodeObjectForKey:kDateCreated];
     self.dateModified = [decoder decodeObjectForKey:kDateModified];
+    
+    self.numberOfPages = [decoder decodeIntegerForKey:kNumberOfPages];
+    
+    NSData *thumbnailData = [decoder decodeObjectForKey:kDocumentThumbnail];
+    self.documentThumbnail = [UIImage imageWithData:thumbnailData];
+    
+    self.signatures = [decoder decodeObjectForKey:kSignaturesArray];
+    
+    
     return self;
 }
 
@@ -115,6 +125,11 @@ static NSString * const kDocumentThumbnail = @"documentThumbnail";
     
     [encoder encodeObject:self.dateCreated forKey:kDateCreated];
     [encoder encodeObject:self.dateModified forKey:kDateModified];
+    
+    [encoder encodeInteger:self.numberOfPages forKey:kNumberOfPages];
+    [encoder encodeObject:UIImagePNGRepresentation(self.documentThumbnail) forKey:kDocumentThumbnail];
+
+    [encoder encodeObject:self.signatures forKey:kSignaturesArray];
 
 }
 

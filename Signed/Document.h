@@ -15,10 +15,10 @@
 @property (nonatomic, strong) NSString *fileName;
 @property (nonatomic, strong) NSURL   *fileLocation;
 
-@property (nonatomic)         NSInteger numberOfPages;
-
 @property (nonatomic, strong) NSDate  *dateCreated;
 @property (nonatomic, strong) NSDate  *dateModified;
+
+@property (nonatomic)         NSInteger numberOfPages;
 
 @property (nonatomic, strong) UIImage *documentThumbnail;
 @property (nonatomic, strong) NSMutableArray *signatures;
