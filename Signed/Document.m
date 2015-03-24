@@ -8,6 +8,17 @@
 
 #import "Document.h"
 
+static NSString * const kDateCreated = @"dateCreated";
+static NSString * const kDateModified = @"dateModified";
+static NSString * const kFileName = @"fileName";
+static NSString * const kFileLocation = @"fileLocation";
+static NSString * const kNumberOfPages = @"numberOfPages";
+static NSString * const kDocumentThumbnail = @"documentThumbnail";
+
+
+
+
+
 @interface Document ()
 
 @end
@@ -30,9 +41,8 @@
 
 + (instancetype) documentFromURL: (NSURL *) documentURL
 {
-    NSError *error;
-    NSData *fileData = [NSData dataWithContentsOfURL:documentURL options:NSDataReadingMappedAlways error:&error];
-    if(error || !fileData)
+    NSData *fileData = [NSData dataWithContentsOfURL:documentURL];
+    if(!fileData)
         return nil;
     
     Document *document = [[Document alloc] init];
@@ -40,8 +50,15 @@
     document.numberOfPages = [PDFView pageCountForURL:documentURL];
     document.signatures = [[NSMutableArray alloc] init];
     document.documentThumbnail = [document generateDocumentThumbnail];
+    document.fileName = [document fileNameFromURL: documentURL];
     
     return document;
+}
+
+- (NSString *) fileNameFromURL: (NSURL *) url
+{
+    NSArray *stringSegments= [url.absoluteString componentsSeparatedByString:@"/"];
+    return [stringSegments lastObject];
 }
 
 - (UIImage *) documentThumbnail
@@ -74,6 +91,31 @@
 {
     CGFloat width = 80;
     return [UIImage imageWithPDFData:self.fileData atWidth:width atPage: pageNumber];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    self.fileName = [decoder decodeObjectForKey:kFileName];
+    self.fileLocation = [decoder decodeObjectForKey:kFileLocation];
+    
+    
+    self.dateCreated = [decoder decodeObjectForKey:kDateCreated];
+    self.dateModified = [decoder decodeObjectForKey:kDateModified];
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.fileName forKey:kFileName];
+    [encoder encodeObject:self.fileLocation forKey:kFileLocation];
+    
+    [encoder encodeObject:self.dateCreated forKey:kDateCreated];
+    [encoder encodeObject:self.dateModified forKey:kDateModified];
+
 }
 
 

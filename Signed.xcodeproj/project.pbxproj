@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		737299942822FDBE117A0183 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3D5A0065A30C27730932B7 /* libPods.a */; };
 		912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5ADD1ABED873000B044D /* AddSignatureViewController.m */; };
 		915EF55D1ABADD1800EFDA67 /* SignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF55C1ABADD1800EFDA67 /* SignatureViewController.m */; };
 		915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 915EF5601ABAE87500EFDA67 /* DocumentCollectionViewCell.m */; };
@@ -24,6 +25,7 @@
 		916D582B1AB9E6EB00069815 /* LineSmoothHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58291AB9E6EB00069815 /* LineSmoothHelper.m */; };
 		916D582E1AB9E6F600069815 /* UIBezierPath+Subline.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */; };
 		916D58311AB9E70200069815 /* SignatureMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58301AB9E70200069815 /* SignatureMaker.m */; };
+		916EE6C71AC17CA400E8303E /* DocumentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 916EE6C61AC17CA400E8303E /* DocumentTests.m */; };
 		91E505A81ABEDD6F0063DA7B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505A71ABEDD6F0063DA7B /* Document.m */; };
 		91E505AB1ABF3B370063DA7B /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AA1ABF3B370063DA7B /* Signature.m */; };
 		91E505AF1ABF41E40063DA7B /* DocumentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AE1ABF41E40063DA7B /* DocumentManager.m */; };
@@ -85,6 +87,7 @@
 		916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+Subline.m"; sourceTree = "<group>"; };
 		916D582F1AB9E70200069815 /* SignatureMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureMaker.h; sourceTree = "<group>"; };
 		916D58301AB9E70200069815 /* SignatureMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureMaker.m; sourceTree = "<group>"; };
+		916EE6C61AC17CA400E8303E /* DocumentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTests.m; sourceTree = "<group>"; };
 		91E505A61ABEDD6F0063DA7B /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
 		91E505A71ABEDD6F0063DA7B /* Document.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Document.m; sourceTree = "<group>"; };
 		91E505A91ABF3B370063DA7B /* Signature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Signature.h; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737299942822FDBE117A0183 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +217,7 @@
 			children = (
 				916D58131AB9E03400069815 /* SignedTests.m */,
 				916D58111AB9E03400069815 /* Supporting Files */,
+				916EE6C61AC17CA400E8303E /* DocumentTests.m */,
 			);
 			path = SignedTests;
 			sourceTree = "<group>";
@@ -316,9 +321,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 916D581A1AB9E03400069815 /* Build configuration list for PBXNativeTarget "SignedTests" */;
 			buildPhases = (
+				532C6E316484C81BCF9527C2 /* Check Pods Manifest.lock */,
 				916D58091AB9E03400069815 /* Sources */,
 				916D580A1AB9E03400069815 /* Frameworks */,
 				916D580B1AB9E03400069815 /* Resources */,
+				07361AFBBB524FA061567F70 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -395,7 +402,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		07361AFBBB524FA061567F70 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		1BBF687EFF3D667AFE1D6650 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		532C6E316484C81BCF9527C2 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916EE6C71AC17CA400E8303E /* DocumentTests.m in Sources */,
 				916D58141AB9E03400069815 /* SignedTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +634,7 @@
 		};
 		916D581B1AB9E03400069815 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBDB32DF741963639FFF9C9A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -609,12 +648,14 @@
 				INFOPLIST_FILE = SignedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d430ee3b-b31c-4b12-b463-2569610ebcba";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Signed.app/Signed";
 			};
 			name = Debug;
 		};
 		916D581C1AB9E03400069815 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9ADDC97AA233542929F78FA5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -624,6 +665,7 @@
 				INFOPLIST_FILE = SignedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d430ee3b-b31c-4b12-b463-2569610ebcba";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Signed.app/Signed";
 			};
 			name = Release;

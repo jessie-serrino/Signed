@@ -36,6 +36,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
 
     [self configureNewImages];
+    NSLog(@"%@", self.document.fileName);
 
 }
 
@@ -100,8 +101,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
 - (IBAction) signatureCancelled: (UIStoryboardSegue *) segue
 {
-    
-    
     NSLog(@"Cancelling...");
 }
 
