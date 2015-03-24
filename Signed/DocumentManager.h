@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Document.h"
 
-
+typedef void (^CompletionBlock)(NSArray *);
 
 @interface DocumentManager : NSObject
 
@@ -18,7 +18,9 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) Document *currentDocument;
 
+- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
 + (instancetype)sharedManager;
+- (void) save;
 - (void) createDocumentWithURL: (NSURL *) url;
 
 

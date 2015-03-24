@@ -8,6 +8,7 @@
 
 #import "DocumentManager.h"
 
+
 @implementation DocumentManager
 
 +(instancetype)sharedManager
@@ -23,11 +24,15 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self load];
     }
     return self;
 }
 
+- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock
+{
+    [self load];
+    completionBlock(self.documents);
+}
 
 - (NSArray *) documents
 {
@@ -49,15 +54,23 @@
 
 - (void) load
 {
-    if(self.managedObjectContext)
+    NSArray *savedDocuments = [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];
+    for(Document * doc in savedDocuments)
     {
-        
+        [self.documents addObject:doc];
     }
+}
+
+- (NSString *) archivePath
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    return [documentsPath stringByAppendingPathComponent:@"documents.dat"];
 }
 
 - (void) save
 {
-
+    [NSKeyedArchiver archiveRootObject:self.documents toFile:[self archivePath]];
 }
 
 @end

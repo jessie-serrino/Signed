@@ -46,6 +46,8 @@
     return outputImage;
 }
 
+
+
 - (void) startLineWithPoint: (CGPoint) point
 {
     [self.lines addObject: [[Line alloc] initWithStartingPoint:point]];

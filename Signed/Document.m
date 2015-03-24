@@ -17,10 +17,6 @@ static NSString * const kDocumentThumbnail = @"documentThumbnail";
 static NSString * const kSignaturesArray = @"signatures";
 
 
-
-
-
-
 @interface Document ()
 
 @end
@@ -130,7 +126,6 @@ static NSString * const kSignaturesArray = @"signatures";
     [encoder encodeObject:UIImagePNGRepresentation(self.documentThumbnail) forKey:kDocumentThumbnail];
 
     [encoder encodeObject:self.signatures forKey:kSignaturesArray];
-
 }
 
 

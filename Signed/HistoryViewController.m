@@ -24,13 +24,17 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [super viewDidLoad];
     
     [self initializeCollectionView];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    _documents = [DocumentManager sharedManager].documents;
-    [self.historyCollectionView reloadData];
+    [[DocumentManager sharedManager] fetchDocumentsWithCompletion:^(NSArray * array)
+    {
+        _documents = array;
+        [self.historyCollectionView reloadData];
+        [self.historyCollectionView layoutIfNeeded];
+        NSLog(@"Document count");
+    }];
 }
 
 - (void) initializeCollectionView
@@ -56,7 +60,8 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 //    }
 //    else
 //    {
-        cell.cellImageView.image = self.documents[indexPath.item];
+        Document *doc = self.documents[indexPath.item];
+        cell.cellImageView.image = doc.documentThumbnail;
         cell.cellLabel.text = [NSString stringWithFormat:@"Document %li", (long)indexPath.item ];
 //    }
 
