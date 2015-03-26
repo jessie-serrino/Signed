@@ -7,6 +7,8 @@
 //
 
 #import "SignatureProcessManager.h"
+#import "PDFWriter.h"
+#import "DocumentManager.h"
 
 @implementation SignatureProcessManager
 
@@ -37,6 +39,12 @@
         
         self.signature = signature;
     }
+}
+
+- (void) sealSignature
+{
+    self.document.fileData = [PDFWriter addSignature:self.signature.image onPDFData:self.document.fileData];
+    [[DocumentManager sharedManager] replaceDocumentInCoreData:self.document];
 }
 
 @end

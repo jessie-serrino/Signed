@@ -7,7 +7,6 @@
 //
 
 #import "Line.h"
-#import "LineSmoothHelper.h"
 #import "UIBezierPath+Subline.h"
 
 
@@ -21,14 +20,22 @@
 @property (nonatomic)         CGPoint           pastPoint;
 @property (nonatomic)         CGPoint           pastMidpoint;
 
+@property (nonatomic)         PenType           penPreference;
+@property (nonatomic, strong) UIColor           *penColor;
+
+
 @end
 
 @implementation Line
 
 
-- (instancetype) initWithStartingPoint: (CGPoint) point
+- (instancetype) initWithStartingPoint: (CGPoint) point andPenPreference: (PenType) penPreference andColor: (UIColor *) color
 {
     self = [self init];
+    
+    self.penPreference = penPreference;
+    self.penColor = color;
+    
     self.pastPoint = point;
     return self;
 }
@@ -71,8 +78,25 @@
     
     
     CAShapeLayer *layer = [self layerWithSubline:subline velocity: velocity];
+    layer.fillColor = self.penColor.CGColor;
+    layer.strokeColor = self.penColor.CGColor;
 
+
+    
     [self.sublineLayers addObject:layer];
+    
+    return layer;
+}
+
+- (CAShapeLayer *) endLineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity
+{
+    Subline *subline = [self makeSublineAtPoint:point withVelocity:velocity];
+    CAShapeLayer *layer = [self layerWithSubline:subline velocity:velocity];
+    [self.sublineLayers addObject:layer];
+    
+    layer.fillColor = self.penColor.CGColor;
+    layer.strokeColor = self.penColor.CGColor;
+
     
     return layer;
 }
@@ -103,14 +127,7 @@
     return layer;
 }
 
-- (CAShapeLayer *) endLineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity
-{
-    Subline *subline = [self makeSublineAtPoint:point withVelocity:velocity];
-    CAShapeLayer *layer = [self layerWithSubline:subline velocity:velocity];
-    [self.sublineLayers addObject:layer];
 
-    return layer;
-}
 
 
 - (void) undoLine

@@ -53,6 +53,8 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
     } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
         [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
     }
+
+    [self.signatureMaker logBounds];
 }
 
 
@@ -66,20 +68,33 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)feltTipButtonTouched:(UIButton *)sender {
+- (IBAction)penPreferenceButtonTouched:(UIButton *)sender {
+    
+    if([sender.currentTitle isEqualToString:@"Felt Tip"])
+        self.signatureMaker.penPreference = FeltTipPen;
+    else
+        self.signatureMaker.penPreference = FountainPen;
 }
 
-- (IBAction)fountainTipButtonTouched:(id)sender {
+
+
+
+- (IBAction)blackColorButtonTouched:(id)sender {
+    self.signatureMaker.penColor = [UIColor blackColor];
+}
+
+- (IBAction)blueColorButtonTouched:(id)sender {
+    self.signatureMaker.penColor = [UIColor blueColor];
+}
+
+- (IBAction)redColorButtonTouched:(id)sender {
+    self.signatureMaker.penColor = [UIColor redColor];
 }
 
 - (IBAction)undoButton:(UIButton *)sender {
     [self.signatureMaker undoLine];
 }
 
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscapeLeft;

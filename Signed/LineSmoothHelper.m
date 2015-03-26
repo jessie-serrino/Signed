@@ -9,7 +9,7 @@
 #import "LineSmoothHelper.h"
 
 static NSUInteger const MinimumQuadraticDistance = 5.0f;
-static NSUInteger const MaximumLineWidth = 8.0f;
+static NSUInteger const MaximumLineWidth = 10.0f;
 static NSUInteger const MinimumLineWidth = 2.0f;
 static NSUInteger const StandardLineWidth = 5.0f;
 static CGFloat    const HistoryDivisor   = 100.0f;

@@ -23,7 +23,8 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     // Override point for customization after application launch.
     
     [DocumentManager sharedManager].managedObjectContext = self.managedObjectContext;
-    
+    [application setStatusBarHidden:NO];
+    [application setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 

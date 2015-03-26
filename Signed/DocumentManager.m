@@ -68,6 +68,15 @@
     document.fileLocation = [entity.objectID URIRepresentation];
 }
 
+-(void) replaceDocumentInCoreData: (Document *) document
+{
+    if(document.fileLocation)
+    {
+        FileEntity *file = (FileEntity *) [self.managedObjectContext objectWithURI:document.fileLocation];
+        file.data = document.fileData;
+    }
+}
+
 - (void) loadDocument: (Document *) document
 {
     if(document.fileLocation)
@@ -96,6 +105,15 @@
 - (void) save
 {
     [NSKeyedArchiver archiveRootObject:self.documents toFile:[self archivePath]];
+}
+
+- (NSURL *) saveToTemporaryFolder
+{
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+    cachePath = [cachePath stringByAppendingPathComponent:self.currentDocument.fileName];
+    
+    [self.currentDocument.fileData writeToFile:cachePath atomically:YES];
+    return [NSURL fileURLWithPath:cachePath];
 }
 
 @end

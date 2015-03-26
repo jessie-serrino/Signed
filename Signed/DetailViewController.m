@@ -31,6 +31,11 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentPageNumber = 1;
+    
+    self.documentImage.layer.shadowColor = [UIColor grayColor].CGColor;
+    self.documentImage.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    self.documentImage.layer.shadowRadius = 2.0f;
+    self.documentImage.layer.shadowOpacity = 0.3f;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -105,14 +110,22 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 {
     [self performSegueWithIdentifier:SegueToSignatureView sender:self];
 }
-
-- (BOOL)shouldAutorotate
-{
-    return NO;
+- (IBAction)backButtonPressed:(id)sender {
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
+}
+- (IBAction)sendImage:(id)sender {
+    
+    NSURL *location = [[DocumentManager sharedManager] saveToTemporaryFolder];
+    
+    UIActivityViewController *av = [[UIActivityViewController alloc] initWithActivityItems:@[@"Yesss!", location] applicationActivities:nil];
+    
+    [self presentViewController:av animated:YES completion:nil];
 }
 
 - (IBAction) signatureCancelled: (UIStoryboardSegue *) segue

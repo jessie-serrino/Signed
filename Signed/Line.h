@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "LineSmoothHelper.h"
 
 
 @interface Line : NSObject
 
-
-- (instancetype) initWithStartingPoint: (CGPoint) point;
+- (instancetype) initWithStartingPoint: (CGPoint) point andPenPreference: (PenType) penPreference andColor: (UIColor *) color;
 - (CAShapeLayer *) addConnectedPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
 - (CAShapeLayer *) endLineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
 - (void) undoLine;

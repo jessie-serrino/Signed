@@ -21,8 +21,11 @@ typedef void (^CompletionBlock)(NSArray *);
 + (instancetype)sharedManager;
 - (void) save;
 - (void) loadDocument: (Document *) document;
+-(void) replaceDocumentInCoreData: (Document *) document;
 - (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
 - (void) createDocumentWithURL: (NSURL *) url;
+
+- (NSURL *) saveToTemporaryFolder;
 
 
 @end

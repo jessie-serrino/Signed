@@ -25,6 +25,6 @@
 
 +(instancetype)sharedManager;
 - (void) establishSignature;
-
+- (void) sealSignature;
 
 @end

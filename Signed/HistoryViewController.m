@@ -59,6 +59,11 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
         Document *doc = self.documents[indexPath.item];
         cell.cellImageView.image = doc.documentThumbnail;
         cell.cellLabel.text = doc.fileName;
+    
+    cell.layer.shadowColor = [UIColor grayColor].CGColor;
+    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowRadius = 2.0f;
+    cell.layer.shadowOpacity = 0.3f;
 
     return cell;
 }
@@ -69,10 +74,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item]];
     [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;

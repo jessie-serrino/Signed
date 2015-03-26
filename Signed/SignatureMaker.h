@@ -13,9 +13,15 @@
 
 @interface SignatureMaker : CALayer
 
+
+@property (nonatomic)   PenType penPreference;
+@property (nonatomic, strong) UIColor *penColor;
+
 - (instancetype) initWithFrame: (CGRect) frame;
 - (UIImage *) image;
+
 - (void) undoLine;
+- (void) logBounds;
 - (void) startLineWithPoint: (CGPoint) point;
 - (void) continueLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;
 - (void) endLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;
