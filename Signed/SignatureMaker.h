@@ -21,6 +21,7 @@
 - (UIImage *) image;
 
 - (void) undoLine;
+- (void) clearAll;
 - (void) logBounds;
 - (void) startLineWithPoint: (CGPoint) point;
 - (void) continueLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity;

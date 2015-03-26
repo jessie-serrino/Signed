@@ -17,7 +17,6 @@
 @property (nonatomic, strong) UIImageView   *pageImageView;
 @property (nonatomic, strong) UIImageView   *signatureImageView;
 @property (nonatomic)         CGPoint       touchOnPage;
-@property (nonatomic)         CGPoint       touchOnView;
 @property (nonatomic)         CGFloat       scale;
 
 

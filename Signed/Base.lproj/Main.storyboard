@@ -257,63 +257,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZK-Pn-pX4" userLabel="Button View">
-                                <rect key="frame" x="565" y="354" width="135" height="40"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-iv-h6R" userLabel="Pen View">
+                                <rect key="frame" x="444" y="356" width="202" height="76"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UR-V8-PSL" userLabel="Blue">
-                                        <rect key="frame" x="52" y="5" width="29" height="29"/>
-                                        <accessibility key="accessibilityConfiguration" label="Blue"/>
-                                        <state key="normal" image="Blue Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="blueColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="vii-ow-zaz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwF-E5-xrb" userLabel="Red">
-                                        <rect key="frame" x="96" y="5" width="29" height="29"/>
-                                        <accessibility key="accessibilityConfiguration" label="Red"/>
-                                        <state key="normal" image="Red Button">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="redColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="6k8-V7-Lee"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn5-0U-yY4" userLabel="Black">
-                                        <rect key="frame" x="8" y="5" width="29" height="29"/>
-                                        <accessibility key="accessibilityConfiguration" label="Black"/>
-                                        <state key="normal" image="Black Button">
-                                            <color key="titleShadowColor" red="0.73715672350000006" green="0.73715672350000006" blue="0.73715672350000006" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="blackColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="GAR-JJ-P7w"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="mn5-0U-yY4" secondAttribute="bottom" constant="6" id="1iG-gh-xbQ"/>
-                                    <constraint firstItem="mn5-0U-yY4" firstAttribute="top" secondItem="gZK-Pn-pX4" secondAttribute="top" constant="5" id="91b-fZ-Nm8"/>
-                                    <constraint firstAttribute="trailing" secondItem="UwF-E5-xrb" secondAttribute="trailing" constant="10" id="AeL-tD-2jL"/>
-                                    <constraint firstItem="UwF-E5-xrb" firstAttribute="leading" secondItem="9UR-V8-PSL" secondAttribute="trailing" constant="15" id="MBd-cX-asr"/>
-                                    <constraint firstItem="mn5-0U-yY4" firstAttribute="leading" secondItem="gZK-Pn-pX4" secondAttribute="leading" constant="8" id="XBw-t7-J5Q"/>
-                                    <constraint firstItem="mn5-0U-yY4" firstAttribute="centerY" secondItem="9UR-V8-PSL" secondAttribute="centerY" id="bQ2-dc-wDa"/>
-                                    <constraint firstItem="9UR-V8-PSL" firstAttribute="leading" secondItem="mn5-0U-yY4" secondAttribute="trailing" constant="15" id="hAm-YJ-AfB"/>
-                                    <constraint firstItem="9UR-V8-PSL" firstAttribute="centerY" secondItem="UwF-E5-xrb" secondAttribute="centerY" id="nm7-gu-vTc"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFO-yy-fYc" userLabel="DrawableView">
-                                <rect key="frame" x="0.0" y="65" width="736" height="349"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="k3u-sY-Gny" appends="YES" id="NG4-0V-fo0"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOx-iv-h6R" userLabel="Pen View">
-                                <rect key="frame" x="309" y="336" width="202" height="76"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-Cb-Xgv">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWI-Cb-Xgv">
                                         <rect key="frame" x="10" y="10" width="81" height="56"/>
                                         <accessibility key="accessibilityConfiguration" label="Felt Tip"/>
                                         <state key="normal" backgroundImage="FeltTip">
@@ -323,7 +270,7 @@
                                             <action selector="penPreferenceButtonTouched:" destination="mlk-CH-90W" eventType="touchUpInside" id="tjO-sL-QzE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cc-Oj-b49">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cc-Oj-b49">
                                         <rect key="frame" x="111" y="10" width="81" height="56"/>
                                         <accessibility key="accessibilityConfiguration" label="Fountain"/>
                                         <state key="normal" backgroundImage="FountainPen">
@@ -342,38 +289,148 @@
                                     <constraint firstItem="CWI-Cb-Xgv" firstAttribute="leading" secondItem="eOx-iv-h6R" secondAttribute="leading" constant="10" id="jhL-fy-yob"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fO-LE-wML">
-                                <rect key="frame" x="682" y="82" width="38" height="30"/>
-                                <state key="normal" title="Undo">
-                                    <color key="titleColor" red="0.050980392159999999" green="0.25490196079999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFO-yy-fYc" userLabel="DrawableView">
+                                <rect key="frame" x="0.0" y="65" width="736" height="349"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn5-0U-yY4" userLabel="Black">
+                                        <rect key="frame" x="686" y="291" width="50" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" label="Black"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="GgO-uP-jRR"/>
+                                            <constraint firstAttribute="height" constant="50" id="cUo-z4-zgL"/>
+                                        </constraints>
+                                        <state key="normal" image="Black Button">
+                                            <color key="titleShadowColor" red="0.73715672350000006" green="0.73715672350000006" blue="0.73715672350000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="blackColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="GAR-JJ-P7w"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UR-V8-PSL" userLabel="Blue">
+                                        <rect key="frame" x="686" y="291" width="50" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" label="Blue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="3vH-wI-6jw"/>
+                                            <constraint firstAttribute="width" constant="50" id="HHd-Yi-QsB"/>
+                                        </constraints>
+                                        <state key="normal" image="Blue Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="blueColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="vii-ow-zaz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwF-E5-xrb" userLabel="Red">
+                                        <rect key="frame" x="686" y="291" width="50" height="50"/>
+                                        <accessibility key="accessibilityConfiguration" label="Red"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="DhN-kp-Mi3"/>
+                                            <constraint firstAttribute="width" constant="50" id="Iq8-18-xOL"/>
+                                        </constraints>
+                                        <state key="normal" image="Red Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redColorButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="6k8-V7-Lee"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUJ-1f-OU5">
+                                        <rect key="frame" x="686" y="8" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="3VA-Q6-vrH"/>
+                                            <constraint firstAttribute="width" secondItem="RUJ-1f-OU5" secondAttribute="height" multiplier="21:21" id="4f2-yN-N48"/>
+                                            <constraint firstAttribute="height" constant="50" id="UxH-Pe-3Re"/>
+                                        </constraints>
+                                        <state key="normal" image="Clear">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="4f2-yN-N48"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="clearButtonPressed:" destination="mlk-CH-90W" eventType="touchDown" id="F46-fC-78O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fO-LE-wML">
+                                        <rect key="frame" x="636" y="8" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Soj-q8-l4H"/>
+                                            <constraint firstAttribute="height" constant="50" id="k5f-Li-0nT"/>
+                                        </constraints>
+                                        <state key="normal" image="Undo">
+                                            <color key="titleColor" red="0.050980392159999999" green="0.25490196079999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="undoButtonPressed:" destination="mlk-CH-90W" eventType="touchUpInside" id="jUT-fz-eZp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ft3-Fr-qhp">
+                                        <rect key="frame" x="686" y="291" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="4qA-r7-1zH"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="HUr-y2-UVk"/>
+                                            <constraint firstAttribute="width" secondItem="ft3-Fr-qhp" secondAttribute="height" multiplier="45:45" id="tbn-zo-HJI"/>
+                                        </constraints>
+                                        <state key="normal" image="ColorButton">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="colorButton:" destination="mlk-CH-90W" eventType="touchDown" id="8km-VZ-aWP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="RUJ-1f-OU5" firstAttribute="top" secondItem="jFO-yy-fYc" secondAttribute="top" id="0K5-vn-448"/>
+                                    <constraint firstItem="mn5-0U-yY4" firstAttribute="centerX" secondItem="ft3-Fr-qhp" secondAttribute="centerX" id="4Je-7u-u4k"/>
+                                    <constraint firstItem="ft3-Fr-qhp" firstAttribute="top" secondItem="jFO-yy-fYc" secondAttribute="top" constant="10" id="5LU-OS-mF7"/>
+                                    <constraint firstItem="ft3-Fr-qhp" firstAttribute="centerX" secondItem="9UR-V8-PSL" secondAttribute="centerX" id="5dq-1y-jkM"/>
+                                    <constraint firstItem="ft3-Fr-qhp" firstAttribute="centerY" secondItem="9UR-V8-PSL" secondAttribute="centerY" id="88J-xY-7DZ"/>
+                                    <constraint firstItem="UwF-E5-xrb" firstAttribute="centerY" secondItem="ft3-Fr-qhp" secondAttribute="centerY" id="9aE-bQ-VXK"/>
+                                    <constraint firstItem="RUJ-1f-OU5" firstAttribute="top" secondItem="jFO-yy-fYc" secondAttribute="top" constant="8" id="ENY-ha-bAH"/>
+                                    <constraint firstItem="0fO-LE-wML" firstAttribute="width" secondItem="ft3-Fr-qhp" secondAttribute="width" id="H4j-cZ-5Jl"/>
+                                    <constraint firstItem="ft3-Fr-qhp" firstAttribute="centerX" secondItem="RUJ-1f-OU5" secondAttribute="centerX" id="IcO-EO-y44"/>
+                                    <constraint firstItem="0fO-LE-wML" firstAttribute="centerY" secondItem="RUJ-1f-OU5" secondAttribute="centerY" id="LMD-BW-dOo"/>
+                                    <constraint firstItem="mn5-0U-yY4" firstAttribute="centerY" secondItem="ft3-Fr-qhp" secondAttribute="centerY" id="aA0-9I-Bfx"/>
+                                    <constraint firstAttribute="bottom" secondItem="RUJ-1f-OU5" secondAttribute="bottom" constant="8" id="avr-Cg-GlO"/>
+                                    <constraint firstAttribute="bottom" secondItem="ft3-Fr-qhp" secondAttribute="bottom" constant="8" id="dQM-nR-GMx"/>
+                                    <constraint firstItem="ft3-Fr-qhp" firstAttribute="top" secondItem="RUJ-1f-OU5" secondAttribute="bottom" id="lBs-sI-J1o"/>
+                                    <constraint firstAttribute="trailing" secondItem="RUJ-1f-OU5" secondAttribute="trailing" id="og9-RL-FNi"/>
+                                    <constraint firstItem="RUJ-1f-OU5" firstAttribute="leading" secondItem="0fO-LE-wML" secondAttribute="trailing" id="w3V-pc-SCp"/>
+                                    <constraint firstItem="UwF-E5-xrb" firstAttribute="centerX" secondItem="ft3-Fr-qhp" secondAttribute="centerX" id="zV4-lE-uF6"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0K5-vn-448"/>
+                                        <exclude reference="avr-Cg-GlO"/>
+                                        <exclude reference="5LU-OS-mF7"/>
+                                        <exclude reference="lBs-sI-J1o"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="undoButton:" destination="mlk-CH-90W" eventType="touchUpInside" id="kvO-vR-UaY"/>
+                                    <outletCollection property="gestureRecognizers" destination="k3u-sY-Gny" appends="YES" id="NG4-0V-fo0"/>
                                 </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eOx-iv-h6R" firstAttribute="centerY" secondItem="gZK-Pn-pX4" secondAttribute="centerY" id="2ji-20-lzB"/>
                             <constraint firstAttribute="centerY" secondItem="AQa-Vy-XOn" secondAttribute="centerY" multiplier="0.75" id="7Lh-hC-ChQ"/>
                             <constraint firstAttribute="centerX" secondItem="jFO-yy-fYc" secondAttribute="centerX" id="8q6-OO-W7a"/>
                             <constraint firstItem="Soe-OC-bIb" firstAttribute="top" secondItem="2p4-NW-RAO" secondAttribute="top" id="K1v-gs-iDP"/>
-                            <constraint firstItem="0fO-LE-wML" firstAttribute="top" secondItem="Soe-OC-bIb" secondAttribute="bottom" constant="17" id="RqE-q4-fUq"/>
                             <constraint firstItem="jFO-yy-fYc" firstAttribute="top" secondItem="Soe-OC-bIb" secondAttribute="bottom" id="TPU-CE-DG6"/>
                             <constraint firstItem="AQa-Vy-XOn" firstAttribute="leading" secondItem="rSq-7w-wFt" secondAttribute="leadingMargin" constant="10" id="Whm-qG-2Ff"/>
                             <constraint firstAttribute="width" secondItem="Soe-OC-bIb" secondAttribute="width" id="Y5U-8Q-qaD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gZK-Pn-pX4" secondAttribute="trailing" constant="20" id="dB2-HZ-Nb6"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="centerX" secondItem="AQa-Vy-XOn" secondAttribute="centerX" id="fY0-xS-mrE"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="width" secondItem="AQa-Vy-XOn" secondAttribute="width" id="gHb-rP-OlI"/>
                             <constraint firstItem="wfo-Wr-f2Q" firstAttribute="top" secondItem="AQa-Vy-XOn" secondAttribute="bottom" constant="-18" id="gyk-cz-bNf"/>
                             <constraint firstAttribute="centerX" secondItem="AQa-Vy-XOn" secondAttribute="centerX" id="iU3-f2-j24"/>
-                            <constraint firstItem="S2w-wK-gY4" firstAttribute="top" secondItem="gZK-Pn-pX4" secondAttribute="bottom" constant="20" id="mgN-yb-BYv"/>
                             <constraint firstAttribute="width" secondItem="jFO-yy-fYc" secondAttribute="width" id="om6-2l-SU4"/>
                             <constraint firstAttribute="centerX" secondItem="Soe-OC-bIb" secondAttribute="centerX" id="p0a-ax-io0"/>
                             <constraint firstItem="S2w-wK-gY4" firstAttribute="top" secondItem="jFO-yy-fYc" secondAttribute="bottom" id="v8l-cT-JCg"/>
-                            <constraint firstItem="0fO-LE-wML" firstAttribute="trailing" secondItem="rSq-7w-wFt" secondAttribute="trailingMargin" id="vbd-G3-Sog"/>
-                            <constraint firstItem="gZK-Pn-pX4" firstAttribute="leading" secondItem="eOx-iv-h6R" secondAttribute="trailing" constant="54" id="xAW-Yj-N2L"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4xi-16-TKC">
@@ -401,7 +458,19 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="blackButton" destination="mn5-0U-yY4" id="01E-KU-9ue"/>
+                        <outlet property="blackCenterXConstraint" destination="4Je-7u-u4k" id="1FC-F0-lyy"/>
+                        <outlet property="blackCenterYConstraint" destination="aA0-9I-Bfx" id="tog-Fh-xD7"/>
+                        <outlet property="blueButton" destination="9UR-V8-PSL" id="mK3-SQ-fLI"/>
+                        <outlet property="blueCenterXConstraint" destination="5dq-1y-jkM" id="XEV-8s-rJC"/>
+                        <outlet property="blueCenterYConstraint" destination="88J-xY-7DZ" id="Epw-nI-x1o"/>
+                        <outlet property="clearButton" destination="RUJ-1f-OU5" id="lxn-Fe-evG"/>
+                        <outlet property="colorButton" destination="ft3-Fr-qhp" id="MNw-mI-XSS"/>
                         <outlet property="drawableView" destination="jFO-yy-fYc" id="JRC-mQ-rpw"/>
+                        <outlet property="redButton" destination="UwF-E5-xrb" id="ZYW-gH-p8O"/>
+                        <outlet property="redCenterXConstraint" destination="zV4-lE-uF6" id="xM4-Sp-b0l"/>
+                        <outlet property="redCenterYConstraint" destination="9aE-bQ-VXK" id="Slk-sC-4EY"/>
+                        <outlet property="undoButton" destination="0fO-LE-wML" id="Akb-TB-Hjj"/>
                         <segue destination="gXm-gT-lDu" kind="showDetail" identifier="SegueToAddSignature" id="glq-A7-9gN"/>
                     </connections>
                 </viewController>
@@ -554,12 +623,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Black Button" width="29" height="29"/>
-        <image name="Blue Button" width="29" height="29"/>
+        <image name="Black Button" width="40" height="40"/>
+        <image name="Blue Button" width="40" height="40"/>
+        <image name="Clear" width="29" height="31"/>
+        <image name="ColorButton" width="40" height="40"/>
         <image name="DottedLine" width="1070" height="93"/>
         <image name="FeltTip" width="81" height="56"/>
         <image name="FountainPen" width="81" height="56"/>
-        <image name="Red Button" width="29" height="29"/>
+        <image name="Red Button" width="40" height="40"/>
         <image name="Sign Button" width="72" height="70"/>
+        <image name="Undo" width="38" height="35"/>
     </resources>
 </document>

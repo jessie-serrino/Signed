@@ -141,6 +141,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		912279DA1AC4CDE700F94B8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		912B5ADF1ABED879000B044D /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +212,7 @@
 		916D57F31AB9E03400069815 /* Signed */ = {
 			isa = PBXGroup;
 			children = (
+				912279DA1AC4CDE700F94B8C /* View */,
 				91E505AC1ABF41CD0063DA7B /* Utilities */,
 				912B5AE01ABED892000B044D /* Models */,
 				916D58251AB9E6B000069815 /* Signature */,

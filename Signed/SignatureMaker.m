@@ -74,6 +74,12 @@
     }
 }
 
+- (void) clearAll
+{
+    while(self.lines.count)
+          [self undoLine];
+}
+
 - (CGRect) boundRectangle
 {
     CGFloat x1, y1, x2, y2;

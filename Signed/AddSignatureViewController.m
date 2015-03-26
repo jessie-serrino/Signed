@@ -47,10 +47,16 @@
     
     self.signatureImageView.center = self.pageImageView.center;
     
+    // Not fixed
+    spm.pdfWriter.touchOnPage = self.signatureImageView.center;
     
     [self.pageImageView addSubview:self.signatureImageView];
     
-    self.signatureImageView.transform =  CGAffineTransformMakeScale(0.3, 0.3);
+    CGFloat scale = 0.3;
+    
+    self.signatureImageView.transform =  CGAffineTransformMakeScale(scale   ,  scale    );
+    [SignatureProcessManager sharedManager].pdfWriter.scale = scale;
+
 
 }
 
@@ -85,7 +91,6 @@
     SignatureProcessManager *spm = [SignatureProcessManager sharedManager];
     
     spm.pdfWriter.touchOnPage = [sender locationInView:self.pageImageView];
-    spm.pdfWriter.touchOnView = [sender locationInView:self.view];
     spm.pdfWriter.signatureImageView = self.signatureImageView;
     
     self.signatureImageView.center = spm.pdfWriter.touchOnPage;
