@@ -69,6 +69,12 @@ static NSString * const kSignaturesArray = @"signatures";
     return _documentThumbnail;
 }
 
+
+- (void) updateDocument
+{
+    self.documentThumbnail = [self generateDocumentThumbnail];
+}
+
 - (UIImage *) generateDocumentThumbnail
 {
     CGFloat width = 80;

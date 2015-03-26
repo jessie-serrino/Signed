@@ -9,6 +9,7 @@
 #import "PDFWriter.h"
 #import <UIImage+PDF/UIImage+PDF.h>
 
+
 static NSString * const tempName = @"temp";
 static NSString * const newTempName = @"newTemp";
 
@@ -21,7 +22,7 @@ static NSString * const newTempName = @"newTemp";
 
 @implementation PDFWriter
 
-- (void) writeSignature: (UIImageView *) sig toDocument: (Document *) document atPoint: (CGPoint) touch
+- (void) writeSignature: (Signature *) signature toDocument: (Document *) document //withScale: (CGFloat) scale //atPoint: (CGPoint) touch
 {
     self.document = document;
     [self writeDataToTemporaryFile];
@@ -42,12 +43,34 @@ static NSString * const newTempName = @"newTemp";
         CGRect bounds = CGPDFPageGetBoxRect(basePage, kCGPDFCropBox);
         [self setupPage:basePage withBounds:bounds];
 
-        
+        if(pageNumber == signature.page)
+        {
+            CGRect visibleSignatureFrame = [self frameForImageinImageViewAspectFit:self.signatureImageView];
+            
+            
+            CGRect rect = [self frameForImageinImageViewAspectFit:self.pageImageView];
+
+            CGPoint offsetAdjusted = [self pointAdjustedForTouchOffset:self.touchOnPage withImageViewRect:rect];
+            CGPoint point = [self scalePoint:offsetAdjusted fromSize:rect.size toSize:bounds.size];
+            
+            CGFloat absoluteScale = [self scaleToPDF:bounds.size viewImageSize:visibleSignatureFrame.size andImage:self.signatureImageView.image]*self.scale;
+            
+            UIImage *signatureImage = self.signatureImageView.image;
+            
+            CGRect signatureRect = CGRectMake(point.x, point.y, signatureImage.size.width*absoluteScale, signatureImage.size.height*absoluteScale);
+            
+            CGRect signatureCenteredRect = [self signatureCenteredRect:signatureRect];
+            
+            [signatureImage drawInRect:signatureCenteredRect];
+
+        }
     }
     CGPDFDocumentRelease(baseDocument);
     UIGraphicsEndPDFContext();
     
     self.document.fileData = [self retrieveDataFromNewTemporaryFile];
+    UIImage *img = [UIImage imageWithPDFData:self.document.fileData atHeight:300.0];
+    [self.document updateDocument];
 }
 
 
@@ -95,6 +118,70 @@ static NSString * const newTempName = @"newTemp";
     NSString *tempStoragePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *filenamePDF = [fileName stringByAppendingString:@".pdf"];
     return [tempStoragePath  stringByAppendingPathComponent: filenamePDF];
+}
+
+/* Scaling functions */
+
+- (CGFloat) scaleToPDF: (CGSize) pdfSize viewImageSize: (CGSize) viewImageSize andImage: (UIImage *) image
+{
+    return  [self absoluteImage:image scaleToImageView:viewImageSize] * [self imageView:viewImageSize scaleToPDF:pdfSize];
+}
+
+
+- (CGFloat) imageView: (CGSize) imageViewSize scaleToPDF: (CGSize) pdfSize
+{
+    return pdfSize.width / imageViewSize.width;
+}
+
+- (CGFloat) absoluteImage: (UIImage *) image scaleToImageView: (CGSize) imageViewSize
+{
+    return  imageViewSize.width / image.size.width;
+}
+
+- (CGRect) signatureCenteredRect: (CGRect) oldRect
+{
+    CGPoint newOrigin = CGPointMake(oldRect.origin.x - oldRect.size.width/2, oldRect.origin.y - oldRect.size.height/2);
+    return CGRectMake(newOrigin.x, newOrigin.y, oldRect.size.width, oldRect.size.height);
+}
+
+- (CGPoint) scalePoint: (CGPoint) point fromSize: (CGSize) oldRect toSize: (CGSize) newRect
+{
+    CGFloat scale = newRect.width / oldRect.width;
+    return CGPointMake(point.x * scale, point.y * scale);
+}
+
+- (CGPoint) pointAdjustedForTouchOffset: (CGPoint) touch withImageViewRect: (CGRect) rect
+{
+    return CGPointMake(touch.x - rect.origin.x, touch.y - rect.origin.y);
+}
+
+-(CGRect)frameForImageinImageViewAspectFit:(UIImageView*)imageView
+{
+    UIImage *image = imageView.image;
+    float imageRatio = image.size.width / image.size.height;
+    
+    float viewRatio = imageView.frame.size.width / imageView.frame.size.height;
+    
+    if(imageRatio < viewRatio)
+    {
+        float scale = imageView.frame.size.height / image.size.height;
+        
+        float width = scale * image.size.width;
+        
+        float topLeftX = (imageView.frame.size.width - width) * 0.5;
+        
+        return CGRectMake(topLeftX, 0, width, imageView.frame.size.height);
+    }
+    else
+    {
+        float scale = imageView.frame.size.width / image.size.width;
+        
+        float height = scale * image.size.height;
+        
+        float topLeftY = (imageView.frame.size.height - height) * 0.5;
+        
+        return CGRectMake(0, topLeftY, imageView.frame.size.width, height);
+    }
 }
 
 @end

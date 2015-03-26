@@ -44,7 +44,7 @@
 
 - (void) sealSignature
 {
-    [self.pdfWriter writeSignature:nil toDocument:self.document atPoint:CGPointMake(30, 30)]; // Check up on this
+    [self.pdfWriter writeSignature:self.signature toDocument:self.document];// withScale:0.1];// atPoint:CGPointMake(30, 30)]; // Check up on this
     [[DocumentManager sharedManager] replaceDocumentInCoreData:self.document];
 }
 

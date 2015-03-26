@@ -14,6 +14,13 @@
 
 @interface PDFWriter : NSObject
 
-- (void) writeSignature: (UIImageView *) sig toDocument: (Document *) document atPoint: (CGPoint) touch;
+@property (nonatomic, strong) UIImageView   *pageImageView;
+@property (nonatomic, strong) UIImageView   *signatureImageView;
+@property (nonatomic)         CGPoint       touchOnPage;
+@property (nonatomic)         CGPoint       touchOnView;
+@property (nonatomic)         CGFloat       scale;
+
+
+- (void) writeSignature: (Signature *) signature toDocument: (Document *) document; //withScale: (CGFloat) scale;
 
 @end

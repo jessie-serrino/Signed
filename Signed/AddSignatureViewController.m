@@ -38,7 +38,10 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
-    self.pageImageView.image = [SignatureProcessManager sharedManager].pageImage;
+    SignatureProcessManager *spm = [SignatureProcessManager sharedManager];
+    spm.pdfWriter.pageImageView = self.pageImageView;
+
+    self.pageImageView.image = spm.pageImage;
     UIImage *signatureImage = self.signature.image;
     self.signatureImageView = [[UIImageView alloc] initWithImage:signatureImage];
     
@@ -53,7 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
+    
 }
 
 - (void) scaleImageView: (CGFloat) scale
@@ -79,8 +82,14 @@
 }
 
 - (IBAction)tapToAddSignature:(UIPanGestureRecognizer *)sender {
-    CGPoint touch = [sender locationInView:self.pageImageView];
-    self.signatureImageView.center = touch;
+    SignatureProcessManager *spm = [SignatureProcessManager sharedManager];
+    
+    spm.pdfWriter.touchOnPage = [sender locationInView:self.pageImageView];
+    spm.pdfWriter.touchOnView = [sender locationInView:self.view];
+    spm.pdfWriter.signatureImageView = self.signatureImageView;
+    
+    self.signatureImageView.center = spm.pdfWriter.touchOnPage;
+    
 }
 
 
@@ -88,6 +97,7 @@
     CGFloat scale = sender.value;
     
     self.signatureImageView.transform =  CGAffineTransformMakeScale(scale, scale);
+    [SignatureProcessManager sharedManager].pdfWriter.scale = scale;
 }
 
 

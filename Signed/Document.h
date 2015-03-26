@@ -29,7 +29,7 @@
 
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;
-- (UIImage *) generateDocumentThumbnail;
+- (void) updateDocument;
 - (NSData *) generateDocumentPDF;
 - (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;
 - (UIImage *) thumbnailImageWithPageNumber: (NSInteger) pageNumber;
