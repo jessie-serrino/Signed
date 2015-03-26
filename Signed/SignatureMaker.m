@@ -122,16 +122,11 @@
 
 - (void) continueLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity
 {
-    if(point.y >= 0)
-    {
-        Line *currentLine = self.lines.lastObject;
-        CAShapeLayer *latestLayer = [currentLine addConnectedPoint:point withVelocity:velocity];
-        if(latestLayer)
-            [self addSublayer:latestLayer];
-        [self adjustBounds:point];
-    }
-    else
-        [self endLineWithPoint:point andVelocity:velocity];
+    Line *currentLine = self.lines.lastObject;
+    CAShapeLayer *latestLayer = [currentLine addConnectedPoint:point withVelocity:velocity];
+    if(latestLayer)
+        [self addSublayer:latestLayer];
+    [self adjustBounds:point];
 }
 
 - (void) endLineWithPoint: (CGPoint) point andVelocity: (CGPoint) velocity
@@ -139,6 +134,13 @@
     Line *currentLine = self.lines.lastObject;
     [currentLine endLineAtPoint:point withVelocity:velocity];
     [self adjustBounds:point];
+}
+
+- (void) addLinesToView: (UIView *) view
+{
+    for(Line *l in self.lines)
+        [self addSublayer: [l lineLayer]];
+    [view.layer addSublayer:self];
 }
 
 

@@ -123,7 +123,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     
     NSURL *location = [[DocumentManager sharedManager] saveToTemporaryFolder];
     
-    UIActivityViewController *av = [[UIActivityViewController alloc] initWithActivityItems:@[@"Yesss!", location] applicationActivities:nil];
+    UIActivityViewController *av = [[UIActivityViewController alloc] initWithActivityItems:@[@"", location] applicationActivities:nil];
     
     [self presentViewController:av animated:YES completion:nil];
 }
@@ -150,6 +150,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     SignatureProcessManager *manager = [SignatureProcessManager sharedManager];
     manager.pageImage = [self.document pageImageWithPageNumber:self.currentPageNumber];
     manager.pageNumber = self.currentPageNumber;
+    manager.document = self.document;
 }
 
 

@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HDj-Df-iF0">
-                                <rect key="frame" x="21" y="114" width="372" height="481.5"/>
+                                <rect key="frame" x="21" y="94" width="372" height="481.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -118,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXq-yA-hMD">
-                                <rect key="frame" x="168" y="557" width="77" height="77"/>
+                                <rect key="frame" x="168" y="537" width="77" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="YMQ-a8-4KX"/>
                                     <constraint firstAttribute="height" constant="77" id="euj-g8-NnX"/>
@@ -132,10 +132,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7XY-uz-tT8">
-                                <rect key="frame" x="21" y="596" width="372" height="119.5"/>
+                                <rect key="frame" x="21" y="576" width="372" height="139.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-QK-vQw">
-                                        <rect key="frame" x="342" y="24" width="30" height="72"/>
+                                        <rect key="frame" x="342" y="34" width="30" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,7 +146,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1J2-Ap-vMi">
-                                        <rect key="frame" x="0.0" y="24" width="30" height="72"/>
+                                        <rect key="frame" x="0.0" y="34" width="30" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -177,7 +177,7 @@
                             <constraint firstItem="HDj-Df-iF0" firstAttribute="leading" secondItem="7XY-uz-tT8" secondAttribute="leading" id="VRS-P7-676"/>
                             <constraint firstItem="HDj-Df-iF0" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9UQ-HD-WcX" secondAttribute="leadingMargin" constant="5" id="VcC-oy-fpF"/>
                             <constraint firstAttribute="centerX" secondItem="rXq-yA-hMD" secondAttribute="centerX" id="gOz-nF-CwF"/>
-                            <constraint firstItem="HDj-Df-iF0" firstAttribute="top" secondItem="fuL-pu-hyR" secondAttribute="bottom" constant="50" id="gUo-cA-Kgz"/>
+                            <constraint firstItem="HDj-Df-iF0" firstAttribute="top" secondItem="fuL-pu-hyR" secondAttribute="bottom" constant="30" id="gUo-cA-Kgz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HDj-Df-iF0" secondAttribute="trailing" constant="5" id="l6t-1p-r5U"/>
                             <constraint firstItem="7XY-uz-tT8" firstAttribute="top" secondItem="HDj-Df-iF0" secondAttribute="bottom" id="wMp-YT-9Ug"/>
                             <constraint firstAttribute="centerX" secondItem="NeH-F2-a5a" secondAttribute="centerX" id="y8K-fK-ADX"/>

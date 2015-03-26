@@ -31,8 +31,14 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 
 - (void) initializeSignatureMaker
 {
-    self.signatureMaker = [[SignatureMaker alloc] initWithFrame:self.drawableView.bounds];
-    [SignatureProcessManager sharedManager].signatureMaker = self.signatureMaker;
+    if([SignatureProcessManager sharedManager].signatureMaker){
+        self.signatureMaker = [SignatureProcessManager sharedManager].signatureMaker;
+        [self.signatureMaker addLinesToView: self.drawableView];
+    }
+    else{
+            self.signatureMaker = [[SignatureMaker alloc] initWithFrame:self.drawableView.bounds];
+        [SignatureProcessManager sharedManager].signatureMaker = self.signatureMaker;
+    }
     [self.drawableView.layer addSublayer:self.signatureMaker];
 }
 
@@ -53,8 +59,6 @@ static NSString * const SegueToAddSignature = @"SegueToAddSignature";
     } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
         [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
     }
-
-    [self.signatureMaker logBounds];
 }
 
 

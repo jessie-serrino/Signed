@@ -139,6 +139,15 @@
     }
 }
 
+- (CAShapeLayer *) lineLayer
+{
+    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+    for(CAShapeLayer *sublineLayer in self.sublineLayers)
+    {
+        [layer addSublayer:sublineLayer];
+    }
+    return layer;
+}
 
 
 

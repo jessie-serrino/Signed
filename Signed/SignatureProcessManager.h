@@ -11,6 +11,7 @@
 #import "Document.h"
 #import "Signature.h"
 #import "SignatureMaker.h"
+#import "PDFWriter.h"
 
 @interface SignatureProcessManager : NSObject
 
@@ -21,6 +22,7 @@
 
 @property (nonatomic, strong)   UIImage *pageImage;
 @property (nonatomic)           NSInteger pageNumber;
+@property (nonatomic, strong) PDFWriter *pdfWriter;
 
 
 +(instancetype)sharedManager;

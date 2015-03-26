@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Document.h"
+#import "Signature.h"
 
 
 @interface PDFWriter : NSObject
 
-+ (NSData *) addSignature:(UIImage *) imgSignature onPDFData:(NSData *)pdfData;
+- (void) writeSignature: (UIImageView *) sig toDocument: (Document *) document atPoint: (CGPoint) touch;
 
 @end

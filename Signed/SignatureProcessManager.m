@@ -24,6 +24,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        self.pdfWriter = [[PDFWriter alloc] init];
     }
     return self;
 }
@@ -43,7 +44,7 @@
 
 - (void) sealSignature
 {
-    self.document.fileData = [PDFWriter addSignature:self.signature.image onPDFData:self.document.fileData];
+    [self.pdfWriter writeSignature:nil toDocument:self.document atPoint:CGPointMake(30, 30)]; // Check up on this
     [[DocumentManager sharedManager] replaceDocumentInCoreData:self.document];
 }
 

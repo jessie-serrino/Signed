@@ -70,7 +70,7 @@
 
 - (void) configureFooter
 {
-    self.footerLabel.text = [NSString stringWithFormat:@"%i of %i", self.signature.page, [SignatureProcessManager sharedManager].document.numberOfPages];
+    self.footerLabel.text = [NSString stringWithFormat:@"%li of %li", self.signature.page, [SignatureProcessManager sharedManager].document.numberOfPages];
 }
 
 - (NSUInteger)supportedInterfaceOrientations

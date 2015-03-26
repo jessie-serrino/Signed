@@ -61,7 +61,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
         cell.cellLabel.text = doc.fileName;
     
     cell.layer.shadowColor = [UIColor grayColor].CGColor;
-    cell.layer.shadowOffset = CGSizeMake(0, 2.0f);
+    cell.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
     cell.layer.shadowRadius = 2.0f;
     cell.layer.shadowOpacity = 0.3f;
 

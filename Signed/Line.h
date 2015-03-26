@@ -17,6 +17,7 @@
 - (instancetype) initWithStartingPoint: (CGPoint) point andPenPreference: (PenType) penPreference andColor: (UIColor *) color;
 - (CAShapeLayer *) addConnectedPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
 - (CAShapeLayer *) endLineAtPoint: (CGPoint) point withVelocity: (CGPoint) velocity;
+- (CAShapeLayer *) lineLayer;
 - (void) undoLine;
 
 @end

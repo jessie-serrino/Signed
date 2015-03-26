@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Document.h"
+#import "SignatureMaker.h"
 
 typedef void (^CompletionBlock)(NSArray *);
 
