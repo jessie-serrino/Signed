@@ -22,11 +22,28 @@ static NSString * const newTempName = @"newTemp";
 
 @implementation PDFWriter
 
+
++ (NSData *) pdfFromImage: (UIImage *) image
+{
+    NSString *newFilePath = [self temporaryStorage: @"newTemp"];
+    
+    CGRect pageBounds = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIGraphicsBeginPDFContextToFile(newFilePath, pageBounds, nil);
+    
+    UIGraphicsBeginPDFPageWithInfo(pageBounds, nil);
+    [image drawInRect:pageBounds];
+
+    UIGraphicsEndPDFContext();
+    NSData * data = [PDFWriter retrieveDataFromNewTemporaryFile];
+
+    return data;
+}
+
 - (void) writeSignature: (Signature *) signature toDocument: (Document *) document //withScale: (CGFloat) scale //atPoint: (CGPoint) touch
 {
     self.document = document;
     [self writeDataToTemporaryFile];
-    CFURLRef url = CFURLCreateWithFileSystemPath (NULL, (CFStringRef)[self temporaryStorage:tempName], kCFURLPOSIXPathStyle, 0);
+    CFURLRef url = CFURLCreateWithFileSystemPath (NULL, (CFStringRef)[PDFWriter temporaryStorage:tempName], kCFURLPOSIXPathStyle, 0);
     
     // open base file
     CGPDFDocumentRef baseDocument = CGPDFDocumentCreateWithURL(url);
@@ -68,8 +85,7 @@ static NSString * const newTempName = @"newTemp";
     CGPDFDocumentRelease(baseDocument);
     UIGraphicsEndPDFContext();
     
-    self.document.fileData = [self retrieveDataFromNewTemporaryFile];
-    UIImage *img = [UIImage imageWithPDFData:self.document.fileData atHeight:300.0];
+    self.document.fileData = [PDFWriter retrieveDataFromNewTemporaryFile];
     [self.document updateDocument];
 }
 
@@ -94,7 +110,7 @@ static NSString * const newTempName = @"newTemp";
 
 - (void) establishDocument: (CGPDFDocumentRef) document
 {
-    NSString *newFilePath = [self temporaryStorage: @"newTemp"];
+    NSString *newFilePath = [PDFWriter temporaryStorage: @"newTemp"];
     
     CGPDFPageRef basePage = CGPDFDocumentGetPage(document, 1);
     CGRect pageBounds = CGPDFPageGetBoxRect(basePage, kCGPDFCropBox);
@@ -103,17 +119,17 @@ static NSString * const newTempName = @"newTemp";
 
 - (void) writeDataToTemporaryFile
 {
-    NSString *temporaryPath = [self temporaryStorage: tempName];
+    NSString *temporaryPath = [PDFWriter temporaryStorage: tempName];
     [self.document.fileData writeToFile:temporaryPath atomically:YES];
 }
 
-- (NSData *) retrieveDataFromNewTemporaryFile
++ (NSData *) retrieveDataFromNewTemporaryFile
 {
-    NSString *file = [self temporaryStorage:@"newTemp"];
+    NSString *file = [PDFWriter temporaryStorage:@"newTemp"];
     return [NSData dataWithContentsOfFile:file];
 }
 
-- (NSString *) temporaryStorage: (NSString *) fileName
++ (NSString *) temporaryStorage: (NSString *) fileName
 {
     NSString *tempStoragePath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
     NSString *filenamePDF = [fileName stringByAppendingString:@".pdf"];

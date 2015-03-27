@@ -21,5 +21,6 @@
 
 
 - (void) writeSignature: (Signature *) signature toDocument: (Document *) document; //withScale: (CGFloat) scale;
++ (NSData *) pdfFromImage: (UIImage *) image;
 
 @end

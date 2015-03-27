@@ -51,7 +51,24 @@
                             <constraint firstAttribute="centerX" secondItem="SO3-Fr-58y" secondAttribute="centerX" id="URL-1j-fwU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Documents" id="twq-ic-NcD"/>
+                    <navigationItem key="navigationItem" title="Documents" id="twq-ic-NcD">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="RFm-HQ-2WA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3AL-V5-Fav">
+                                <rect key="frame" x="-23" y="-15" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clipboard">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fromClipboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rG3-iA-WmJ"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="fromClipboard:" destination="vXZ-lx-hvc" id="J6g-fk-toF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="historyCollectionView" destination="SO3-Fr-58y" id="xwP-Rc-74f"/>
@@ -131,11 +148,11 @@
                                     <action selector="signButtonPressed:" destination="GU5-kl-l8L" eventType="touchUpInside" id="fCk-dv-ohz"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7XY-uz-tT8">
-                                <rect key="frame" x="21" y="576" width="372" height="140"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7XY-uz-tT8">
+                                <rect key="frame" x="21" y="576" width="372" height="139"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7r2-QK-vQw">
-                                        <rect key="frame" x="342" y="34" width="30" height="72"/>
+                                        <rect key="frame" x="342" y="33" width="30" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,7 +163,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1J2-Ap-vMi">
-                                        <rect key="frame" x="0.0" y="34" width="30" height="72"/>
+                                        <rect key="frame" x="0.0" y="33" width="30" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

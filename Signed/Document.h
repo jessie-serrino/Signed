@@ -29,6 +29,7 @@
 
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;
++ (instancetype) documentFromUIImage: (UIImage *) image;
 - (void) updateDocument;
 - (NSData *) generateDocumentPDF;
 - (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;

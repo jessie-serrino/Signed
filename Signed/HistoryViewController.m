@@ -19,6 +19,11 @@
 static NSString * const SegueToDetailView = @"SegueToDetailView";
 
 @implementation HistoryViewController
+- (IBAction)fromClipboard:(id)sender {
+    [[DocumentManager sharedManager] createDocumentFromClipboard];
+    
+    [self performSegueWithIdentifier:SegueToDetailView sender:self];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

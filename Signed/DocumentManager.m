@@ -49,12 +49,29 @@
 - (void) createDocumentWithURL: (NSURL *) url
 {
     Document *document = [Document documentFromURL:url];
+    [self addDocument:document];
+}
+
+- (void) addDocument: (Document *) document
+{
     [self addDocumentToCoreData:document];
     [self.documents addObject:document];
     self.currentDocument = document;
     [self loadDocument:document];
     
     [self save];
+}
+
+- (void) createDocumentFromClipboard
+{
+    UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+    
+    UIImage *imageToCreate = [clipboard image];
+    Document *document = [Document documentFromUIImage:imageToCreate];
+    
+    UIImage *thumb = document.documentThumbnail;
+    [self addDocument: document];
+    
 }
 
 - (void) addDocumentToCoreData: (Document *) document

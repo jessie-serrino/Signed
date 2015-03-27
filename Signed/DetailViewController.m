@@ -130,12 +130,11 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
 - (IBAction) signatureCancelled: (UIStoryboardSegue *) segue
 {
-    NSLog(@"Cancelling...");
+    
 }
 
 -(IBAction)signatureSaved:(UIStoryboardSegue *)segue {
     
-    NSLog(@"Saving...");
     [[SignatureProcessManager sharedManager] sealSignature];
 }
 

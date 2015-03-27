@@ -25,6 +25,7 @@ typedef void (^CompletionBlock)(NSArray *);
 -(void) replaceDocumentInCoreData: (Document *) document;
 - (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
 - (void) createDocumentWithURL: (NSURL *) url;
+- (void) createDocumentFromClipboard;
 
 - (NSURL *) saveToTemporaryFolder;
 

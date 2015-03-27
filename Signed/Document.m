@@ -7,6 +7,7 @@
 //
 
 #import "Document.h"
+#import "PDFWriter.h"
 
 static NSString * const kDateCreated = @"dateCreated";
 static NSString * const kDateModified = @"dateModified";
@@ -35,6 +36,24 @@ static NSString * const kSignaturesArray = @"signatures";
 
     }
     return self;
+}
+
++ (instancetype) documentFromUIImage: (UIImage *) image
+{
+    NSData *fileData = [PDFWriter pdfFromImage:image];
+    if(!image || !fileData)
+    {
+        return nil;
+    }
+    
+    Document *document = [[Document alloc] init];
+    document.fileData = fileData;
+    document.numberOfPages = 1;
+    document.signatures = [[NSMutableArray alloc] init];
+    document.documentThumbnail = [document generateDocumentThumbnail];
+    document.fileName = [document.dateCreated description];
+    
+    return document;
 }
 
 + (instancetype) documentFromURL: (NSURL *) documentURL
