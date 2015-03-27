@@ -10,6 +10,7 @@
 
 static NSUInteger const MinimumQuadraticDistance = 5.0f;
 static NSUInteger const MaximumLineWidth = 9.0f;
+static NSUInteger const MaximumLineWidthFountain = 7.0f;
 static NSUInteger const MinimumLineWidth = 2.0f;
 static NSUInteger const StandardLineWidth = 5.0f;
 static CGFloat    const HistoryDivisor   = 100.0f;
@@ -20,9 +21,6 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 @property (nonatomic) CGFloat speed3;
 @property (nonatomic) CGFloat speed4;
 @property (nonatomic) CGFloat speed5;
-
-
-
 
 @end
 
@@ -63,9 +61,8 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 - (CGFloat) fountainPenWidth: (CGFloat) historyAverage
 {
     CGFloat width = historyAverage / HistoryDivisor;
-    NSLog(@"width %f", width);
-    if(width > MaximumLineWidth)
-        return MaximumLineWidth;
+    if(width > MaximumLineWidthFountain)
+        return MaximumLineWidthFountain;
     if(width > MinimumLineWidth)
         return width;
     return MinimumLineWidth;

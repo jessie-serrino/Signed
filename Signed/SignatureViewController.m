@@ -12,16 +12,9 @@
 #import <pop/POP.h>
 
 static NSString * const SegueToAddSignature = @"SegueToAddSignature";
-static NSInteger const YButtonDistance = 50;
-static NSInteger const First = 150;
-static NSInteger const Second = 100;
-static NSInteger const Third = 50;
-
-
-
-static NSInteger const MidDistance = 43;
-static NSInteger const XSmallButtonDistance = 25;
-static NSInteger const XBigButtonDistance = 50;
+static NSInteger const FirstButtonDistance = 150;
+static NSInteger const SecondButtonDistance = 100;
+static NSInteger const ThirdButtonDistance = 50;
 static NSInteger const SpringBounciness = 20.0;
 
 
@@ -111,15 +104,15 @@ static NSInteger const SpringBounciness = 20.0;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)penPreferenceButtonTouched:(UIButton *)sender {
-    
-    if([sender.currentTitle isEqualToString:@"Felt Tip"])
-        self.signatureMaker.penPreference = FeltTipPen;
-    else
-        self.signatureMaker.penPreference = FountainPen;
+- (IBAction)feltTipButtonTouched:(id)sender
+{
+    self.signatureMaker.penPreference = FeltTipPen;
 }
 
-
+- (IBAction)fountainPenButtonTouched:(id)sender
+{
+    self.signatureMaker.penPreference = FountainPen;
+}
 
 
 - (IBAction)blackColorButtonTouched:(id)sender {
@@ -168,13 +161,9 @@ static NSInteger const SpringBounciness = 20.0;
 - (IBAction)colorButton:(id)sender {
     
     if(!self.colorMenuOpen)
-    {
         [self animateOpenColorMenu];
-    }
     else
-    {
         [self animateCloseColorMenu];
-    }
 }
 
 - (void) animateOpenColorMenu
@@ -190,37 +179,21 @@ static NSInteger const SpringBounciness = 20.0;
     [self.blackCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveBlackLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
     moveBlackLeft.fromValue = 0;
-    moveBlackLeft.toValue = @(-First);
+    moveBlackLeft.toValue = @(-FirstButtonDistance);
     moveBlackLeft.springBounciness = SpringBounciness;
     [self.blackCenterXConstraint pop_addAnimation:moveBlackLeft forKey:@"moveBlackLeft"];
-    
-    
-//    [self.blackCenterYConstraint pop_removeAllAnimations];
-//    POPSpringAnimation *moveBlackUp = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-//    moveBlackUp.fromValue = 0;
-//    moveBlackUp.toValue = @(-YButtonDistance);
-//    moveBlackUp.springBounciness = SpringBounciness;
-//
-//    [self.blackCenterYConstraint pop_addAnimation:moveBlackUp forKey:@"moveBlackUp"];
     
     
     /* Blue button */
     [self.blueCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveBlueLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
     moveBlueLeft.fromValue = 0;
-    moveBlueLeft.toValue = @(Second);
+    moveBlueLeft.toValue = @(SecondButtonDistance);
     moveBlueLeft.springBounciness = SpringBounciness;
     
     [self.blueCenterXConstraint pop_addAnimation:moveBlueLeft forKey:@"moveBlueLeft"];
     
     [self.blueCenterYConstraint pop_removeAllAnimations];
-    
-//    POPSpringAnimation *moveBlueDown = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-//    moveBlueDown.fromValue = 0;
-//    moveBlueDown.toValue = @(-YButtonDistance);
-//    moveBlueDown.springBounciness = SpringBounciness;
-//    
-//    [self.blueCenterYConstraint pop_addAnimation:moveBlueDown forKey:@"moveBlueDown"];
     
     
     /* Red button */
@@ -228,7 +201,7 @@ static NSInteger const SpringBounciness = 20.0;
     [self.redCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveRedLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
     moveRedLeft.fromValue = 0;
-    moveRedLeft.toValue = @(-Third);
+    moveRedLeft.toValue = @(-ThirdButtonDistance);
     moveRedLeft.springBounciness =SpringBounciness;
     [self.redCenterXConstraint pop_addAnimation:moveRedLeft forKey:@"moveRedLeft"];
 
@@ -253,45 +226,29 @@ static NSInteger const SpringBounciness = 20.0;
     
     [self.blackCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveBlackRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlackRight.fromValue = @(-First);
+    moveBlackRight.fromValue = @(-FirstButtonDistance);
     moveBlackRight.toValue = @(0);
     [self.blackCenterXConstraint pop_addAnimation:moveBlackRight forKey:@"moveBlackRight"];
     
-//    [self.blackCenterYConstraint pop_removeAllAnimations];
-//    POPSpringAnimation *moveBlackDown = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-//    moveBlackDown.fromValue = @(-YButtonDistance);
-//    moveBlackDown.toValue = @(0);
-//    [self.blackCenterYConstraint pop_addAnimation:moveBlackDown forKey:@"moveBlackDown"];
     
     
     /* Blue button */
     [self.blueCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveBlueRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlueRight.fromValue = @(Second);
+    moveBlueRight.fromValue = @(SecondButtonDistance);
     moveBlueRight.toValue = @(0);
     [self.blueCenterXConstraint pop_addAnimation:moveBlueRight forKey:@"moveBlueRight"];
     
-//    POPSpringAnimation *moveBlueUp = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-//    moveBlueUp.fromValue = @(-YButtonDistance);
-//    moveBlueUp.toValue = @(0);
-//    
-//    [self.blueCenterYConstraint pop_addAnimation:moveBlueUp forKey:@"moveBlueDown"];
     
     
     /* Red button */
     
     [self.redCenterXConstraint pop_removeAllAnimations];
     POPSpringAnimation *moveRedRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveRedRight.fromValue = @(-Third);
+    moveRedRight.fromValue = @(-ThirdButtonDistance);
     moveRedRight.toValue = @(0);
     [self.redCenterXConstraint pop_addAnimation:moveRedRight forKey:@"moveRedRight"];
     
-//    [self.redCenterYConstraint pop_removeAllAnimations];
-//    POPSpringAnimation *moveRedUp = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-//    moveRedUp.fromValue = @(YButtonDistance);
-//
-//    moveRedUp.toValue = @(0);
-//    [self.redCenterYConstraint pop_addAnimation:moveRedUp forKey:@"moveRedUp"];
     
     
     self.colorMenuOpen = NO;

@@ -51,24 +51,7 @@
                             <constraint firstAttribute="centerX" secondItem="SO3-Fr-58y" secondAttribute="centerX" id="URL-1j-fwU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Documents" id="twq-ic-NcD">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="RFm-HQ-2WA">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3AL-V5-Fav">
-                                <rect key="frame" x="-23" y="-15" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clipboard">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fromClipboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rG3-iA-WmJ"/>
-                                </connections>
-                            </button>
-                            <connections>
-                                <action selector="fromClipboard:" destination="vXZ-lx-hvc" id="J6g-fk-toF"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Documents" id="twq-ic-NcD"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="historyCollectionView" destination="SO3-Fr-58y" id="xwP-Rc-74f"/>
@@ -145,7 +128,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signButtonPressed:" destination="GU5-kl-l8L" eventType="touchUpInside" id="fCk-dv-ohz"/>
+                                    <action selector="signButtonPressed:" destination="GU5-kl-l8L" eventType="touchDown" id="8FQ-N1-qlo"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7XY-uz-tT8">
@@ -397,7 +380,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="penPreferenceButtonTouched:" destination="mlk-CH-90W" eventType="touchUpInside" id="tjO-sL-QzE"/>
+                                            <action selector="feltTipButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="pC4-uW-995"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cc-Oj-b49">
@@ -406,6 +389,9 @@
                                         <state key="normal" backgroundImage="FountainPen">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="fountainPenButtonTouched:" destination="mlk-CH-90W" eventType="touchDown" id="aiX-qb-wBv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -657,7 +643,7 @@
         <image name="FeltTip" width="81" height="56"/>
         <image name="FountainPen" width="81" height="56"/>
         <image name="Red Button" width="40" height="40"/>
-        <image name="Sign Button" width="72" height="70"/>
+        <image name="Sign Button" width="80" height="80"/>
         <image name="Undo" width="38" height="35"/>
     </resources>
 </document>

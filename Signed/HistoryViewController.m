@@ -13,30 +13,43 @@
 @interface HistoryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *historyCollectionView;
 @property (strong, nonatomic) NSArray *documents;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *selectButton;
+@property (strong, nonatomic) NSMutableIndexSet *selectedItems;
+@property (nonatomic)         BOOL selectionMode;
 
 @end
 
 static NSString * const SegueToDetailView = @"SegueToDetailView";
+static NSString * const UnselectAllString = @"Unselect All";
+static NSString * const SelectString = @"Select";
+
+
 
 @implementation HistoryViewController
-- (IBAction)fromClipboard:(id)sender {
-    [[DocumentManager sharedManager] createDocumentFromClipboard];
-    
-    [self performSegueWithIdentifier:SegueToDetailView sender:self];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self initializeCollectionView];
+    [self prepareDocuments];
+    self.historyCollectionView.allowsMultipleSelection = NO;
+    self.selectionMode = NO;
+
+}
+
+- (void) prepareDocuments
+{
     [[DocumentManager sharedManager] fetchDocumentsWithCompletion:^(NSArray * array)
      {
          _documents = array;
          [self.historyCollectionView reloadData];
          [self.historyCollectionView layoutIfNeeded];
-         NSLog(@"Document count");
      }];
 }
+
+
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -53,7 +66,103 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.documents.count;
+    return self.documents.count + 1;
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(!self.selectionMode)
+        [self openDocumentAtIndexPath:indexPath];
+    else if(indexPath.item == 0)
+        [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    else
+    {
+        DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView cellForItemAtIndexPath:indexPath];
+        UIImageView *check = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Check"]];
+        [cell.cellImageView addSubview:check ];
+    }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    if(indexPath.item > 0)
+    {
+        DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView cellForItemAtIndexPath:indexPath];
+        [[cell.cellImageView.subviews lastObject] removeFromSuperview];
+    }
+}
+
+
+- (void)openDocumentAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.item == 0)
+        [self createDocumentFromClipboard];
+    else {
+        [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item - 1]];
+        [self performSegueWithIdentifier:SegueToDetailView sender:self];
+    }
+}
+
+- (IBAction)trashButtonPressed:(UIBarButtonItem *)sender {
+    [self deleteSelectedItems];
+    [self selectButtonPressed:sender];
+    sender.enabled = NO;
+}
+
+- (void) deleteSelectedItems
+{
+    NSArray *indexPathsToDelete = [self.historyCollectionView indexPathsForSelectedItems];
+    
+    [self deleteDocumentsInDocumentManager:indexPathsToDelete];
+    [self deleteDocumentsInCollectionView:indexPathsToDelete];
+}
+
+- (void) deleteDocumentsInDocumentManager: (NSArray *) indexPaths;
+{
+    DocumentManager *dm = [DocumentManager sharedManager];
+    [dm deleteDocumentsWithIndices:[self indexSetFromIndexPaths:indexPaths]];
+    self.documents = dm.documents;
+}
+
+- (void) deleteDocumentsInCollectionView: (NSArray *) indexPaths
+{
+    [self.historyCollectionView deleteItemsAtIndexPaths:indexPaths];
+    [self.historyCollectionView reloadData];
+}
+
+- (NSIndexSet *) indexSetFromIndexPaths: (NSArray *) indexPaths
+{
+    NSMutableIndexSet * indexes = [[NSMutableIndexSet alloc] init];
+    for(NSIndexPath *indexPath in indexPaths)
+        if(indexPath.item != 0)
+            [indexes addIndex:(indexPath.item - 1)];
+    return indexes;
+}
+
+- (IBAction)selectButtonPressed:(UIBarButtonItem *)sender {
+    
+    if([self.selectButton.title isEqualToString:UnselectAllString]) {
+        self.selectButton.title = @"Select";
+        self.trashButton.enabled = NO;
+        
+        for(NSIndexPath *indexPath in [self.historyCollectionView indexPathsForSelectedItems])
+            [self.historyCollectionView deselectItemAtIndexPath:indexPath animated:YES];
+    }
+    else if([self.selectButton.title isEqualToString:SelectString]) {
+        self.selectButton.title = @"Unselect All";
+        self.trashButton.enabled = YES;
+    }
+    
+    self.selectionMode = !self.selectionMode;
+    self.historyCollectionView.allowsMultipleSelection = self.selectionMode;
+}
+
+- (void) createDocumentFromClipboard {
+    [[DocumentManager sharedManager] createDocumentFromClipboard];
+    
+    [self performSegueWithIdentifier:SegueToDetailView sender:self];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -61,24 +170,30 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
 {
     DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DocumentCollectionViewCell class]) forIndexPath:indexPath];
 
-        Document *doc = self.documents[indexPath.item];
-        cell.cellImageView.image = doc.documentThumbnail;
-        cell.cellLabel.text = doc.fileName;
+    if(indexPath.item == 0)
+    {
+        cell.cellImageView.image = [UIImage imageNamed:@"AddDocument"];
+        cell.cellLabel.text = @"From Clipboard";
+    }
+    else
+        [self prepareCell:cell atIndexPath:indexPath];
+
+    return cell;
+}
+
+- (void) prepareCell: (DocumentCollectionViewCell *) cell atIndexPath: (NSIndexPath *) indexPath
+{
+    Document *doc = self.documents[indexPath.item - 1];
+    cell.cellImageView.image = doc.documentThumbnail;
+    cell.cellLabel.text = doc.fileName;
     
     cell.layer.shadowColor = [UIColor grayColor].CGColor;
     cell.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
     cell.layer.shadowRadius = 2.0f;
     cell.layer.shadowOpacity = 0.3f;
-
-    return cell;
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item]];
-    [self performSegueWithIdentifier:SegueToDetailView sender:self];
-}
 
 - (NSUInteger)supportedInterfaceOrientations
 {

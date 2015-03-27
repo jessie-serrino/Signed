@@ -133,4 +133,12 @@
     return [NSURL fileURLWithPath:cachePath];
 }
 
+- (void) deleteDocumentsWithIndices: (NSIndexSet *) indices
+{
+    [self.documents removeObjectsAtIndexes:indices];
+    
+    // Remove from CoreData
+}
+
+
 @end

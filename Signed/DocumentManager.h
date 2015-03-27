@@ -20,12 +20,18 @@ typedef void (^CompletionBlock)(NSArray *);
 @property (nonatomic, strong) Document *currentDocument;
 
 + (instancetype)sharedManager;
-- (void) save;
-- (void) loadDocument: (Document *) document;
--(void) replaceDocumentInCoreData: (Document *) document;
-- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
+
 - (void) createDocumentWithURL: (NSURL *) url;
 - (void) createDocumentFromClipboard;
+
+- (void) save;
+- (void) loadDocument: (Document *) document;
+- (void) replaceDocumentInCoreData: (Document *) document;
+- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
+
+- (void) deleteDocumentsWithIndices: (NSIndexSet *) indices;
+
+
 
 - (NSURL *) saveToTemporaryFolder;
 

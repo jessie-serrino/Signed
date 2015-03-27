@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		737299942822FDBE117A0183 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3D5A0065A30C27730932B7 /* libPods.a */; };
-		912279DD1AC4CE3300F94B8C /* CustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 912279DC1AC4CE3300F94B8C /* CustomUnwindSegue.m */; };
 		912B5ADE1ABED873000B044D /* AddSignatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5ADD1ABED873000B044D /* AddSignatureViewController.m */; };
 		9158ECAC1AC18A230028B20F /* SignatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9158ECAB1AC18A230028B20F /* SignatureTests.m */; };
 		915E8C261AC30459005A1F9B /* PDFWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C251AC30459005A1F9B /* PDFWriter.m */; };
@@ -62,8 +61,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		912279DB1AC4CE3300F94B8C /* CustomUnwindSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUnwindSegue.h; sourceTree = "<group>"; };
-		912279DC1AC4CE3300F94B8C /* CustomUnwindSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUnwindSegue.m; sourceTree = "<group>"; };
 		912B5ADC1ABED873000B044D /* AddSignatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSignatureViewController.h; sourceTree = "<group>"; };
 		912B5ADD1ABED873000B044D /* AddSignatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSignatureViewController.m; sourceTree = "<group>"; };
 		9158ECAB1AC18A230028B20F /* SignatureTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureTests.m; sourceTree = "<group>"; };
@@ -144,15 +141,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		912279DA1AC4CDE700F94B8C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				912279DB1AC4CE3300F94B8C /* CustomUnwindSegue.h */,
-				912279DC1AC4CE3300F94B8C /* CustomUnwindSegue.m */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
 		912B5ADF1ABED879000B044D /* Add */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,7 +205,6 @@
 		916D57F31AB9E03400069815 /* Signed */ = {
 			isa = PBXGroup;
 			children = (
-				912279DA1AC4CDE700F94B8C /* View */,
 				91E505AC1ABF41CD0063DA7B /* Utilities */,
 				912B5AE01ABED892000B044D /* Models */,
 				916D58251AB9E6B000069815 /* Signature */,
@@ -516,7 +503,6 @@
 				915F7C131AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m in Sources */,
 				916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */,
 				916D57F71AB9E03400069815 /* main.m in Sources */,
-				912279DD1AC4CE3300F94B8C /* CustomUnwindSegue.m in Sources */,
 				915E8C261AC30459005A1F9B /* PDFWriter.m in Sources */,
 				916D58001AB9E03400069815 /* HistoryViewController.m in Sources */,
 				915EF5621ABAE87500EFDA67 /* DocumentCollectionViewCell.m in Sources */,
