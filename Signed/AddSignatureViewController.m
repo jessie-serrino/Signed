@@ -108,7 +108,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [[SignatureProcessManager sharedManager] sealSignature];
 }
 
 
