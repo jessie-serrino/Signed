@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
+    self.checkImageView.hidden = YES;
 }
+
 
 @end

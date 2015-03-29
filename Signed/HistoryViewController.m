@@ -53,6 +53,7 @@ static NSString * const SelectString = @"Select";
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.historyCollectionView reloadData];
     [self.historyCollectionView layoutIfNeeded];
 }
@@ -73,14 +74,16 @@ static NSString * const SelectString = @"Select";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if(!self.selectionMode)
+    {
         [self openDocumentAtIndexPath:indexPath];
+        [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    }
     else if(indexPath.item == 0)
         [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     else
     {
         DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView cellForItemAtIndexPath:indexPath];
-        UIImageView *check = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Check"]];
-        [cell.cellImageView addSubview:check ];
+        cell.checkImageView.hidden = NO;
     }
 }
 
@@ -90,7 +93,7 @@ static NSString * const SelectString = @"Select";
     if(indexPath.item > 0)
     {
         DocumentCollectionViewCell *cell = (DocumentCollectionViewCell *) [collectionView cellForItemAtIndexPath:indexPath];
-        [[cell.cellImageView.subviews lastObject] removeFromSuperview];
+        cell.checkImageView.hidden = YES;
     }
 }
 

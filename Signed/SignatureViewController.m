@@ -53,11 +53,13 @@ static NSInteger const SpringBounciness = 20.0;
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self initializeSignatureMaker];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     [self animateOpenColorMenu];
 }
 
@@ -248,8 +250,6 @@ static NSInteger const SpringBounciness = 20.0;
     moveRedRight.fromValue = @(-ThirdButtonDistance);
     moveRedRight.toValue = @(0);
     [self.redCenterXConstraint pop_addAnimation:moveRedRight forKey:@"moveRedRight"];
-    
-    
     
     self.colorMenuOpen = NO;
 }

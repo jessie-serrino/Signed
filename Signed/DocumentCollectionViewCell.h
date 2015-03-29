@@ -11,6 +11,7 @@
 @interface DocumentCollectionViewCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *cellImageView;
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *checkImageView;
 
 
 @end

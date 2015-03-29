@@ -38,6 +38,7 @@
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     SignatureProcessManager *spm = [SignatureProcessManager sharedManager];
     spm.pdfWriter.pageImageView = self.pageImageView;
 
@@ -62,7 +63,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    [super viewWillAppear:animated];
 }
 
 - (void) scaleImageView: (CGFloat) scale
@@ -79,7 +80,7 @@
 
 - (void) configureFooter
 {
-    self.footerLabel.text = [NSString stringWithFormat:@"%li of %li", self.signature.page, [SignatureProcessManager sharedManager].document.numberOfPages];
+    self.footerLabel.text = [NSString stringWithFormat:@"%li of %li", (unsigned long) self.signature.page, (unsigned long) [SignatureProcessManager sharedManager].document.numberOfPages];
 }
 
 - (NSUInteger)supportedInterfaceOrientations

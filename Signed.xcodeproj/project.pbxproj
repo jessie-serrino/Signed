@@ -100,6 +100,7 @@
 		916D582F1AB9E70200069815 /* SignatureMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureMaker.h; sourceTree = "<group>"; };
 		916D58301AB9E70200069815 /* SignatureMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureMaker.m; sourceTree = "<group>"; };
 		916EE6C61AC17CA400E8303E /* DocumentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTests.m; sourceTree = "<group>"; };
+		91CAE9761AC739DB0070391A /* Signed.profdata */ = {isa = PBXFileReference; lastKnownFileType = file; path = Signed.profdata; sourceTree = "<group>"; };
 		91DFCFE91AC1D8F50005D4E0 /* SignatureProcessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureProcessManager.h; sourceTree = "<group>"; };
 		91DFCFEA1AC1D8F50005D4E0 /* SignatureProcessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureProcessManager.m; sourceTree = "<group>"; };
 		91E505A61ABEDD6F0063DA7B /* Document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Document.h; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 				916D57F21AB9E03400069815 /* Products */,
 				E1A51D41CABC17A1B039F25F /* Pods */,
 				2986CB401833A7BA309AB688 /* Frameworks */,
+				91CAE9751AC739DB0070391A /* OptimizationProfiles */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,6 +293,14 @@
 				916D58291AB9E6EB00069815 /* LineSmoothHelper.m */,
 			);
 			name = Signature;
+			sourceTree = "<group>";
+		};
+		91CAE9751AC739DB0070391A /* OptimizationProfiles */ = {
+			isa = PBXGroup;
+			children = (
+				91CAE9761AC739DB0070391A /* Signed.profdata */,
+			);
+			path = OptimizationProfiles;
 			sourceTree = "<group>";
 		};
 		91E505AC1ABF41CD0063DA7B /* Utilities */ = {
@@ -650,6 +660,7 @@
 			baseConfigurationReference = 9ADDC97AA233542929F78FA5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Signed/Info.plist;

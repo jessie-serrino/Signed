@@ -40,6 +40,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
 - (void) viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     _document = [DocumentManager sharedManager].currentDocument;
     self.title = self.document.fileName;
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
@@ -128,6 +129,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self presentViewController:av animated:YES completion:nil];
 }
 
+// Don't delete
 - (IBAction) signatureCancelled: (UIStoryboardSegue *) segue
 {
     
@@ -145,8 +147,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    SignatureViewController *signatureViewController = segue.destinationViewController;
-
     SignatureProcessManager *manager = [SignatureProcessManager sharedManager];
     manager.pageImage = [self.document pageImageWithPageNumber:self.currentPageNumber];
     manager.pageNumber = self.currentPageNumber;

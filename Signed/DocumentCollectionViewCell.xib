@@ -14,32 +14,48 @@
                 <rect key="frame" x="0.0" y="0.0" width="82" height="116"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddDocument" translatesAutoresizingMaskIntoConstraints="NO" id="NDy-HM-Q6A">
-                        <rect key="frame" x="-4.5" y="0.0" width="90" height="116"/>
+                        <rect key="frame" x="-4" y="0.0" width="90" height="116"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="NDy-HM-Q6A" secondAttribute="height" multiplier="85:110" id="oKo-aF-5ww"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Cell Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-8R-XeZ">
-                        <rect key="frame" x="19.5" y="102" width="43.5" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rqh-8R-XeZ">
                         <fontDescription key="fontDescription" name="DevanagariSangamMN" family="Devanagari Sangam MN" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Check" translatesAutoresizingMaskIntoConstraints="NO" id="huW-bm-r1w">
+                        <rect key="frame" x="-4" y="0.0" width="90" height="116"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="94" id="Pvu-OQ-pYh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Pvu-OQ-pYh"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="top" secondItem="NDy-HM-Q6A" secondAttribute="top" id="0Hb-87-zOc"/>
                 <constraint firstAttribute="bottom" secondItem="Rqh-8R-XeZ" secondAttribute="bottom" id="J4a-uj-rax"/>
                 <constraint firstItem="NDy-HM-Q6A" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RM3-pB-NVp"/>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="centerX" secondItem="NDy-HM-Q6A" secondAttribute="centerX" id="Rce-Np-rt6"/>
                 <constraint firstItem="Rqh-8R-XeZ" firstAttribute="top" secondItem="NDy-HM-Q6A" secondAttribute="bottom" id="SfB-Lk-cgZ"/>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="width" secondItem="NDy-HM-Q6A" secondAttribute="width" id="UFi-Lo-6eY"/>
                 <constraint firstItem="NDy-HM-Q6A" firstAttribute="width" secondItem="Rqh-8R-XeZ" secondAttribute="width" id="XSj-pi-mSg"/>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="centerY" secondItem="NDy-HM-Q6A" secondAttribute="centerY" id="ZYM-hu-lZb"/>
                 <constraint firstAttribute="centerX" secondItem="Rqh-8R-XeZ" secondAttribute="centerX" id="aFX-Ug-etu"/>
                 <constraint firstAttribute="centerX" secondItem="NDy-HM-Q6A" secondAttribute="centerX" id="aJA-PE-AhQ"/>
                 <constraint firstAttribute="trailing" secondItem="NDy-HM-Q6A" secondAttribute="trailing" id="f8j-Wg-vlw"/>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="leading" secondItem="NDy-HM-Q6A" secondAttribute="leading" id="jdg-W1-bHh"/>
+                <constraint firstItem="huW-bm-r1w" firstAttribute="centerY" secondItem="NDy-HM-Q6A" secondAttribute="centerY" constant="11" id="nmU-op-pMI"/>
                 <constraint firstItem="NDy-HM-Q6A" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xji-vy-QDU"/>
             </constraints>
             <size key="customSize" width="364" height="551"/>
@@ -48,6 +64,7 @@
                     <exclude reference="XSj-pi-mSg"/>
                     <exclude reference="f8j-Wg-vlw"/>
                     <exclude reference="xji-vy-QDU"/>
+                    <exclude reference="nmU-op-pMI"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -60,11 +77,13 @@
             <connections>
                 <outlet property="cellImageView" destination="NDy-HM-Q6A" id="Tkh-XE-81d"/>
                 <outlet property="cellLabel" destination="Rqh-8R-XeZ" id="YZv-dr-JwM"/>
+                <outlet property="checkImageView" destination="huW-bm-r1w" id="3Rx-fT-q69"/>
             </connections>
-            <point key="canvasLocation" x="499" y="573.5"/>
+            <point key="canvasLocation" x="499" y="573"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="AddDocument" width="140" height="190"/>
+        <image name="Check" width="35" height="27"/>
     </resources>
 </document>

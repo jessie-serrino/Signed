@@ -69,7 +69,6 @@
     UIImage *imageToCreate = [clipboard image];
     Document *document = [Document documentFromUIImage:imageToCreate];
     
-    UIImage *thumb = document.documentThumbnail;
     [self addDocument: document];
     
 }

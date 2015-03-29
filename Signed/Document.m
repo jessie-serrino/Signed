@@ -108,13 +108,13 @@ static NSString * const kSignaturesArray = @"signatures";
 - (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;
 {
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    return [UIImage imageWithPDFData:self.fileData atWidth:width atPage:pageNumber];
+    return [UIImage imageWithPDFData:self.fileData atWidth:(int)width atPage:(int)pageNumber];
 }
 
 - (UIImage *) thumbnailImageWithPageNumber:(NSInteger)pageNumber
 {
     CGFloat width = 80;
-    return [UIImage imageWithPDFData:self.fileData atWidth:width atPage: pageNumber];
+    return [UIImage imageWithPDFData:self.fileData atWidth:(int)width atPage: (int)pageNumber];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
