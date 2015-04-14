@@ -16,11 +16,14 @@ static NSUInteger const StandardLineWidth = 5.0f;
 static CGFloat    const HistoryDivisor   = 100.0f;
 
 @interface LineSmoothHelper ()
-@property (nonatomic) CGFloat speed1;
-@property (nonatomic) CGFloat speed2;
-@property (nonatomic) CGFloat speed3;
-@property (nonatomic) CGFloat speed4;
-@property (nonatomic) CGFloat speed5;
+//@property (nonatomic) CGFloat speed1;
+//@property (nonatomic) CGFloat speed2;
+//@property (nonatomic) CGFloat speed3;
+//@property (nonatomic) CGFloat speed4;
+//@property (nonatomic) CGFloat speed5;
+
+@property (nonatomic) NSMutableArray *speedArray;
+
 
 @end
 
@@ -29,6 +32,7 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 - (instancetype)init
 {
     self = [super init];
+    _speedArray = [[NSMutableArray alloc] initWithObjects:@(0.0f), @(0.0f), @(0.0f), @(0.0f), @(0.0f), nil];
 
     return self;
 }
@@ -82,13 +86,15 @@ static CGFloat    const HistoryDivisor   = 100.0f;
 - (CGFloat) speedHistoryAverage: (CGPoint) velocity
 {
     CGFloat newSpeed = [self speedWithVelocity:velocity];
-    CGFloat speedAverage = (self.speed1 + self.speed2 + self.speed3 + newSpeed)/4;
+    CGFloat speedAverage = newSpeed;
     
-    self.speed5 = self.speed4;
-    self.speed4 = self.speed3;
-    self.speed3 = self.speed2;
-    self.speed2 = self.speed1;
-    self.speed1 = newSpeed;
+    for(NSNumber *num in self.speedArray) {
+        speedAverage += [num floatValue];
+    }
+    
+    speedAverage /= (self.speedArray.count + 1);
+    [self.speedArray insertObject:@(newSpeed) atIndex:0];
+    [self.speedArray removeLastObject];
     
     return speedAverage;
 }

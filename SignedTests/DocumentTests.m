@@ -124,22 +124,24 @@
 //    
 //}
 
-- (void) testCodesDecodesSignatures
-{
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"doc.dat"];
-    Document *doc = [[Document alloc] init];
-    Signature *sig = [[Signature alloc] init];
-    sig.scale = 123412.2342f;
-    doc.signatures = [[NSMutableArray alloc] initWithObjects:sig, nil];
-    
-    [NSKeyedArchiver archiveRootObject:doc toFile:filePath];
-    Document *newDoc = (Document *)[NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    
-    XCTAssertNotNil(newDoc.signatures, @"A new doc array has been created");
-    XCTAssertEqual(doc.signatures.count, newDoc.signatures.count);
-    
-    Signature *newSig = newDoc.signatures[0];
-    XCTAssertEqual(sig.scale, newSig.scale, @"Does not properly encode and decode signature objects");
-}
+
+// No longer valid
+//- (void) testCodesDecodesSignatures
+//{
+//    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"doc.dat"];
+//    Document *doc = [[Document alloc] init];
+//    Signature *sig = [[Signature alloc] init];
+//    sig.scale = 123412.2342f;
+//    doc.signatures = [[NSMutableArray alloc] initWithObjects:sig, nil];
+//    
+//    [NSKeyedArchiver archiveRootObject:doc toFile:filePath];
+//    Document *newDoc = (Document *)[NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+//    
+//    XCTAssertNotNil(newDoc.signatures, @"A new doc array has been created");
+//    XCTAssertEqual(doc.signatures.count, newDoc.signatures.count);
+//    
+//    Signature *newSig = newDoc.signatures[0];
+//    XCTAssertEqual(sig.scale, newSig.scale, @"Does not properly encode and decode signature objects");
+//}
 
 @end

@@ -25,7 +25,6 @@ static NSString * const kSignaturePosition = @"position";
     if (!self) {
         return nil;
     }
-    
     self.page = [decoder decodeIntegerForKey:kPageSigned];
     self.scale = [decoder decodeFloatForKey:kSignatureScale];
     
@@ -42,7 +41,6 @@ static NSString * const kSignaturePosition = @"position";
     [encoder encodeInteger:self.page forKey:kPageSigned];
     [encoder encodeFloat:self.scale forKey:kSignatureScale];
     [encoder encodeCGPoint:self.position forKey:kSignaturePosition];
-    
     [encoder encodeObject:UIImagePNGRepresentation(self.image) forKey:kSignatureImage];
 
 }

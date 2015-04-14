@@ -24,7 +24,7 @@
 @property (nonatomic, strong) PDFWriter *pdfWriter;
 
 
-+(instancetype)sharedManager;
++ (instancetype)sharedManager;
 - (void) establishSignature;
 - (void) sealSignature;
 

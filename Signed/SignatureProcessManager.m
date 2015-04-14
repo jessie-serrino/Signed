@@ -12,7 +12,7 @@
 
 @implementation SignatureProcessManager
 
-+(instancetype)sharedManager
++ (instancetype)sharedManager
 {
     static dispatch_once_t pred;
     static SignatureProcessManager *sharedManager = nil;
@@ -44,7 +44,7 @@
 
 - (void) sealSignature
 {
-    [self.pdfWriter writeSignature:self.signature toDocument:self.document];// withScale:0.1];// atPoint:CGPointMake(30, 30)]; // Check up on this
+    [self.pdfWriter writeSignature:self.signature toDocument:self.document];
     [[DocumentManager sharedManager] replaceDocumentInCoreData:self.document];
 }
 

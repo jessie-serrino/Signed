@@ -19,6 +19,11 @@
 
 @implementation SignatureMaker
 
+- (BOOL) blank
+{
+    return (_lines.count == 0);
+}
+
 - (instancetype) initWithFrame: (CGRect) frame
 {
     self = [super init];
@@ -33,13 +38,6 @@
     self.upperLeftCorner = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height);
     
     return self;
-}
-
-- (void) logBounds
-{
-    NSLog(@"top left: %f, %f", _upperLeftCorner.x, _upperLeftCorner.y);
-    NSLog(@"bottom right: %f, %f", _bottomRightCorner.x, _bottomRightCorner.y);
-
 }
 
 - (NSMutableArray *) lines

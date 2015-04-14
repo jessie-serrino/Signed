@@ -9,12 +9,9 @@
 #import "SignatureViewController.h"
 #import "AddSignatureViewController.h"
 #import "SignatureProcessManager.h"
-#import <pop/POP.h>
+#import "ColorButtonAnimator.h"
 
 static NSString * const SegueToAddSignature = @"SegueToAddSignature";
-static NSInteger const FirstButtonDistance = 150;
-static NSInteger const SecondButtonDistance = 100;
-static NSInteger const ThirdButtonDistance = 50;
 static NSInteger const SpringBounciness = 20.0;
 
 
@@ -23,6 +20,7 @@ static NSInteger const SpringBounciness = 20.0;
 @property (strong, nonatomic) IBOutlet UIButton *clearButton;
 @property (strong, nonatomic) IBOutlet UIView *drawableView;
 @property (strong, nonatomic) IBOutlet UIButton *colorButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
 @property (strong, nonatomic) IBOutlet UIButton *undoButton;
 @property (nonatomic)                  BOOL     colorMenuOpen;
 @property (strong, nonatomic) SignatureMaker *signatureMaker;
@@ -47,7 +45,6 @@ static NSInteger const SpringBounciness = 20.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.colorMenuOpen = NO;
 }
 
@@ -55,6 +52,7 @@ static NSInteger const SpringBounciness = 20.0;
 {
     [super viewWillAppear:animated];
     [self initializeSignatureMaker];
+    self.acceptButton.enabled = !self.signatureMaker.blank;
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -93,6 +91,9 @@ static NSInteger const SpringBounciness = 20.0;
     } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
         [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
     }
+    
+    self.acceptButton.enabled = !self.signatureMaker.blank;
+    
 }
 
 
@@ -140,11 +141,14 @@ static NSInteger const SpringBounciness = 20.0;
     rotateUndo.fromValue = 0;
     rotateUndo.toValue = @(-2*M_PI);
     [self.undoButton.layer pop_addAnimation:rotateUndo forKey:@"rotateUndo"];
+    self.acceptButton.enabled = !self.signatureMaker.blank;
+
     
 }
 - (IBAction)clearButtonPressed:(id)sender {
     [self.signatureMaker clearAll];
     [self.clearButton pop_removeAllAnimations];
+    self.acceptButton.enabled = NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations
@@ -168,6 +172,8 @@ static NSInteger const SpringBounciness = 20.0;
         [self animateCloseColorMenu];
 }
 
+
+/* Animation stuff */
 - (void) animateOpenColorMenu
 {
     [self.colorButton pop_removeAllAnimations];
@@ -177,35 +183,11 @@ static NSInteger const SpringBounciness = 20.0;
     turnButton.springBounciness = SpringBounciness;
     [self.colorButton.layer pop_addAnimation:turnButton forKey:@"rotationButtonOpen"];
     
-    /* Black button */
-    [self.blackCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveBlackLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlackLeft.fromValue = 0;
-    moveBlackLeft.toValue = @(-FirstButtonDistance);
-    moveBlackLeft.springBounciness = SpringBounciness;
-    [self.blackCenterXConstraint pop_addAnimation:moveBlackLeft forKey:@"moveBlackLeft"];
-    
-    
-    /* Blue button */
-    [self.blueCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveBlueLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlueLeft.fromValue = 0;
-    moveBlueLeft.toValue = @(SecondButtonDistance);
-    moveBlueLeft.springBounciness = SpringBounciness;
-    
-    [self.blueCenterXConstraint pop_addAnimation:moveBlueLeft forKey:@"moveBlueLeft"];
-    
-    [self.blueCenterYConstraint pop_removeAllAnimations];
-    
-    
-    /* Red button */
-    
-    [self.redCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveRedLeft = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveRedLeft.fromValue = 0;
-    moveRedLeft.toValue = @(-ThirdButtonDistance);
-    moveRedLeft.springBounciness =SpringBounciness;
-    [self.redCenterXConstraint pop_addAnimation:moveRedLeft forKey:@"moveRedLeft"];
+    [ColorButtonAnimator animateColorButton:self.blackCenterXConstraint withColor:BlackColor opening:YES];
+    [ColorButtonAnimator animateColorButton:self.blueCenterXConstraint withColor:BlueColor opening:YES];
+    [ColorButtonAnimator animateColorButton:self.redCenterXConstraint withColor:RedColor opening:YES];
+
+
 
     self.colorMenuOpen = YES;
 
@@ -222,34 +204,9 @@ static NSInteger const SpringBounciness = 20.0;
     turnButton.toValue = @(2*M_PI);
     [self.colorButton.layer pop_addAnimation:turnButton forKey:@"rotationButtonClosed"];
     
-    
-    /* Black button */
-    [self.blackButton    pop_removeAllAnimations];
-    
-    [self.blackCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveBlackRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlackRight.fromValue = @(-FirstButtonDistance);
-    moveBlackRight.toValue = @(0);
-    [self.blackCenterXConstraint pop_addAnimation:moveBlackRight forKey:@"moveBlackRight"];
-    
-    
-    
-    /* Blue button */
-    [self.blueCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveBlueRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveBlueRight.fromValue = @(SecondButtonDistance);
-    moveBlueRight.toValue = @(0);
-    [self.blueCenterXConstraint pop_addAnimation:moveBlueRight forKey:@"moveBlueRight"];
-    
-    
-    
-    /* Red button */
-    
-    [self.redCenterXConstraint pop_removeAllAnimations];
-    POPSpringAnimation *moveRedRight = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    moveRedRight.fromValue = @(-ThirdButtonDistance);
-    moveRedRight.toValue = @(0);
-    [self.redCenterXConstraint pop_addAnimation:moveRedRight forKey:@"moveRedRight"];
+    [ColorButtonAnimator animateColorButton:self.blackCenterXConstraint withColor:BlackColor opening:NO];
+    [ColorButtonAnimator animateColorButton:self.blueCenterXConstraint withColor:BlueColor opening:NO];
+    [ColorButtonAnimator animateColorButton:self.redCenterXConstraint withColor:RedColor opening:NO];
     
     self.colorMenuOpen = NO;
 }

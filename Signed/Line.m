@@ -80,8 +80,6 @@
     CAShapeLayer *layer = [self layerWithSubline:subline velocity: velocity];
     layer.fillColor = self.penColor.CGColor;
     layer.strokeColor = self.penColor.CGColor;
-
-
     
     [self.sublineLayers addObject:layer];
     
@@ -126,9 +124,6 @@
     layer.lineCap = kCALineCapRound;
     return layer;
 }
-
-
-
 
 - (void) undoLine
 {

@@ -16,13 +16,17 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *selectButton;
 @property (strong, nonatomic) NSMutableIndexSet *selectedItems;
-@property (nonatomic)         BOOL selectionMode;
+@property (nonatomic)         BOOL deletionMode;
 
 @end
 
 static NSString * const SegueToDetailView = @"SegueToDetailView";
 static NSString * const UnselectAllString = @"Unselect All";
 static NSString * const SelectString = @"Select";
+static NSString * const NewDocumentLabel = @"Add From Clipboard";
+static NSString * const NewDocumentImage = @"AddDocument";
+
+
 
 
 
@@ -35,7 +39,7 @@ static NSString * const SelectString = @"Select";
     [self initializeCollectionView];
     [self prepareDocuments];
     self.historyCollectionView.allowsMultipleSelection = NO;
-    self.selectionMode = NO;
+    self.deletionMode = NO;
 
 }
 
@@ -73,7 +77,7 @@ static NSString * const SelectString = @"Select";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!self.selectionMode)
+    if(!self.deletionMode)
     {
         [self openDocumentAtIndexPath:indexPath];
         [collectionView deselectItemAtIndexPath:indexPath animated:NO];
@@ -158,8 +162,8 @@ static NSString * const SelectString = @"Select";
         self.trashButton.enabled = YES;
     }
     
-    self.selectionMode = !self.selectionMode;
-    self.historyCollectionView.allowsMultipleSelection = self.selectionMode;
+    self.deletionMode = !self.deletionMode;
+    self.historyCollectionView.allowsMultipleSelection = self.deletionMode;
 }
 
 - (void) createDocumentFromClipboard {
@@ -175,8 +179,8 @@ static NSString * const SelectString = @"Select";
 
     if(indexPath.item == 0)
     {
-        cell.cellImageView.image = [UIImage imageNamed:@"AddDocument"];
-        cell.cellLabel.text = @"From Clipboard";
+        cell.cellImageView.image = [UIImage imageNamed:NewDocumentImage];
+        cell.cellLabel.text = NewDocumentLabel;
     }
     else
         [self prepareCell:cell atIndexPath:indexPath];
@@ -194,6 +198,9 @@ static NSString * const SelectString = @"Select";
     cell.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
     cell.layer.shadowRadius = 2.0f;
     cell.layer.shadowOpacity = 0.3f;
+    
+    if(!self.deletionMode)
+        cell.checkImageView.hidden = YES;
 }
 
 

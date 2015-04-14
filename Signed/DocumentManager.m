@@ -52,6 +52,23 @@
     [self addDocument:document];
 }
 
+- (void) createDocumentFromClipboard
+{
+    UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+    
+        UIImage *imageToCreate = [clipboard image];
+        if(imageToCreate)
+        {
+            Document *document = [Document documentFromImage:imageToCreate];
+            [self addDocument: document];
+        }
+        else
+        {
+            Document *document = [Document documentFromImage:[UIImage imageNamed:@"AddDocument"]];
+            [self addDocument:document];
+        }
+}
+
 - (void) addDocument: (Document *) document
 {
     [self addDocumentToCoreData:document];
@@ -60,17 +77,6 @@
     [self loadDocument:document];
     
     [self save];
-}
-
-- (void) createDocumentFromClipboard
-{
-    UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
-    
-    UIImage *imageToCreate = [clipboard image];
-    Document *document = [Document documentFromUIImage:imageToCreate];
-    
-    [self addDocument: document];
-    
 }
 
 - (void) addDocumentToCoreData: (Document *) document
@@ -91,6 +97,11 @@
         FileEntity *file = (FileEntity *) [self.managedObjectContext objectWithURI:document.fileLocation];
         file.data = document.fileData;
     }
+}
+
+-(void) removeDocumentInCoreData: (Document *) document
+{
+    // IMPLEMENT
 }
 
 - (void) loadDocument: (Document *) document
@@ -134,9 +145,12 @@
 
 - (void) deleteDocumentsWithIndices: (NSIndexSet *) indices
 {
-    [self.documents removeObjectsAtIndexes:indices];
+    NSArray *documentsToDelete = [self.documents objectsAtIndexes:indices];
+    for(Document *doc in documentsToDelete)
+        [self removeDocumentInCoreData:doc];
     
-    // Remove from CoreData
+    [self.documents removeObjectsInArray:documentsToDelete];
+    [self save];
 }
 
 

@@ -28,7 +28,6 @@ typedef void (^CompletionBlock)(NSArray *);
 - (void) loadDocument: (Document *) document;
 - (void) replaceDocumentInCoreData: (Document *) document;
 - (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
-
 - (void) deleteDocumentsWithIndices: (NSIndexSet *) indices;
 
 

@@ -33,12 +33,11 @@ static NSString * const kSignaturesArray = @"signatures";
     {
         _dateCreated = [NSDate date];
         _dateModified = _dateCreated;
-
     }
     return self;
 }
 
-+ (instancetype) documentFromUIImage: (UIImage *) image
++ (instancetype) documentFromImage: (UIImage *) image
 {
     NSData *fileData = [PDFWriter pdfFromImage:image];
     if(!image || !fileData)
@@ -49,7 +48,6 @@ static NSString * const kSignaturesArray = @"signatures";
     Document *document = [[Document alloc] init];
     document.fileData = fileData;
     document.numberOfPages = 1;
-    document.signatures = [[NSMutableArray alloc] init];
     document.documentThumbnail = [document generateDocumentThumbnail];
     document.fileName = [document.dateCreated description];
     
@@ -65,7 +63,6 @@ static NSString * const kSignaturesArray = @"signatures";
     Document *document = [[Document alloc] init];
     document.fileData = fileData;
     document.numberOfPages = [PDFView pageCountForURL:documentURL];
-    document.signatures = [[NSMutableArray alloc] init];
     document.documentThumbnail = [document generateDocumentThumbnail];
     document.fileName = [document fileNameFromURL: documentURL];
     
@@ -134,7 +131,6 @@ static NSString * const kSignaturesArray = @"signatures";
     NSData *thumbnailData = [decoder decodeObjectForKey:kDocumentThumbnail];
     self.documentThumbnail = [UIImage imageWithData:thumbnailData];
     
-    self.signatures = [decoder decodeObjectForKey:kSignaturesArray];
     
     
     return self;
@@ -150,8 +146,6 @@ static NSString * const kSignaturesArray = @"signatures";
     
     [encoder encodeInteger:self.numberOfPages forKey:kNumberOfPages];
     [encoder encodeObject:UIImagePNGRepresentation(self.documentThumbnail) forKey:kDocumentThumbnail];
-
-    [encoder encodeObject:self.signatures forKey:kSignaturesArray];
 }
 
 

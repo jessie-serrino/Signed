@@ -21,7 +21,6 @@
 @property (nonatomic)         NSInteger numberOfPages;
 
 @property (nonatomic, strong) UIImage *documentThumbnail;
-@property (nonatomic, strong) NSMutableArray *signatures;
 
 
 
@@ -29,7 +28,7 @@
 
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;
-+ (instancetype) documentFromUIImage: (UIImage *) image;
++ (instancetype) documentFromImage: (UIImage *) image;
 - (void) updateDocument;
 - (NSData *) generateDocumentPDF;
 - (UIImage *) pageImageWithPageNumber: (NSInteger) pageNumber;
