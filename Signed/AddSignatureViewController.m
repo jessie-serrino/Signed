@@ -61,11 +61,6 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
 - (void) scaleImageView: (CGFloat) scale
 {
     self.signature.scale = scale;

@@ -24,7 +24,7 @@
 
 
 
-@property (nonatomic, strong) NSData  *fileData; // To remove
+@property (nonatomic, strong) NSData  *fileData;
 
 
 + (instancetype) documentFromURL: (NSURL *) documentURL;

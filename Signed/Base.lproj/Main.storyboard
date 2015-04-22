@@ -52,7 +52,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Documents" id="twq-ic-NcD">
-                        <barButtonItem key="leftBarButtonItem" title="Select" id="d5H-W3-Jos">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="d5H-W3-Jos">
                             <connections>
                                 <action selector="selectButtonPressed:" destination="vXZ-lx-hvc" id="OM1-8d-uje"/>
                             </connections>
@@ -80,6 +80,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UMX-Jb-qxr" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mqn-3F-fRj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -131,7 +132,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXq-yA-hMD">
-                                <rect key="frame" x="168" y="537" width="77" height="77"/>
+                                <rect key="frame" x="168" y="738" width="77" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="YMQ-a8-4KX"/>
                                     <constraint firstAttribute="height" constant="77" id="euj-g8-NnX"/>
@@ -194,7 +195,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="HDj-Df-iF0" secondAttribute="trailing" constant="5" id="l6t-1p-r5U"/>
                             <constraint firstItem="7XY-uz-tT8" firstAttribute="top" secondItem="HDj-Df-iF0" secondAttribute="bottom" id="wMp-YT-9Ug"/>
                             <constraint firstAttribute="centerX" secondItem="NeH-F2-a5a" secondAttribute="centerX" id="y8K-fK-ADX"/>
-                            <constraint firstItem="rXq-yA-hMD" firstAttribute="centerY" secondItem="HDj-Df-iF0" secondAttribute="bottom" id="zc6-28-5P5"/>
+                            <constraint firstItem="rXq-yA-hMD" firstAttribute="centerY" secondItem="HDj-Df-iF0" secondAttribute="bottom" constant="200" id="zc6-28-5P5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hMj-pb-vvo">
@@ -216,6 +217,7 @@
                         <outlet property="footerLabel" destination="NeH-F2-a5a" id="S1b-9g-WTJ"/>
                         <outlet property="leftArrowButton" destination="1J2-Ap-vMi" id="iFR-UN-bpj"/>
                         <outlet property="rightArrowButton" destination="7r2-QK-vQw" id="lME-mT-eud"/>
+                        <outlet property="signButtonAlignment" destination="zc6-28-5P5" id="SBY-lx-gip"/>
                         <segue destination="mlk-CH-90W" kind="presentation" identifier="SegueToSignatureView" id="9LG-qk-geX"/>
                     </connections>
                 </viewController>
@@ -507,7 +509,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2490" y="380"/>
+            <point key="canvasLocation" x="2640" y="698"/>
         </scene>
         <!--Add Signature View Controller-->
         <scene sceneID="qSN-ra-ZSS">

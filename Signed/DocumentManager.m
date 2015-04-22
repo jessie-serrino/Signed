@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock
+- (void) fetchDocumentsWithCompletion: (ArrayCompletionBlock) completionBlock
 {
     [self unarchiveDocuments];
     completionBlock(self.documents);
@@ -74,7 +74,7 @@
     [self addDocumentToCoreData:document];
     [self.documents addObject:document];
     self.currentDocument = document;
-    [self loadDocument:document];
+    [self loadDocument:document withCompletion:^{  }];
     
     [self save];
 }
@@ -104,12 +104,13 @@
     // IMPLEMENT
 }
 
-- (void) loadDocument: (Document *) document
+- (void) loadDocument: (Document *) document withCompletion: (VoidCompletionBlock) completion
 {
     if(document.fileLocation)
     {
         FileEntity *file = (FileEntity *) [self.managedObjectContext objectWithURI:document.fileLocation];
         document.fileData = file.data;
+        completion();
     }
     self.currentDocument = document;
 }

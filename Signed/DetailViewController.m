@@ -11,10 +11,11 @@
 
 #import "DocumentManager.h"
 #import "Document.h"
+#import "SignButtonAnimator.h"
 
 static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
-@interface DetailViewController ()
+@interface DetailViewController () <UINavigationControllerDelegate>
 
 @property (nonatomic, strong) Document *document;
 @property (strong, nonatomic) IBOutlet UIImageView *documentImage;
@@ -22,6 +23,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 @property (strong, nonatomic) IBOutlet UIButton *rightArrowButton;
 @property (nonatomic)   NSInteger currentPageNumber;
 @property (strong, nonatomic) IBOutlet UILabel *footerLabel;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *signButtonAlignment;
 
 @end
 
@@ -36,18 +38,30 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     self.documentImage.layer.shadowOffset = CGSizeMake(0, 2.0f);
     self.documentImage.layer.shadowRadius = 2.0f;
     self.documentImage.layer.shadowOpacity = 0.3f;
+    self.navigationController.delegate = self;
 }
+
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [SignButtonAnimator animateSignButton:self.signButtonAlignment appearing:NO];
+}
+
+
 
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [SignButtonAnimator animateSignButton:self.signButtonAlignment appearing:YES];
+
     _document = [DocumentManager sharedManager].currentDocument;
+    
     self.title = self.document.fileName;
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
 
     [self configureVisuals];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -116,9 +130,9 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController
 {
-    return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationLandscapeRight;
 }
 - (IBAction)sendImage:(id)sender {
     

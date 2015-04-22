@@ -10,7 +10,7 @@
 #import "DocumentCollectionViewCell.h"
 #import "DocumentManager.h"
 
-@interface HistoryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface HistoryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *historyCollectionView;
 @property (strong, nonatomic) NSArray *documents;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
@@ -107,7 +107,10 @@ static NSString * const NewDocumentImage = @"AddDocument";
     if(indexPath.item == 0)
         [self createDocumentFromClipboard];
     else {
-        [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item - 1]];
+        [[DocumentManager sharedManager] loadDocument: (Document *) self.documents[indexPath.item - 1]
+                                       withCompletion:^{
+                                                // Dismiss the loading screen
+            }];
         [self performSegueWithIdentifier:SegueToDetailView sender:self];
     }
 }
@@ -167,9 +170,18 @@ static NSString * const NewDocumentImage = @"AddDocument";
 }
 
 - (void) createDocumentFromClipboard {
-    [[DocumentManager sharedManager] createDocumentFromClipboard];
     
-    [self performSegueWithIdentifier:SegueToDetailView sender:self];
+    UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"Hey" message:@"Do you want to import an image from your clipboard?" preferredStyle:UIAlertControllerStyleAlert];
+    [ac addAction:[UIAlertAction actionWithTitle:@"Sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * funny)
+    {
+        [[DocumentManager sharedManager] createDocumentFromClipboard];
+        [self performSegueWithIdentifier:SegueToDetailView sender:self];
+    }]];
+    [ac addAction:[UIAlertAction actionWithTitle:@"Nope" style:UIAlertActionStyleDefault handler:^(UIAlertAction * funny)
+                   {
+
+                   }]];
+    [self presentViewController:ac animated:YES completion:nil];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:

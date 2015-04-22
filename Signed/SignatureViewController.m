@@ -92,6 +92,9 @@ static NSInteger const SpringBounciness = 20.0;
         [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
     }
     
+    if(self.colorMenuOpen)
+        [self animateCloseColorMenu];
+    
     self.acceptButton.enabled = !self.signatureMaker.blank;
     
 }
@@ -186,12 +189,8 @@ static NSInteger const SpringBounciness = 20.0;
     [ColorButtonAnimator animateColorButton:self.blackCenterXConstraint withColor:BlackColor opening:YES];
     [ColorButtonAnimator animateColorButton:self.blueCenterXConstraint withColor:BlueColor opening:YES];
     [ColorButtonAnimator animateColorButton:self.redCenterXConstraint withColor:RedColor opening:YES];
-
-
-
+    
     self.colorMenuOpen = YES;
-
-
 }
 
 

@@ -29,11 +29,9 @@
     self = [super init];
         
     self.frame = frame;
-    self.penPreference = FountainPen;
+    self.penPreference = FeltTipPen;
     self.penColor = [UIColor blackColor];
-    
-    //self.backgroundColor = [UIColor redColor].CGColor;
-    
+        
     self.bottomRightCorner = CGPointMake(0, 0);
     self.upperLeftCorner = CGPointMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height);
     

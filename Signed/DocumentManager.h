@@ -11,7 +11,8 @@
 #import "Document.h"
 #import "SignatureMaker.h"
 
-typedef void (^CompletionBlock)(NSArray *);
+typedef void (^ArrayCompletionBlock)(NSArray *);
+typedef void (^VoidCompletionBlock)();
 
 @interface DocumentManager : NSObject
 
@@ -25,9 +26,9 @@ typedef void (^CompletionBlock)(NSArray *);
 - (void) createDocumentFromClipboard;
 
 - (void) save;
-- (void) loadDocument: (Document *) document;
+- (void) loadDocument: (Document *) document withCompletion: (VoidCompletionBlock) completion;
 - (void) replaceDocumentInCoreData: (Document *) document;
-- (void) fetchDocumentsWithCompletion: (CompletionBlock) completionBlock;
+- (void) fetchDocumentsWithCompletion: (ArrayCompletionBlock) completionBlock;
 - (void) deleteDocumentsWithIndices: (NSIndexSet *) indices;
 
 
