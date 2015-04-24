@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Signature.h"
+#import "MasterViewController.h"
 
-@interface AddSignatureViewController : UIViewController
+
+@interface AddSignatureViewController : MasterViewController
 
 @end

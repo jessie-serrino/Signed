@@ -8,7 +8,7 @@
 
 #import "LineSmoothHelper.h"
 
-static NSUInteger const MinimumQuadraticDistance = 5.0f;
+static NSUInteger const MinimumQuadraticDistance = 10.0f;
 static NSUInteger const MaximumLineWidth = 8.0f;
 static NSUInteger const MaximumLineWidthFountain = 7.0f;
 static NSUInteger const MinimumLineWidth = 1.0f;
@@ -16,14 +16,8 @@ static NSUInteger const StandardLineWidth = 5.0f;
 static CGFloat    const HistoryDivisor   = 100.0f;
 
 @interface LineSmoothHelper ()
-//@property (nonatomic) CGFloat speed1;
-//@property (nonatomic) CGFloat speed2;
-//@property (nonatomic) CGFloat speed3;
-//@property (nonatomic) CGFloat speed4;
-//@property (nonatomic) CGFloat speed5;
 
 @property (nonatomic) NSMutableArray *speedArray;
-
 
 @end
 

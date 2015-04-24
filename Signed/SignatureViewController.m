@@ -45,12 +45,16 @@ static NSInteger const SpringBounciness = 20.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.orientation = UIInterfaceOrientationLandscapeLeft;
+
     self.colorMenuOpen = NO;
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self initializeSignatureMaker];
     self.acceptButton.enabled = !self.signatureMaker.blank;
 }
@@ -60,6 +64,13 @@ static NSInteger const SpringBounciness = 20.0;
     [super viewDidAppear:animated];
     [self animateOpenColorMenu];
 }
+
+
+//- (void) rotateToOrientation: (UIInterfaceOrientation) orientation
+//{
+//    NSNumber *orientationNumber = [NSNumber numberWithInteger:orientation];
+//    [[UIDevice currentDevice] setValue:orientationNumber forKey:@"orientation"];
+//}
 
 - (void) initializeSignatureMaker
 {
@@ -99,12 +110,11 @@ static NSInteger const SpringBounciness = 20.0;
     
 }
 
-
-- (IBAction)acceptSignature:(UIBarButtonItem *)sender {
-    
-    
+- (IBAction)acceptSignature:(UIButton *)sender {
     [self performSegueWithIdentifier:SegueToAddSignature sender:self];
+
 }
+
 - (IBAction)cancelSignature:(UIBarButtonItem *)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -160,7 +170,6 @@ static NSInteger const SpringBounciness = 20.0;
 }
 
 
-
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -209,6 +218,7 @@ static NSInteger const SpringBounciness = 20.0;
     
     self.colorMenuOpen = NO;
 }
+
 
 
 

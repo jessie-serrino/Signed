@@ -35,6 +35,8 @@ static NSString * const NewDocumentImage = @"AddDocument";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.orientation = UIInterfaceOrientationPortrait;
+
     
     [self initializeCollectionView];
     [self prepareDocuments];
@@ -58,8 +60,10 @@ static NSString * const NewDocumentImage = @"AddDocument";
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
     [self.historyCollectionView reloadData];
     [self.historyCollectionView layoutIfNeeded];
+
 }
 
 - (void) initializeCollectionView
@@ -216,11 +220,6 @@ static NSString * const NewDocumentImage = @"AddDocument";
 }
 
 
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

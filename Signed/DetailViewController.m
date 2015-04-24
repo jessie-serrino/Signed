@@ -15,7 +15,7 @@
 
 static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
-@interface DetailViewController () <UINavigationControllerDelegate>
+@interface DetailViewController ()
 
 @property (nonatomic, strong) Document *document;
 @property (strong, nonatomic) IBOutlet UIImageView *documentImage;
@@ -31,6 +31,8 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.orientation = UIInterfaceOrientationPortrait;
+    
     // Do any additional setup after loading the view.
     self.currentPageNumber = 1;
     
@@ -38,7 +40,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     self.documentImage.layer.shadowOffset = CGSizeMake(0, 2.0f);
     self.documentImage.layer.shadowRadius = 2.0f;
     self.documentImage.layer.shadowOpacity = 0.3f;
-    self.navigationController.delegate = self;
 }
 
 
@@ -47,7 +48,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     [super viewWillDisappear:animated];
     [SignButtonAnimator animateSignButton:self.signButtonAlignment appearing:NO];
 }
-
 
 
 - (void) viewDidAppear:(BOOL)animated
@@ -125,15 +125,8 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 {
     [self performSegueWithIdentifier:SegueToSignatureView sender:self];
 }
-- (IBAction)backButtonPressed:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
-- (NSUInteger)navigationControllerSupportedInterfaceOrientations:(UINavigationController *)navigationController
-{
-    return UIInterfaceOrientationLandscapeRight;
-}
+
 - (IBAction)sendImage:(id)sender {
     
     NSURL *location = [[DocumentManager sharedManager] saveToTemporaryFolder];
@@ -166,6 +159,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     manager.pageNumber = self.currentPageNumber;
     manager.document = self.document;
 }
+
 
 
 @end

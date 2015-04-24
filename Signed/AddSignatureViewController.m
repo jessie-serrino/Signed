@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.orientation = UIInterfaceOrientationPortrait;
     
     SignatureProcessManager *signatureProcessManager = [SignatureProcessManager sharedManager];
     
@@ -35,6 +35,7 @@
     [self configureFooter];
 
 }
+
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -78,10 +79,7 @@
     self.footerLabel.text = [NSString stringWithFormat:@"%li of %li", (unsigned long) self.signature.page, (unsigned long) [SignatureProcessManager sharedManager].document.numberOfPages];
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
+
 
 - (IBAction)tapToAddSignature:(UIPanGestureRecognizer *)sender {
     SignatureProcessManager *spm = [SignatureProcessManager sharedManager];

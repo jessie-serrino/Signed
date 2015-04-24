@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : MasterViewController
 
 @end

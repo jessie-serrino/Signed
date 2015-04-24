@@ -32,6 +32,8 @@
 		916D582E1AB9E6F600069815 /* UIBezierPath+Subline.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D582D1AB9E6F600069815 /* UIBezierPath+Subline.m */; };
 		916D58311AB9E70200069815 /* SignatureMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D58301AB9E70200069815 /* SignatureMaker.m */; };
 		916EE6C71AC17CA400E8303E /* DocumentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 916EE6C61AC17CA400E8303E /* DocumentTests.m */; };
+		9171816E1AE7DEC7009C3967 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9171816D1AE7DEC7009C3967 /* NavigationViewController.m */; };
+		917181711AE7E30A009C3967 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917181701AE7E30A009C3967 /* MasterViewController.m */; };
 		91DFCFEB1AC1D8F50005D4E0 /* SignatureProcessManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DFCFEA1AC1D8F50005D4E0 /* SignatureProcessManager.m */; };
 		91E505A81ABEDD6F0063DA7B /* Document.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505A71ABEDD6F0063DA7B /* Document.m */; };
 		91E505AB1ABF3B370063DA7B /* Signature.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E505AA1ABF3B370063DA7B /* Signature.m */; };
@@ -106,6 +108,10 @@
 		916D582F1AB9E70200069815 /* SignatureMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureMaker.h; sourceTree = "<group>"; };
 		916D58301AB9E70200069815 /* SignatureMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureMaker.m; sourceTree = "<group>"; };
 		916EE6C61AC17CA400E8303E /* DocumentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentTests.m; sourceTree = "<group>"; };
+		9171816C1AE7DEC7009C3967 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		9171816D1AE7DEC7009C3967 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		9171816F1AE7E30A009C3967 /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		917181701AE7E30A009C3967 /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		91CAE9761AC739DB0070391A /* Signed.profdata */ = {isa = PBXFileReference; lastKnownFileType = file; path = Signed.profdata; sourceTree = "<group>"; };
 		91DFCFE91AC1D8F50005D4E0 /* SignatureProcessManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureProcessManager.h; sourceTree = "<group>"; };
 		91DFCFEA1AC1D8F50005D4E0 /* SignatureProcessManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureProcessManager.m; sourceTree = "<group>"; };
@@ -171,12 +177,8 @@
 		912B5AE01ABED892000B044D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				915F7C0E1AC1B39E004C1E47 /* FileEntity.h */,
-				915F7C0F1AC1B39E004C1E47 /* FileEntity.m */,
-				91E505A61ABEDD6F0063DA7B /* Document.h */,
-				91E505A71ABEDD6F0063DA7B /* Document.m */,
-				91E505A91ABF3B370063DA7B /* Signature.h */,
-				91E505AA1ABF3B370063DA7B /* Signature.m */,
+				916D58251AB9E6B000069815 /* Signature */,
+				917181751AE7EDA9009C3967 /* Document Management */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -224,11 +226,11 @@
 		916D57F31AB9E03400069815 /* Signed */ = {
 			isa = PBXGroup;
 			children = (
+				917181731AE7ED44009C3967 /* Base */,
+				916D581D1AB9E07000069815 /* View Controllers */,
 				911E798A1AC8A33B004DB7F6 /* Animators */,
 				91E505AC1ABF41CD0063DA7B /* Utilities */,
 				912B5AE01ABED892000B044D /* Models */,
-				916D58251AB9E6B000069815 /* Signature */,
-				916D581D1AB9E07000069815 /* View Controllers */,
 				916D57F81AB9E03400069815 /* AppDelegate.h */,
 				916D57F91AB9E03400069815 /* AppDelegate.m */,
 				916D58041AB9E03400069815 /* Images.xcassets */,
@@ -270,9 +272,8 @@
 		916D581D1AB9E07000069815 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				916D58011AB9E03400069815 /* Main.storyboard */,
-				916D581F1AB9E10300069815 /* Detail */,
 				916D581E1AB9E0CC00069815 /* History */,
+				916D581F1AB9E10300069815 /* Detail */,
 				915EF55E1ABAE57F00EFDA67 /* Signature */,
 				912B5ADF1ABED879000B044D /* Add */,
 			);
@@ -311,6 +312,47 @@
 				916D58291AB9E6EB00069815 /* LineSmoothHelper.m */,
 			);
 			name = Signature;
+			sourceTree = "<group>";
+		};
+		917181721AE7E3CC009C3967 /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				9171816F1AE7E30A009C3967 /* MasterViewController.h */,
+				917181701AE7E30A009C3967 /* MasterViewController.m */,
+			);
+			name = Master;
+			sourceTree = "<group>";
+		};
+		917181731AE7ED44009C3967 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				916D58011AB9E03400069815 /* Main.storyboard */,
+				917181741AE7ED54009C3967 /* Navigation Controller */,
+				917181721AE7E3CC009C3967 /* Master */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		917181741AE7ED54009C3967 /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9171816C1AE7DEC7009C3967 /* NavigationViewController.h */,
+				9171816D1AE7DEC7009C3967 /* NavigationViewController.m */,
+			);
+			name = "Navigation Controller";
+			sourceTree = "<group>";
+		};
+		917181751AE7EDA9009C3967 /* Document Management */ = {
+			isa = PBXGroup;
+			children = (
+				915F7C0E1AC1B39E004C1E47 /* FileEntity.h */,
+				915F7C0F1AC1B39E004C1E47 /* FileEntity.m */,
+				91E505A61ABEDD6F0063DA7B /* Document.h */,
+				91E505A71ABEDD6F0063DA7B /* Document.m */,
+				91E505A91ABF3B370063DA7B /* Signature.h */,
+				91E505AA1ABF3B370063DA7B /* Signature.m */,
+			);
+			name = "Document Management";
 			sourceTree = "<group>";
 		};
 		91CAE9751AC739DB0070391A /* OptimizationProfiles */ = {
@@ -531,7 +573,9 @@
 				916D582A1AB9E6EB00069815 /* Line.m in Sources */,
 				915F7C101AC1B39E004C1E47 /* FileEntity.m in Sources */,
 				915F7C131AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m in Sources */,
+				9171816E1AE7DEC7009C3967 /* NavigationViewController.m in Sources */,
 				916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */,
+				917181711AE7E30A009C3967 /* MasterViewController.m in Sources */,
 				916D57F71AB9E03400069815 /* main.m in Sources */,
 				915382CD1ADED96800488489 /* SignButtonAnimator.m in Sources */,
 				915E8C261AC30459005A1F9B /* PDFWriter.m in Sources */,

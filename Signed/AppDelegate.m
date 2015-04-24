@@ -25,6 +25,7 @@ static NSString * const SegueToDetailView = @"SegueToDetailView";
     [DocumentManager sharedManager].managedObjectContext = self.managedObjectContext;
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    
     return YES;
 }
 

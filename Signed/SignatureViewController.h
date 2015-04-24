@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SignatureProcessManager.h"
+#import "MasterViewController.h"
 
-@interface SignatureViewController : UIViewController
+
+
+@interface SignatureViewController : MasterViewController
 
 
 
