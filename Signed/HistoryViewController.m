@@ -52,6 +52,7 @@ static NSString * const NewDocumentImage = @"AddDocument";
          _documents = array;
          [self.historyCollectionView reloadData];
          [self.historyCollectionView layoutIfNeeded];
+         self.selectButton.enabled = (array.count > 0);
      }];
 }
 

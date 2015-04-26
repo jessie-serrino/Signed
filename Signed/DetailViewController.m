@@ -24,6 +24,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
 @property (nonatomic)   NSInteger currentPageNumber;
 @property (strong, nonatomic) IBOutlet UILabel *footerLabel;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *signButtonAlignment;
+@property (strong, nonatomic) IBOutlet UIView *holderView;
 
 @end
 
@@ -61,6 +62,7 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     self.documentImage.image = [self.document pageImageWithPageNumber:self.currentPageNumber];
 
     [self configureVisuals];
+
 }
 
 - (void)didReceiveMemoryWarning {

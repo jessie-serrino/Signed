@@ -18,12 +18,14 @@ static NSInteger const SpringBounciness = 20.0;
 
 @interface SignatureViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *clearButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
 @property (strong, nonatomic) IBOutlet UIView *drawableView;
 @property (strong, nonatomic) IBOutlet UIButton *colorButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
+
 @property (strong, nonatomic) IBOutlet UIButton *undoButton;
 @property (nonatomic)                  BOOL     colorMenuOpen;
 @property (strong, nonatomic) SignatureMaker *signatureMaker;
+/* CONSTRAINTS */
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *redCenterXConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *redCenterYConstraint;
@@ -35,7 +37,6 @@ static NSInteger const SpringBounciness = 20.0;
 @property (strong, nonatomic) IBOutlet UIButton *blueButton;
 @property (strong, nonatomic) IBOutlet UIButton *redButton;
 
-/* CONSTRAINTS */
 
 
 
@@ -56,7 +57,7 @@ static NSInteger const SpringBounciness = 20.0;
     [super viewWillAppear:animated];
     
     [self initializeSignatureMaker];
-    self.acceptButton.enabled = !self.signatureMaker.blank;
+    [self.acceptButton setEnabled: !self.signatureMaker.blank];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -109,15 +110,8 @@ static NSInteger const SpringBounciness = 20.0;
     self.acceptButton.enabled = !self.signatureMaker.blank;
     
 }
-
-- (IBAction)acceptSignature:(UIButton *)sender {
+- (IBAction)acceptSignature:(UIBarButtonItem *)sender {
     [self performSegueWithIdentifier:SegueToAddSignature sender:self];
-
-}
-
-- (IBAction)cancelSignature:(UIBarButtonItem *)sender {
-
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)feltTipButtonTouched:(id)sender

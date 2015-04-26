@@ -22,12 +22,30 @@
 
 @property (nonatomic)         PenType           penPreference;
 @property (nonatomic, strong) UIColor           *penColor;
+@property (nonatomic, strong) UIColor           *altcolor;
+
 
 
 @end
 
 @implementation Line
 
+
+-  (UIColor*) altcolor
+{
+    if(!_altcolor)
+    {
+        _altcolor = [UIColor blackColor];
+    }
+    else
+    {
+        if(_altcolor == [UIColor blackColor])
+            _altcolor = [UIColor blueColor];
+        else
+            _altcolor = [UIColor blackColor];
+    }
+    return _altcolor;
+}
 
 - (instancetype) initWithStartingPoint: (CGPoint) point andPenPreference: (PenType) penPreference andColor: (UIColor *) color
 {
@@ -78,8 +96,9 @@
     
     
     CAShapeLayer *layer = [self layerWithSubline:subline velocity: velocity];
-    layer.fillColor = self.penColor.CGColor;
-    layer.strokeColor = self.penColor.CGColor;
+    UIColor *color = self.altcolor;
+    layer.fillColor = color.CGColor;
+    layer.strokeColor = color.CGColor;
     
     [self.sublineLayers addObject:layer];
     
@@ -92,8 +111,9 @@
     CAShapeLayer *layer = [self layerWithSubline:subline velocity:velocity];
     [self.sublineLayers addObject:layer];
     
-    layer.fillColor = self.penColor.CGColor;
-    layer.strokeColor = self.penColor.CGColor;
+    UIColor *color = self.altcolor;
+    layer.fillColor = color.CGColor;
+    layer.strokeColor = color.CGColor;
 
     
     return layer;

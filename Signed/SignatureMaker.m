@@ -19,6 +19,7 @@
 
 @implementation SignatureMaker
 
+
 - (BOOL) blank
 {
     return (_lines.count == 0);

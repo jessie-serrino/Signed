@@ -103,7 +103,8 @@
 {
     // Theoretically, it works
     FileEntity *file = (FileEntity *) [self.managedObjectContext objectWithURI:document.fileLocation];
-    [self.managedObjectContext deleteObject:file];
+    if(file)
+        [self.managedObjectContext deleteObject:file];
 }
 
 - (void) loadDocument: (Document *) document withCompletion: (VoidCompletionBlock) completion
