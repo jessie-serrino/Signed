@@ -22,6 +22,7 @@
 		915F7C101AC1B39E004C1E47 /* FileEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 915F7C0F1AC1B39E004C1E47 /* FileEntity.m */; };
 		915F7C131AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m in Sources */ = {isa = PBXBuildFile; fileRef = 915F7C121AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m */; };
 		9161608F1B0D54D8005367CE /* ScreenShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9161608E1B0D54D8005367CE /* ScreenShot.png */; };
+		916160911B0D571A005367CE /* ScreenShot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 916160901B0D571A005367CE /* ScreenShot1.png */; };
 		916D57F71AB9E03400069815 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D57F61AB9E03400069815 /* main.m */; };
 		916D57FA1AB9E03400069815 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D57F91AB9E03400069815 /* AppDelegate.m */; };
 		916D57FD1AB9E03400069815 /* Signed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 916D57FB1AB9E03400069815 /* Signed.xcdatamodeld */; };
@@ -94,6 +95,7 @@
 		915F7C111AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+FetchedObjectWithURI.h"; sourceTree = "<group>"; };
 		915F7C121AC1B8EC004C1E47 /* NSManagedObjectContext+FetchedObjectWithURI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+FetchedObjectWithURI.m"; sourceTree = "<group>"; };
 		9161608E1B0D54D8005367CE /* ScreenShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenShot.png; sourceTree = "<group>"; };
+		916160901B0D571A005367CE /* ScreenShot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenShot1.png; sourceTree = "<group>"; };
 		916D57F11AB9E03400069815 /* Signed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Signed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		916D57F51AB9E03400069815 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		916D57F61AB9E03400069815 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -227,6 +229,15 @@
 			name = "Document Cell";
 			sourceTree = "<group>";
 		};
+		916160921B0D5725005367CE /* ScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+				9161608E1B0D54D8005367CE /* ScreenShot.png */,
+				916160901B0D571A005367CE /* ScreenShot1.png */,
+			);
+			name = ScreenShots;
+			sourceTree = "<group>";
+		};
 		916D57E81AB9E03400069815 = {
 			isa = PBXGroup;
 			children = (
@@ -251,7 +262,7 @@
 		916D57F31AB9E03400069815 /* Signed */ = {
 			isa = PBXGroup;
 			children = (
-				9161608E1B0D54D8005367CE /* ScreenShot.png */,
+				916160921B0D5725005367CE /* ScreenShots */,
 				916D58011AB9E03400069815 /* Main.storyboard */,
 				917181731AE7ED44009C3967 /* Base */,
 				916D581D1AB9E07000069815 /* View Controllers */,
@@ -508,6 +519,7 @@
 				916D58031AB9E03400069815 /* Main.storyboard in Resources */,
 				915EF5631ABAE87500EFDA67 /* DocumentCollectionViewCell.xib in Resources */,
 				9161608F1B0D54D8005367CE /* ScreenShot.png in Resources */,
+				916160911B0D571A005367CE /* ScreenShot1.png in Resources */,
 				916D58081AB9E03400069815 /* LaunchScreen.xib in Resources */,
 				916D58051AB9E03400069815 /* Images.xcassets in Resources */,
 			);
