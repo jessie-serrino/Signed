@@ -43,7 +43,6 @@ static NSString * const SegueToSignatureView = @"SegueToSignatureView";
     self.documentImage.layer.shadowOpacity = 0.3f;
 }
 
-
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];

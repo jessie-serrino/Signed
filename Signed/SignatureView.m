@@ -24,7 +24,6 @@ static float clearColor[4] = { 1, 1, 1, 0 };
 // Maximum verteces in signature
 static const int maxLines = MAXIMUM_LINES;
 
-
 // Append vertex to array buffer
 static inline void addVertex(uint *length, SignaturePoint v) {
     if ((*length) >= maxLength) {
@@ -62,7 +61,7 @@ static GLKVector3 perpendicular(SignaturePoint p1, SignaturePoint p2) {
     return ret;
 }
 
-static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVector3 color) {
+static SignaturePoint LocationInGL(CGPoint viewPoint, CGRect bounds, GLKVector3 color) {
     
     return (SignaturePoint) {
         {
@@ -76,8 +75,6 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
 
 
 @interface SignatureView () {
-    
-    
     Line *lines;
     uint currentLine;
     
@@ -120,16 +117,6 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
         pan.cancelsTouchesInView = YES;
         [self addGestureRecognizer:pan];
         
-        // For dotting your i's
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-        tap.cancelsTouchesInView = YES;
-        [self addGestureRecognizer:tap];
-        
-        // Erase with long press
-        UILongPressGestureRecognizer *longer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-        longer.cancelsTouchesInView = YES;
-        [self addGestureRecognizer:longer];
-        
     } else [NSException raise:@"NSOpenGLES2ContextException" format:@"Failed to create OpenGL ES2 context"];
 }
 
@@ -164,8 +151,6 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
     glClearColor(clearColor[0], clearColor[1], clearColor[2], clearColor[3]);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    
-    
     [effect prepareToDraw];
     
     
@@ -176,18 +161,13 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
             glBindVertexArrayOES(lines[i].vertexArray);
             glDrawArrays(GL_TRIANGLE_STRIP, 0, lines[i].length);
         }
-        
-        if (lines[i].dotsLength > 0) {
-            glBindVertexArrayOES(lines[i].dotsArray);
-            glDrawArrays(GL_TRIANGLE_STRIP, 0, lines[i].dotsLength);
-        }
     }
     
 
 }
 
 
-- (void)erase {
+- (void)undo {
 
 
     if(currentLine != 0 && lines[currentLine].length==0)
@@ -195,13 +175,19 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
         currentLine = currentLine - 1;
     }
     lines[currentLine].length = 0;
-    lines[currentLine].dotsLength = 0; // This needs to be fixed.
-
+    
     self.hasSignature = NO;
     
+    NSLog(@"Current Line: %d", currentLine);
+
     [self setNeedsDisplay];
 }
 
+- (void) erase
+{
+    for(int i = 0 ; i < currentLine ; i++)
+        [self undo];
+}
 
 /* */
 - (UIImage *)signatureImage
@@ -224,65 +210,13 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
 
 #pragma mark - Gesture Recognizers
 
-
-- (void)tap:(UITapGestureRecognizer *)t {
-    CGPoint l = [t locationInView:self];
-    
-    if (t.state == UIGestureRecognizerStateRecognized) {
-        
-        currentLine++;
-        
-        glBindBuffer(GL_ARRAY_BUFFER, lines[currentLine].dotsBuffer);
-        
-        SignaturePoint touchPoint = PointInViewToGL(l, self.bounds, (GLKVector3){1, 1, 1});
-        addVertex(&(lines[currentLine].dotsLength), touchPoint);
-        
-        SignaturePoint centerPoint = touchPoint;
-        centerPoint.color = StrokeColor;
-        addVertex(&(lines[currentLine].dotsLength), centerPoint);
-        
-        static int segments = 20;
-        GLKVector2 radius = (GLKVector2){
-            clamp(0.00001, 0.02, (lines[currentLine].penThickness) * generateRandom(0.5, 1.5)),
-            clamp(0.00001, 0.02, (lines[currentLine].penThickness) * generateRandom(0.5, 1.5))
-        };
-        GLKVector2 velocityRadius = radius;
-        float angle = 0;
-        
-        for (int i = 0; i <= segments; i++) {
-            
-            SignaturePoint p = centerPoint;
-            p.vertex.x += velocityRadius.x * cosf(angle);
-            p.vertex.y += velocityRadius.y * sinf(angle);
-            
-            addVertex(&(lines[currentLine].dotsLength), p);
-            addVertex(&(lines[currentLine].dotsLength), centerPoint);
-            
-            angle += M_PI * 2.0 / segments;
-        }
-        
-        addVertex(&(lines[currentLine].dotsLength), touchPoint);
-        
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-    }
-    
-    [self setNeedsDisplay];
-}
-
-
-- (void)longPress:(UILongPressGestureRecognizer *)lp {
-    [self erase];
-}
-
 - (void)pan:(UIPanGestureRecognizer *)p {
-    
-    
     glBindBuffer(GL_ARRAY_BUFFER, lines[currentLine].vertexBuffer);
     
     CGPoint v = [p velocityInView:self];
     CGPoint l = [p locationInView:self];
     
-    lines[currentLine].currentVelocity = PointInViewToGL(v, self.bounds, (GLKVector3){0,0,0});
+    lines[currentLine].currentVelocity = LocationInGL(v, self.bounds, (GLKVector3){0,0,0});
     float distance = 0.;
     
     CGPoint previousPoint = lines[currentLine].previousPoint;
@@ -306,7 +240,7 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
             lines[currentLine].previousPoint = l;
             lines[currentLine].previousMidPoint = l;
             
-            SignaturePoint startPoint = PointInViewToGL(l, self.bounds, (GLKVector3){1, 1, 1});
+            SignaturePoint startPoint = LocationInGL(l, self.bounds, (GLKVector3){1, 1, 1});
             lines[currentLine].previousVertex = startPoint;
             lines[currentLine].previousThickness = lines[currentLine].penThickness;
             
@@ -335,14 +269,14 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
                     
                     CGPoint quadPoint = QuadraticPointInCurve(lines[currentLine].previousMidPoint, mid, previousPoint, (float)i / (float)(segments));
                     
-                    SignaturePoint v = PointInViewToGL(quadPoint, self.bounds, StrokeColor);
+                    SignaturePoint v = LocationInGL(quadPoint, self.bounds, StrokeColor);
                     [self addTriangleStripPointsForPrevious:lines[currentLine].previousVertex next:v];
                     
                     lines[currentLine].previousVertex = v;
                 }
             } else if (distance > 1.0) {
                 
-                SignaturePoint v = PointInViewToGL(l, self.bounds, StrokeColor);
+                SignaturePoint v = LocationInGL(l, self.bounds, StrokeColor);
                 [self addTriangleStripPointsForPrevious:(lines[currentLine].previousVertex) next:v];
                 
                 lines[currentLine].previousVertex = v;
@@ -354,13 +288,13 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
             
         } else if (p.state == UIGestureRecognizerStateEnded | p.state == UIGestureRecognizerStateCancelled) {
             
-            SignaturePoint v = PointInViewToGL(l, self.bounds, (GLKVector3){1, 1, 1});
+            SignaturePoint v = LocationInGL(l, self.bounds, (GLKVector3){1, 1, 1});
             addVertex(&(lines[currentLine].length), v);
             
             lines[currentLine].previousVertex = v;
             addVertex(&(lines[currentLine].length), lines[currentLine].previousVertex);
             currentLine++;
-            [self setUpLine];
+            [self setupLine];
         }
     
     [self setNeedsDisplay];
@@ -410,15 +344,11 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
 - (void)setupGL
 {
     [EAGLContext setCurrentContext:context];
-    
     effect = [[GLKBaseEffect alloc] init];
-    
     [self updateStrokeColor];
-    
-    
     glDisable(GL_DEPTH_TEST);
     
-    [self setUpLine];
+    [self setupLine];
     
     
     // Perspective
@@ -431,7 +361,7 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
 
 }
 
-- (void) setUpLine
+- (void) setupLine
 {
     // Signature Lines
     glGenVertexArraysOES(1, &(lines[currentLine].vertexArray));
@@ -443,24 +373,11 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
     [self bindShaderAttributes];
     
     
-    // Signature Dots
-    glGenVertexArraysOES(1, &(lines[currentLine].dotsArray));
-    glBindVertexArrayOES(lines[currentLine].dotsArray);
-    
-    glGenBuffers(1, &(lines[currentLine].dotsBuffer));
-    glBindBuffer(GL_ARRAY_BUFFER, lines[currentLine].dotsBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(lines[currentLine].SignatureDotsData), lines[currentLine].SignatureDotsData, GL_DYNAMIC_DRAW);
-    [self bindShaderAttributes];
-    
     lines[currentLine].length = 0;
     lines[currentLine].penThickness = STROKE_WIDTH_MAX;
     lines[currentLine].previousPoint = CGPointMake(-100, -100);
     
-    
     glBindVertexArrayOES(0);
-    
-    NSLog(@"Current Line: %d", currentLine);
-
 }
 
 
@@ -503,9 +420,6 @@ static SignaturePoint PointInViewToGL(CGPoint viewPoint, CGRect bounds, GLKVecto
     {
         glDeleteVertexArraysOES(1, &(lines[i].vertexArray));
         glDeleteBuffers(1, &(lines[i].vertexBuffer));
-        
-        glDeleteVertexArraysOES(1, &(lines[i].dotsArray));
-        glDeleteBuffers(1, &(lines[i].dotsBuffer));
     }
     
     effect = nil;

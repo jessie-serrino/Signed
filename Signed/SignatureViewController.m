@@ -10,6 +10,7 @@
 #import "AddSignatureViewController.h"
 #import "SignatureProcessManager.h"
 #import "ColorButtonAnimator.h"
+#import "SignatureView.h"
 
 static NSString * const SegueToAddSignature = @"SegueToAddSignature";
 static NSInteger const SpringBounciness = 20.0;
@@ -19,7 +20,7 @@ static NSInteger const SpringBounciness = 20.0;
 @interface SignatureViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *clearButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *acceptButton;
-@property (strong, nonatomic) IBOutlet UIView *drawableView;
+@property (strong, nonatomic) IBOutlet SignatureView *drawableView;
 @property (strong, nonatomic) IBOutlet UIButton *colorButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *undoButton;
@@ -57,6 +58,7 @@ static NSInteger const SpringBounciness = 20.0;
     [super viewWillAppear:animated];
     
     [self initializeSignatureMaker];
+    [self rotateToOrientation];
     [self.acceptButton setEnabled: !self.signatureMaker.blank];
 }
 
@@ -66,6 +68,11 @@ static NSInteger const SpringBounciness = 20.0;
     [self animateOpenColorMenu];
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.drawableView tearDownGL];
+}
 
 //- (void) rotateToOrientation: (UIInterfaceOrientation) orientation
 //{
@@ -75,15 +82,15 @@ static NSInteger const SpringBounciness = 20.0;
 
 - (void) initializeSignatureMaker
 {
-    if([SignatureProcessManager sharedManager].signatureMaker){
-        self.signatureMaker = [SignatureProcessManager sharedManager].signatureMaker;
-        [self.signatureMaker addLinesToView: self.drawableView];
-    }
-    else{
-            self.signatureMaker = [[SignatureMaker alloc] initWithFrame:self.drawableView.bounds];
-        [SignatureProcessManager sharedManager].signatureMaker = self.signatureMaker;
-    }
-    [self.drawableView.layer addSublayer:self.signatureMaker];
+//    if([SignatureProcessManager sharedManager].signatureMaker){
+//        self.signatureMaker = [SignatureProcessManager sharedManager].signatureMaker;
+//        [self.signatureMaker addLinesToView: self.drawableView];
+//    }
+//    else{
+//            self.signatureMaker = [[SignatureMaker alloc] initWithFrame:self.drawableView.bounds];
+//        //[SignatureProcessManager sharedManager].signatureMaker = self.signatureMaker;
+//    }
+//    //[self.drawableView.layer addSublayer:self.signatureMaker];
 }
 
 
@@ -93,21 +100,21 @@ static NSInteger const SpringBounciness = 20.0;
 }
 
 - (IBAction)drawSignatureMotion:(UIPanGestureRecognizer *)sender {
-    CGPoint touch = [sender locationInView:self.drawableView];
-    CGPoint velocity = [sender velocityInView:self.drawableView];
-    
-    if(sender.state == UIGestureRecognizerStateBegan){
-        [self.signatureMaker startLineWithPoint:touch];
-    } else if(sender.state == UIGestureRecognizerStateChanged){
-        [self.signatureMaker continueLineWithPoint:touch andVelocity:velocity];
-    } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
-        [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
-    }
+//    CGPoint touch = [sender locationInView:self.drawableView];
+//    CGPoint velocity = [sender velocityInView:self.drawableView];
+//    
+//    if(sender.state == UIGestureRecognizerStateBegan){
+//        [self.signatureMaker startLineWithPoint:touch];
+//    } else if(sender.state == UIGestureRecognizerStateChanged){
+//        [self.signatureMaker continueLineWithPoint:touch andVelocity:velocity];
+//    } else if(sender.state == UIGestureRecognizerStateEnded || sender.state == UIGestureRecognizerStateCancelled) {
+//        [self.signatureMaker endLineWithPoint:touch andVelocity:velocity];
+//    }
     
     if(self.colorMenuOpen)
         [self animateCloseColorMenu];
     
-    self.acceptButton.enabled = !self.signatureMaker.blank;
+//    self.acceptButton.enabled = !self.signatureMaker.blank;
     
 }
 - (IBAction)acceptSignature:(UIBarButtonItem *)sender {
@@ -142,25 +149,24 @@ static NSInteger const SpringBounciness = 20.0;
 }
 
 - (IBAction)undoButtonPressed:(UIButton *)sender {
-    [self.signatureMaker undoLine];
+
+    [self.drawableView undo];
+    //    [self.signatureMaker undoLine];
     [self.undoButton pop_removeAllAnimations];
     POPSpringAnimation *rotateUndo = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerRotation];
     rotateUndo.fromValue = 0;
     rotateUndo.toValue = @(-2*M_PI);
     [self.undoButton.layer pop_addAnimation:rotateUndo forKey:@"rotateUndo"];
-    self.acceptButton.enabled = !self.signatureMaker.blank;
+    //self.acceptButton.enabled = !self.signatureMaker.blank;
 
     
 }
 - (IBAction)clearButtonPressed:(id)sender {
-    [self.signatureMaker clearAll];
+    
+    [self.drawableView erase];
+    //[self.signatureMaker clearAll];
     [self.clearButton pop_removeAllAnimations];
     self.acceptButton.enabled = NO;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 

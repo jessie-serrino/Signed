@@ -8,6 +8,8 @@
 @property (assign, nonatomic) BOOL hasSignature;
 @property (strong, nonatomic) UIImage *signatureImage;
 
-- (void)erase;
+- (void)undo;
+- (void) erase;
+- (void)tearDownGL;
 
 @end

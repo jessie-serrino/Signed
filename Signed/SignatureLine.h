@@ -25,8 +25,6 @@ struct Line
     
     GLuint vertexArray;
     GLuint vertexBuffer;
-    GLuint dotsArray;
-    GLuint dotsBuffer;
     
     // Previous points for quadratic bezier computations
     CGPoint previousPoint;
@@ -37,10 +35,6 @@ struct Line
     // Array of verteces, with current length
     SignaturePoint SignatureVertexData[maxLength];
     uint length;
-    
-    SignaturePoint SignatureDotsData[maxLength];
-    uint dotsLength;
-    
 };
 
 typedef struct Line Line;
