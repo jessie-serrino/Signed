@@ -2,7 +2,9 @@ Signed
 ======
 An iOS application to save, sign, and send documents on your iPhone. 
 
-![SignedImage](/Signed/ScreenShot.png)
+![First Screen Image](/Signed/ScreenShot1.png)
+
+![Signature Image](/Signed/ScreenShot.png)
 
 
 
