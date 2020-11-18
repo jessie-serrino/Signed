@@ -6,7 +6,7 @@ An iOS application to save, sign, and send documents on your iPhone.
 
 
 
-###Description
+### Description
 
 This iOS application was the product of my final project at Ironhack. For my project, I wanted to take on something that already had a market, but could be substantially improved. I wanted signatures that looked like real-life ones, and wanted the app to be simple without requiring the user to sign up. Most importantly, I wanted a technical challenge that was dependent on exclusively Apple APIs (excluding Facebook's POP Animations and a UIImage->PDF Cocoapod), so that all the interesting work had to come from my own development. 
 
