@@ -20,7 +20,7 @@ This iOS application was the product of my final project at Ironhack. For my pro
 
 ==============
 
-###Process
+### Process
 Along the way, I made attempts to practice clean architecture. The architecture is divided up into a few sections:
 * Signature Maker (SignatureMaker, Line, UIBezierPath+Subline,  LineSmoothHelper)
 * Document and Signature Models (Signature, Document, FileEntity)
@@ -33,7 +33,7 @@ While keeping in mind architectural patterns like MVC, MVVM, and VIPER, I felt t
 ==============
 
 
-###Difficulties
+### Difficulties
 Currently, this application leaks a lot of memory (from an update to my signature library), and produces PDFs which are far too large to reasonably send to someone. In the future, I intend to write a library that more clearly demonstrates how to safely mask an image onto a PDF, but for now, I am afraid this app will be collecting dust as I work on other projects.
 
 I will end this by saying that CoreGraphics is my nemesis.
